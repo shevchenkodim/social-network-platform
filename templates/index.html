@@ -5,14 +5,13 @@
     <head>
         <meta charset="utf-8">
         <title>Social Network</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'assets\css\bootstrap.min.css' %}" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="{% static 'assets\css\icon.css' %}" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
-        <link rel="stylesheet" href="css.css">
+        <link rel="stylesheet" href="{% static 'assets\css\css.css' %}">
     </head>
     <body>
-    <div class="row border pt-2 pb-2 bg-white">
+    <div class="row border pt-2 pb-2 bg-white fixed-top">
         <div class="col-4 text-center">
             <h2><a href="#!" class="text-dark"><img src="{% static 'assets\images\logo.PNG' %}" height="30" alt="logo"></a></h2>
         </div>
@@ -28,7 +27,7 @@
             </div>
         </div>
     </div>
-    <div class="row justify-content-center mt-4">
+    <div class="row justify-content-center mt-4" style="padding-top: 65px;">
         <div class="col-6">
             <div class="card text-dark bg-white mb-5">
               <div class="card-header bg-white">
@@ -147,8 +146,150 @@
               </form>
             </div>
         </div>
-        <div class="col-3">
-
+        <div class="col-3" style="max-width: 100%;">
+            <div class="row mt-1 position-fixed">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-2">
+                            <a href="#!"><img style="border-radius: 100px;" src="https://static10.tgstat.ru/channels/_0/38/38d980d494e7dd012dc630341bfedb39.jpg" alt="" width="55" height="55"></a>
+                        </div>
+                        <div class="col-10" style="padding-left: 0px;">
+                            <span class="text-dark" style="font-weight: 600;">username_99</span><br>
+                            <small class="text-secondary">First_name Last_name</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 pt-3 pl-4">
+                    <div class="row">
+                        <div class="card" style="width: 18rem;">
+                            <div class="row pt-1 pb-1 pr-2 pl-2">
+                                <div class="col-6 pl-4">
+                                    <small><b class="text-muted">Stories</b></small>
+                                </div>
+                                <div class="col-6 pr-4 text-right">
+                                    <small>Watch All</small>
+                                </div>
+                            </div>
+                            <div class="row pr-3">
+                                <div class="col-12 scroll pr-5">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="row pl-2 pt-1 pb-2 d-flex align-items-center">
+                                                <div class="col-2">
+                                                    <a href="#!"><img style="border-radius: 100px;" src="https://static10.tgstat.ru/channels/_0/38/38d980d494e7dd012dc630341bfedb39.jpg" alt="" width="40" height="40"></a>
+                                                </div>
+                                                <div class="col-10 pl-4" style="padding-left: 0px;">
+                                                    <span class="text-dark" style="font-weight: 600;">username_99</span><br>
+                                                    <small class="text-secondary">First_name Last_name</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="row pl-2 pt-1 pb-2 d-flex align-items-center">
+                                                <div class="col-2">
+                                                    <a href="#!"><img style="border-radius: 100px;" src="https://static10.tgstat.ru/channels/_0/38/38d980d494e7dd012dc630341bfedb39.jpg" alt="" width="40" height="40"></a>
+                                                </div>
+                                                <div class="col-10 pl-4" style="padding-left: 0px;">
+                                                    <span class="text-dark" style="font-weight: 600;">username_99</span><br>
+                                                    <small class="text-secondary">First_name Last_name</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="row pl-2 pt-1 pb-2 d-flex align-items-center">
+                                                <div class="col-2">
+                                                    <a href="#!"><img style="border-radius: 100px;" src="https://static10.tgstat.ru/channels/_0/38/38d980d494e7dd012dc630341bfedb39.jpg" alt="" width="40" height="40"></a>
+                                                </div>
+                                                <div class="col-10 pl-4" style="padding-left: 0px;">
+                                                    <span class="text-dark" style="font-weight: 600;">username_99</span><br>
+                                                    <small class="text-secondary">First_name Last_name</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="row pl-2 pt-1 pb-2 d-flex align-items-center">
+                                                <div class="col-2">
+                                                    <a href="#!"><img style="border-radius: 100px;" src="https://static10.tgstat.ru/channels/_0/38/38d980d494e7dd012dc630341bfedb39.jpg" alt="" width="40" height="40"></a>
+                                                </div>
+                                                <div class="col-10 pl-4" style="padding-left: 0px;">
+                                                    <span class="text-dark" style="font-weight: 600;">username_99</span><br>
+                                                    <small class="text-secondary">First_name Last_name</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="row pl-2 pt-1 pb-2 d-flex align-items-center">
+                                                <div class="col-2">
+                                                    <a href="#!"><img style="border-radius: 100px;" src="https://static10.tgstat.ru/channels/_0/38/38d980d494e7dd012dc630341bfedb39.jpg" alt="" width="40" height="40"></a>
+                                                </div>
+                                                <div class="col-10 pl-4" style="padding-left: 0px;">
+                                                    <span class="text-dark" style="font-weight: 600;">username_99</span><br>
+                                                    <small class="text-secondary">First_name Last_name</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="row pl-2 pt-1 pb-2 d-flex align-items-center">
+                                                <div class="col-2">
+                                                    <a href="#!"><img style="border-radius: 100px;" src="https://static10.tgstat.ru/channels/_0/38/38d980d494e7dd012dc630341bfedb39.jpg" alt="" width="40" height="40"></a>
+                                                </div>
+                                                <div class="col-10 pl-4" style="padding-left: 0px;">
+                                                    <span class="text-dark" style="font-weight: 600;">username_99</span><br>
+                                                    <small class="text-secondary">First_name Last_name</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="row pl-2 pt-1 pb-2 d-flex align-items-center">
+                                                <div class="col-2">
+                                                    <a href="#!"><img style="border-radius: 100px;" src="https://static10.tgstat.ru/channels/_0/38/38d980d494e7dd012dc630341bfedb39.jpg" alt="" width="40" height="40"></a>
+                                                </div>
+                                                <div class="col-10 pl-4" style="padding-left: 0px;">
+                                                    <span class="text-dark" style="font-weight: 600;">username_99</span><br>
+                                                    <small class="text-secondary">First_name Last_name</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="row pl-2 pt-1 pb-2 d-flex align-items-center">
+                                                <div class="col-2">
+                                                    <a href="#!"><img style="border-radius: 100px;" src="https://static10.tgstat.ru/channels/_0/38/38d980d494e7dd012dc630341bfedb39.jpg" alt="" width="40" height="40"></a>
+                                                </div>
+                                                <div class="col-10 pl-4" style="padding-left: 0px;">
+                                                    <span class="text-dark" style="font-weight: 600;">username_99</span><br>
+                                                    <small class="text-secondary">First_name Last_name</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="row pl-2 pt-1 pb-2 d-flex align-items-center">
+                                                <div class="col-2">
+                                                    <a href="#!"><img style="border-radius: 100px;" src="https://static10.tgstat.ru/channels/_0/38/38d980d494e7dd012dc630341bfedb39.jpg" alt="" width="40" height="40"></a>
+                                                </div>
+                                                <div class="col-10 pl-4" style="padding-left: 0px;">
+                                                    <span class="text-dark" style="font-weight: 600;">username_99</span><br>
+                                                    <small class="text-secondary">First_name Last_name</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="row pl-2 pt-1 pb-2 d-flex align-items-center">
+                                                <div class="col-2">
+                                                    <a href="#!"><img style="border-radius: 100px;" src="https://static10.tgstat.ru/channels/_0/38/38d980d494e7dd012dc630341bfedb39.jpg" alt="" width="40" height="40"></a>
+                                                </div>
+                                                <div class="col-10 pl-4" style="padding-left: 0px;">
+                                                    <span class="text-dark" style="font-weight: 600;">username_99</span><br>
+                                                    <small class="text-secondary">First_name Last_name</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
