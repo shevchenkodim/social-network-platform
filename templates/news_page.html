@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Social Network
+{% endblock title %}
+
+{% block stories %}
+    {% include 'components/block_stories.html' %}
+{% endblock stories %}
+
+{% block content %}
+    {% include 'components/news_posts.html' %}
+{% endblock content %}
