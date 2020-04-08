@@ -13,3 +13,15 @@ body {
     overflow-y: auto;
     box-sizing:border-box;
 }
+
+.menu-bg {
+  background-color: #DCDCDC;
+}
+
+.scroll-storis {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    width: auto; /* Ширина блока */
+    padding: 5px; /* Поля вокруг текста */
+    box-sizing:border-box;
+   }
