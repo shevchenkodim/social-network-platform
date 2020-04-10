@@ -1,17 +1,26 @@
 {% load static %}
 
+{% for news_post in news_posts %}
 <div class="card text-dark bg-white  mb-4">
     <div class="card-header bg-white">
         <header class="d-flex align-items-center">
-            <a href="#!"><img style="border-radius: 100px;" src="https://cdn2.iconfinder.com/data/icons/avatar-profile/476/profile_avatar_contact_account_user_default-512.png" alt="" width="40" height="40"></a>
-            <h2 class="h5 text-truncate w-100 pl-3">test_username</h2>
+            {% if news_post.user.userprofile.image and news_post.user.userprofile.image.url %}
+                <img style="border-radius: 100px;" src="{{ news_post.user.userprofile.image.url }}" alt="" width="40" height="40">
+            {% else %}
+                <img style="border-radius: 100px;" src="{% static 'assets\images\default.png' %}" alt="" width="40" height="40">
+            {% endif %}
+            <h2 class="h5 text-truncate w-100 pl-3">{{ news_post.user.username }}</h2>
             <a href="#" class="text-dark">
                 <i class="fa fa-ellipsis-h" style="font-size:24px"></i>
             </a>
         </header>
     </div>
     <div id="image-post" class="text-center">
-        <img src="{% static 'assets\images\img2.jpg' %}" width="1080px" alt="" style="max-width: 100%;">
+        {% for file in files_list %}
+            {% if file.post.id == news_post.id %}
+                <img src="{{ file.file.url }}" width="1080px" alt="" style="max-width: 100%;">
+            {% endif %}
+        {% endfor %}
     </div>
     <div class="row d-flex align-items-center pl-3 pt-2">
         <div class="col-8 d-flex justify-content-start">
@@ -24,7 +33,7 @@
         </div>
     </div>
     <div id="likes" class="pl-4 pt-1">
-        <b><span class="text-dark">33 likes</span></b>
+        <b><span class="text-dark">{{ news_post.likes_count }} likes</span></b>
     </div>
     <hr class="w-100">
     <form>
@@ -38,45 +47,7 @@
         </div>
     </form>
 </div>
-
-<div class="card text-dark bg-white  mb-4">
-    <div class="card-header bg-white">
-        <header class="d-flex align-items-center">
-            <a href="#!"><img style="border-radius: 100px;" src="https://cdn2.iconfinder.com/data/icons/avatar-profile/476/profile_avatar_contact_account_user_default-512.png" alt="" width="40" height="40"></a>
-            <h2 class="h5 text-truncate w-100 pl-3">test_username</h2>
-            <a href="#" class="text-dark">
-                <i class="fa fa-ellipsis-h" style="font-size:24px"></i>
-            </a>
-        </header>
-    </div>
-    <div id="image-post" class="text-center">
-        <img src="{% static 'assets\images\img2.jpg' %}" width="1080px" alt="" style="max-width: 100%;">
-    </div>
-    <div class="row d-flex align-items-center pl-3 pt-2">
-        <div class="col-8 d-flex justify-content-start">
-            <a href="#!" class="text-dark"><i class="fa fa-heart-o mx-2" style="font-size:27px;"></i></a>
-            <a href="#!" class="text-dark"><i class="fa fa-comment-o mx-2" style="font-size:27px"></i></a>
-            <a href="#!" class="text-dark"><i class="fa fa-send-o mx-2 pt-1" style="font-size:23px"></i></a>
-        </div>
-        <div class="col-4 d-flex justify-content-end pr-4">
-            <a href="#!" class="text-dark"><i class="fa fa-bookmark-o mx-2" style="font-size:27px"></i></a>
-        </div>
-    </div>
-    <div id="likes" class="pl-4 pt-1">
-        <b><span class="text-dark">33 likes</span></b>
-    </div>
-    <hr class="w-100">
-    <form>
-        <div class="row pb-3">
-            <div class="col-10 align-items-center pl-4">
-                <input name="name" class="form-control border-0" placeholder="Add a comment..."></input>
-            </div>
-            <div class="col-2 d-flex align-items-center justify-content-center">
-                <a href="#!" type="submit" class="btn btn-white text-primary">Post</a>
-            </div>
-        </div>
-    </form>
-</div>
+{% endfor %}
 
 <div class="card text-dark bg-white mb-4">
     <div class="card-header bg-white">

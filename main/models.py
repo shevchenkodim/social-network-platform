@@ -20,12 +20,12 @@ class PostsModel(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='user')
     text = models.TextField('Text posts', blank=True, max_length=2000)
     date_time_create = models.DateTimeField('Date and time created post', auto_now_add=True)
-    hashtag = models.ManyToManyField(HashtagModel, verbose_name='hashtag', related_name='hashtags')
+    hashtag = models.ManyToManyField(HashtagModel, blank=True, verbose_name='hashtag', related_name='hashtags')
     likes_count = models.IntegerField('Likes count', default=0)
     comments_count = models.IntegerField('Comments count', default=0)
 
     def __str__(self):
-        return self.user.username, self.text
+        return f'{self.user.username} - {self.text}'
 
     class Meta:
         verbose_name = 'Post'
@@ -35,11 +35,11 @@ class PostsModel(models.Model):
 class PostFilesModel(models.Model):
     """Post files models"""
     post = models.ForeignKey(PostsModel, on_delete=models.CASCADE, verbose_name='post')
-    file = models.FileField('File', max_length=255, upload_to='posts/image/'+ str(User.id) + '/')
+    file = models.FileField('File', max_length=255, upload_to='posts/image/')
     type = models.CharField('Type file', max_length=100)
 
     def __str__(self):
-        return self.file, self.type
+        return f'{self.file} - {self.type}'
 
     class Meta:
         verbose_name = 'File'
