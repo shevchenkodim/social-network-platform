@@ -42,6 +42,8 @@
     </div>
 
     <!-- Modal Create post -->
+    <input name="csrf_token" type="hidden" id="csrf_token" value="{{ csrf_token }}">
+    <input type="hidden" id="create_new_post" value="{% url 'create_new_post' %}"/>
     <div class="modal fade" id="modal-post-create" tabindex="-1" role="dialog" aria-labelledby="modal-post-create-label" aria-hidden="true">
       <div class="modal-dialog modal-mb modal-dialog-centered" role="document">
         <div class="modal-content" style="background: #fafafa;">
@@ -58,23 +60,30 @@
                     <h2 class="h5 text-truncate w-100 pl-3">{{ user.username }}</h2>
                 </div>
                 <div class="col-12 mt-3">
-                     <textarea class="border-0" placeholder="What you  mean?" rows="5" style="outline: none; width: 100%; background: #fafafa; resize: none;"></textarea>
+                     <textarea id="text-create-post" class="border-0" placeholder="What you  mean?" rows="5" style="outline: none; width: 100%; background: #fafafa; resize: none;"></textarea>
                 </div>
                 <div class="col-12 mt-3 mb-2">
                     <div class="custom-file">
                       <label class="btn btn-default btn-file d-flex align-items-center border" for="inputGroupFile03">
-                           <h5 class="w-100 text-left">Choose file</h5>
+                           <h6 class="label-name-file-post w-75 text-left mr-2" style="white-space: nowrap; overflow: hidden;">
+                               Choose file
+                           </h6>
                            <i class="fa fa-image pr-3" style="font-size:30px"></i>
                            <i class="fa fa-youtube-play pr-2" style="font-size:36px"></i>
-                          <input type="file" class="" id="inputGroupFile03" style="display: none;">
+                          <input type="file" class="input-name-file-post" id="inputGroupFile03" style="display: none;">
                       </label>
+                    </div>
+                </div>
+                <div class="col-12 mt-2 div-progressbar">
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">0%</div>
                     </div>
                 </div>
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary">Create</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary create-new-post">Create</button>
+            <button type="button" class="btn btn-secondary close-modal-create-post" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
@@ -83,6 +92,7 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="{% static 'assets\js\main.js' %}"></script>
     {% block js %}
     {% endblock js %}

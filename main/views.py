@@ -2,7 +2,9 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.contrib.auth import get_user_model
 from signup.models import UserProfile
+from django.http import JsonResponse
 from .models import *
+import os
 User = get_user_model()
 
 
@@ -18,6 +20,36 @@ class NewsView(TemplateView):
         context['news_posts'] = news_posts
         context['files_list'] = files_list
         return context
+
+
+def create_new_post(request):
+    """Create new user post"""
+    ALLOWED_TYPES_IMAGE = ['jpg', 'jpeg', 'png']
+    ALLOWED_TYPES_VIDEO = ['mp4', 'avi']
+    if request.method == 'POST':
+        text = request.POST.get('text', '')
+        file = request.FILES
+        f = file.get('file')
+        if f != None:
+            extension = os.path.splitext(f.name)[1][1:].lower()
+            if extension in ALLOWED_TYPES_IMAGE:
+                new_post = PostsModel.objects.create(user=request.user, text=text)
+                files = PostFilesModel.objects.create(post=new_post, file=f, type='image')
+            elif extension in ALLOWED_TYPES_VIDEO:
+                new_post = PostsModel.objects.create(user=request.user, text=text)
+                files = PostFilesModel.objects.create(post=new_post, file=f, type='video')
+            else:
+                response_data = {'_code' : 1, '_status' : 'no' }
+                #return JsonResponse(response_data)
+            response_data = {'_code' : 0, '_status' : 'ok' }
+            #return JsonResponse(response_data)
+        else:
+            new_post = PostsModel.objects.create(user=request.user, text=text)
+            response_data = {'_code' : 0, '_status' : 'ok' }
+    else:
+        response_data = {'_code' : 1, '_status' : 'no' }
+
+    #return JsonResponse(response_data)
 
 
 class UserPageView(TemplateView):
