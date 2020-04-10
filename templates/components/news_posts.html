@@ -28,6 +28,11 @@
             {% endif %}
         {% endfor %}
     </div>
+    {% if news_post.text %}
+    <div class="row" style="padding-left: 40px;">
+        <p class="mb-0 pb-1 pt-3">{{ news_post.text }}</p>
+    </div>
+    {% endif %}
     <div class="row d-flex align-items-center pl-3 pt-2">
         <div class="col-8 d-flex justify-content-start">
             <a href="#!" class="text-dark"><i class="fa fa-heart-o mx-2" style="font-size:27px;"></i></a>
@@ -41,11 +46,6 @@
     <div id="likes" class="pl-4 pt-1">
         <b><span class="text-dark">{{ news_post.likes_count }} likes</span></b>
     </div>
-    {% if news_post.text %}
-    <div class="row" style="padding-left: 40px;">
-        <p class="mb-0 pb-1 pt-1">{{ news_post.text }}</p>
-    </div>
-    {% endif %}
     <hr class="w-100">
     <form>
         <div class="row pb-3">
