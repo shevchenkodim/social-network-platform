@@ -18,7 +18,13 @@
     <div id="image-post" class="text-center">
         {% for file in files_list %}
             {% if file.post.id == news_post.id %}
-                <img src="{{ file.file.url }}" width="1080px" alt="" style="max-width: 100%;">
+                {% if file.type == 'image' %}
+                    <img src="{{ file.file.url }}" width="1080px" alt="" style="max-width: 100%;">
+                {% elif file.type == 'video' %}
+                    <video style="max-width: 100%;" controls>
+                        <source src="{{ file.file.url }}">
+                    </video>
+                {% endif %}
             {% endif %}
         {% endfor %}
     </div>
