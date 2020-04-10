@@ -8,9 +8,10 @@
 </div>
 <div class="col-4 align-items-center">
     <div class="row align-items-center justify-content-center pt-1">
-        <a href="{% url 'news_page' %}" class="text-dark"><i class="fa fa-home mx-3" style="font-size:33px"></i></a>
+        <a href="#!" class="text-dark" data-toggle="modal" data-target="#modal-post-create"><i class="fa fa-plus-square-o mr-3" style="font-size:33px;"></i></i></a>
         <a href="#!" class="text-dark"><i class="fa fa-send mx-3" style="font-size:23px"></i></a>
         <a href="#!" class="text-dark"><i class="fa fa-heart-o mx-3" style="font-size:27px;"></i></a>
-        <a href="{% url 'user_page' user.username %}" class="text-dark"><img style="border-radius: 100px;" src="https://cdn2.iconfinder.com/data/icons/avatar-profile/476/profile_avatar_contact_account_user_default-512.png" alt="" width="30" height="30"></a>
+        <a href="{% url 'user_page' user.username %}" class="text-dark mx-3"><img style="border-radius: 100px;" src="https://cdn2.iconfinder.com/data/icons/avatar-profile/476/profile_avatar_contact_account_user_default-512.png" alt="" width="30" height="30"></a>
+        <a href="{% url 'news_page' %}" class="text-dark"><i class="fa fa-home ml-3" style="font-size:33px"></i></a>
     </div>
 </div>

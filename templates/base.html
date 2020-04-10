@@ -40,6 +40,46 @@
         <div class="col-1">
         </div>
     </div>
+
+    <!-- Modal Create post -->
+    <div class="modal fade" id="modal-post-create" tabindex="-1" role="dialog" aria-labelledby="modal-post-create-label" aria-hidden="true">
+      <div class="modal-dialog modal-mb modal-dialog-centered" role="document">
+        <div class="modal-content" style="background: #fafafa;">
+          <div class="modal-header">
+            <h5 class="modal-title w-100 text-center" id="modal-post-create-label">Create new post</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body pt-3 pb-3">
+            <div class="row">
+                <div class="col-12 d-flex align-items-center">
+                    <img style="border-radius: 100px;" src="{{ user.userprofile.image.url }}" alt="" width="60" height="60">
+                    <h2 class="h5 text-truncate w-100 pl-3">{{ user.username }}</h2>
+                </div>
+                <div class="col-12 mt-3">
+                     <textarea class="border-0" placeholder="What you  mean?" rows="5" style="outline: none; width: 100%; background: #fafafa; resize: none;"></textarea>
+                </div>
+                <div class="col-12 mt-3 mb-2">
+                    <div class="custom-file">
+                      <label class="btn btn-default btn-file d-flex align-items-center border" for="inputGroupFile03">
+                           <h5 class="w-100 text-left">Choose file</h5>
+                           <i class="fa fa-image pr-3" style="font-size:30px"></i>
+                           <i class="fa fa-youtube-play pr-2" style="font-size:36px"></i>
+                          <input type="file" class="" id="inputGroupFile03" style="display: none;">
+                      </label>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Create</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
