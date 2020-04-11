@@ -17,6 +17,11 @@ class NewsView(TemplateView):
         profile = UserProfile.objects.get(user=self.request.user)
         news_posts = PostsModel.objects.filter(user__in=profile.folowing.all()).order_by('-date_time_create')
         files_list = PostFilesModel.objects.filter(post__in=news_posts)
+        count_files_in_post = {}
+        for post in news_posts:
+            files_count = files_list.filter(post=post).count()
+            count_files_in_post[post.id] = files_count
+        context['count_files_in_post'] = count_files_in_post
         context['news_posts'] = news_posts
         context['files_list'] = files_list
         return context
@@ -34,10 +39,10 @@ def create_new_post(request):
             extension = os.path.splitext(f.name)[1][1:].lower()
             if extension in ALLOWED_TYPES_IMAGE:
                 new_post = PostsModel.objects.create(user=request.user, text=text)
-                files = PostFilesModel.objects.create(post=new_post, file=f, type='image')
+                files = PostFilesModel.objects.create(post=new_post, file=f, type='image', position=1)
             elif extension in ALLOWED_TYPES_VIDEO:
                 new_post = PostsModel.objects.create(user=request.user, text=text)
-                files = PostFilesModel.objects.create(post=new_post, file=f, type='video')
+                files = PostFilesModel.objects.create(post=new_post, file=f, type='video', position=1)
             else:
                 response_data = {'_code' : 1, '_status' : 'no' }
                 #return JsonResponse(response_data)

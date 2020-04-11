@@ -37,6 +37,7 @@ class PostFilesModel(models.Model):
     post = models.ForeignKey(PostsModel, on_delete=models.CASCADE, verbose_name='post')
     file = models.FileField('File', max_length=255, upload_to='posts/image/')
     type = models.CharField('Type file', max_length=100)
+    position = models.IntegerField('Position in post', default=0)
 
     def __str__(self):
         return f'{self.file} - {self.type}'
