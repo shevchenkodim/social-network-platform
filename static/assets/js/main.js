@@ -19,11 +19,11 @@ $('.div-progressbar').hide();
 
 $('.create-new-post').on('click', function(){
     $('.div-progressbar').show();
-    
+
     var formData = new FormData();
 
     var files = $('.input-name-file-post')[0].files;
-    max_count = 2;
+    max_count = 5;
     count = 1;
     for (var i = 0; i < files.length; i++) {
         if (count > max_count) break;

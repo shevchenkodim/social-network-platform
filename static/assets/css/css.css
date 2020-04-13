@@ -29,3 +29,17 @@ body {
 .scrolling-wrapper::-webkit-scrollbar {
   display: none;
 }
+
+.carousel-control-prev {
+  height: fit-content;
+  width: fit-content;
+  top: 40%;
+  left: 10px;
+}
+
+.carousel-control-next {
+  right: 10px;
+  height: fit-content;
+  width: fit-content;
+  top: 40%;
+}
