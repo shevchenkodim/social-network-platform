@@ -3,7 +3,10 @@ from django.views.generic import TemplateView
 from django.contrib.auth import get_user_model
 from signup.models import UserProfile
 from django.http import JsonResponse
+from .services import image_processing
+from django.conf import settings
 from .models import *
+import uuid
 import os
 User = get_user_model()
 
@@ -33,20 +36,27 @@ def create_new_post(request):
     ALLOWED_TYPES_VIDEO = ['mp4', 'avi']
     if request.method == 'POST':
         text = request.POST.get('text', '')
-
         files_list = request.FILES.getlist('file')
-        files = None
-        if len(files_list) > 0:
-            files = files_list[0]
 
-        new_post = PostsModel.objects.create(user=request.user, text=text)
+        if text == '' and len(files_list) == 0:
+            response_data = {'_code' : 1, '_status' : 'no' }
+            return JsonResponse(response_data)
 
-        position = 1
-        if files != None:
+        if len(files_list) == 0:
+            new_post = PostsModel.objects.create(user=request.user, text=text)
+            response_data = {'_code' : 0, '_status' : 'ok' }
+            return JsonResponse(response_data)
+        else:
+            new_post = PostsModel.objects.create(user=request.user, text=text)
+            position = 1
             for file in request.FILES.getlist('file'):
+                if position > 5:
+                    break
                 extension = os.path.splitext(file.name)[1][1:].lower()
                 if extension in ALLOWED_TYPES_IMAGE:
-                    PostFilesModel.objects.create(post=new_post, file=file, type='image', position=position)
+                    new_file_name = uuid.uuid4()
+                    new_image = image_processing(file, new_file_name)
+                    PostFilesModel.objects.create(post=new_post, file=settings.MEDIA_ROOT + "/posts/image/" + str(new_file_name) + ".png", type='image', position=position)
 
                 elif extension in ALLOWED_TYPES_VIDEO:
                     PostFilesModel.objects.create(post=new_post, file=file, type='video', position=position)
@@ -54,11 +64,9 @@ def create_new_post(request):
 
             response_data = {'_code' : 0, '_status' : 'ok' }
             return JsonResponse(response_data)
-        response_data = {'_code' : 0, '_status' : 'ok' }
     else:
         response_data = {'_code' : 1, '_status' : 'no' }
-
-    return JsonResponse(response_data)
+        return JsonResponse(response_data)
 
 
 class UserPageView(TemplateView):

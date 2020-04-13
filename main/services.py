@@ -1,7 +1,8 @@
 from PIL import Image, ImageDraw, ImageFilter
+from django.conf import settings
 
 
-def image_processing(picture):
+def image_processing(picture, new_file_name):
     img = Image.new('RGBA', (1080, 1080), 'black')
     img_to = Image.open(picture)
     (width, height) = img_to.size
@@ -26,8 +27,7 @@ def image_processing(picture):
         blurred_image = im_crop.filter(ImageFilter.GaussianBlur(10))
         img.paste(blurred_image, (0, 1080-new_height))
 
-        #Save picture
-        img.save("img.png")
+        img.save(settings.MEDIA_ROOT + "/posts/image/" + str(new_file_name) + ".png")
         return img
     else:
         new_height = 1080
@@ -49,5 +49,5 @@ def image_processing(picture):
         blurred_image = im_crop.filter(ImageFilter.GaussianBlur(10))
         img.paste(blurred_image, (1080-new_width, 0))
 
-        img.save("img.png")
+        img.save(settings.MEDIA_ROOT + "/posts/image/" + str(new_file_name) + ".png")
         return img
