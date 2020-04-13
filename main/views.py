@@ -33,28 +33,32 @@ def create_new_post(request):
     ALLOWED_TYPES_VIDEO = ['mp4', 'avi']
     if request.method == 'POST':
         text = request.POST.get('text', '')
-        file = request.FILES
-        f = file.get('file')
-        if f != None:
-            extension = os.path.splitext(f.name)[1][1:].lower()
-            if extension in ALLOWED_TYPES_IMAGE:
-                new_post = PostsModel.objects.create(user=request.user, text=text)
-                files = PostFilesModel.objects.create(post=new_post, file=f, type='image', position=1)
-            elif extension in ALLOWED_TYPES_VIDEO:
-                new_post = PostsModel.objects.create(user=request.user, text=text)
-                files = PostFilesModel.objects.create(post=new_post, file=f, type='video', position=1)
-            else:
-                response_data = {'_code' : 1, '_status' : 'no' }
-                #return JsonResponse(response_data)
+
+        files_list = request.FILES.getlist('file')
+        files = None
+        if len(files_list) > 0:
+            files = files_list[0]
+
+        new_post = PostsModel.objects.create(user=request.user, text=text)
+
+        position = 1
+        if files != None:
+            for file in request.FILES.getlist('file'):
+                extension = os.path.splitext(file.name)[1][1:].lower()
+                if extension in ALLOWED_TYPES_IMAGE:
+                    PostFilesModel.objects.create(post=new_post, file=file, type='image', position=position)
+
+                elif extension in ALLOWED_TYPES_VIDEO:
+                    PostFilesModel.objects.create(post=new_post, file=file, type='video', position=position)
+                position += 1
+
             response_data = {'_code' : 0, '_status' : 'ok' }
-            #return JsonResponse(response_data)
-        else:
-            new_post = PostsModel.objects.create(user=request.user, text=text)
-            response_data = {'_code' : 0, '_status' : 'ok' }
+            return JsonResponse(response_data)
+        response_data = {'_code' : 0, '_status' : 'ok' }
     else:
         response_data = {'_code' : 1, '_status' : 'no' }
 
-    #return JsonResponse(response_data)
+    return JsonResponse(response_data)
 
 
 class UserPageView(TemplateView):

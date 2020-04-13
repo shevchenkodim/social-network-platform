@@ -19,9 +19,18 @@ $('.div-progressbar').hide();
 
 $('.create-new-post').on('click', function(){
     $('.div-progressbar').show();
-
+    
     var formData = new FormData();
-    formData.append('file', $('.input-name-file-post')[0].files[0]);
+
+    var files = $('.input-name-file-post')[0].files;
+    max_count = 2;
+    count = 1;
+    for (var i = 0; i < files.length; i++) {
+        if (count > max_count) break;
+        file = files.item(i);
+        formData.append("file", file);
+        count += 1;
+    }
 
     text = $('#text-create-post').val();
     formData.append('text', text);
