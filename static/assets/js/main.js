@@ -3,8 +3,12 @@ $("div #main-manu").mouseout(function() { $(this).removeClass("menu-bg border ro
 
 
 $('.input-name-file-post').change(function(e){
-    var fileName = e.target.files[0].name;
-    $(".label-name-file-post").text(fileName);
+    var filenames = '';
+    for (var i = 0; i < this.files.length; i++) {
+        filenames += this.files[i].name + '; ';
+    }
+    $(".filename").html('<ul>' + filenames + '</ul>');
+    $(".label-name-file-post").text(filenames);
 });
 
 
