@@ -23,7 +23,7 @@ $('.div-progressbar').hide();
 
 $('.create-new-post').on('click', function(){
     $('.div-progressbar').show();
-
+    $('#progress').attr("class", "spinner-border spinner-border-sm")
     var formData = new FormData();
 
     var files = $('.input-name-file-post')[0].files;
@@ -68,6 +68,7 @@ $('.create-new-post').on('click', function(){
                 alert('500 status code! server error');
                 $('.progress-bar').attr('style', 'width: 0%');
                 $('.progress-bar').text('0%');
+                $('#progress').attr("class", "fi fi-check")
                 $('.div-progressbar').hide();
                 $('.create-new-post').text('Error, please try again!');
                 function say() {
@@ -80,6 +81,7 @@ $('.create-new-post').on('click', function(){
                 if (result._code == 0 ){
                     $('.progress-bar').attr('style', 'width: 0%');
                     $('.progress-bar').text('0%');
+                    $('#progress').attr("class", "fi fi-check")
                     $('.div-progressbar').hide();
                     location.reload();
                     }
@@ -87,6 +89,7 @@ $('.create-new-post').on('click', function(){
                     $('.progress-bar').attr('style', 'width: 0%');
                     $('.progress-bar').text('0%');
                     $('.div-progressbar').hide();
+                    $('#progress').attr("class", "fi fi-check")
                     $('.create-new-post').text('Error, please try again!');
                     function say() {
                       $('.create-new-post').text("Create")
