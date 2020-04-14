@@ -99,6 +99,7 @@ $('.create-new-post').on('click', function(){
         });
 });
 
+
 function addComment(a) {
     id = $(a).attr('id');
     user = $(a).attr('data-username');
@@ -125,7 +126,6 @@ function addComment(a) {
                     $(a).text("Post")
                   }
                   setTimeout(say, 3000);
-                  }
               }
             },
         }).done(function(result) {

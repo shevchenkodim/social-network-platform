@@ -20,6 +20,7 @@ class NewsView(TemplateView):
         profile = UserProfile.objects.get(user=self.request.user)
         news_posts = PostsModel.objects.filter(user__in=profile.folowing.all()).order_by('-date_time_create')
         files_list = PostFilesModel.objects.filter(post__in=news_posts)
+        comment_list = CommentModel.objects.filter(post__in=news_posts)
         count_files_in_post = {}
         for post in news_posts:
             files_count = files_list.filter(post=post).count()
@@ -27,6 +28,7 @@ class NewsView(TemplateView):
         context['count_files_in_post'] = count_files_in_post
         context['news_posts'] = news_posts
         context['files_list'] = files_list
+        context['comment_list'] = comment_list
         return context
 
 

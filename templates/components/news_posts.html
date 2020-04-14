@@ -79,6 +79,11 @@
         <b><span class="text-dark">{{ news_post.likes_count }} likes</span></b>
     </div>
     <div id="comment-div-{{ news_post.id }}" class="pl-4 pr-2 pt-1">
+        {% for comment in comment_list %}
+            {% if comment.post.id == news_post.id %}
+                <span><b>{{ comment.user.username }}</b> {{ comment.text }}</span><br>
+            {% endif %}
+        {% endfor %}
     </div>
     <hr class="w-100">
     <form>
