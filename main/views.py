@@ -54,9 +54,11 @@ def create_new_post(request):
                     break
                 extension = os.path.splitext(file.name)[1][1:].lower()
                 if extension in ALLOWED_TYPES_IMAGE:
-                    new_file_name = uuid.uuid4()
-                    new_image = image_processing(file, new_file_name)
-                    PostFilesModel.objects.create(post=new_post, file=settings.MEDIA_ROOT + "/posts/image/" + str(new_file_name) + ".png", type='image', position=position)
+                    new_post_file = PostFilesModel.objects.create(post=new_post, file=file, type='image', position=position)
+                    #new_file_name = uuid.uuid4()
+                    #new_image = image_processing(str(settings.MEDIA_ROOT)+ '/' + str(new_post_file.file), new_file_name)
+                    #new_post_file.file = new_image
+                    #new_post_file.save()
 
                 elif extension in ALLOWED_TYPES_VIDEO:
                     PostFilesModel.objects.create(post=new_post, file=file, type='video', position=position)
