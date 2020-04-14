@@ -14,16 +14,22 @@
                 </div>
                 <div class="col-8">
                     <div class="row">
-                        <h5>dima_shevchenko99</h5>
-                        <a href="#" class="btn btn-sm btn-outline-secondary ml-3">Edit Profile</a>
+                        <h5>{{ owner_page.username }}</h5>
+                        {% if user.id == owner_page.id %}
+                            <a href="#" class="btn btn-sm btn-outline-secondary ml-3">Edit Profile</a>
+                        {% endif %}
                     </div>
                     <div class="row pt-1">
-                        <h6>35 posts</h6>
-                        <h6><a href="#!" class="text-dark ml-4" style="text-decoration: none;">325 followers</a></h6>
-                        <h6><a href="#!" class="text-dark ml-4" style="text-decoration: none;">171 following</a></h6>
+                        <h6>{{ news_posts.count }} posts</h6>
+                        <h6><a href="#!" class="text-dark ml-4" style="text-decoration: none;">
+                            {{ owner_page.userprofile.folowers.count }} followers
+                        </a></h6>
+                        <h6><a href="#!" class="text-dark ml-4" style="text-decoration: none;">
+                            {{ owner_page.userprofile.folowing.count }} following
+                        </a></h6>
                     </div>
                     <div class="row pt-1">
-                        <h6>Дима Шевченко</h6>
+                        <h6>{{ owner_page.first_name }} {{ owner_page.last_name }}</h6>
                     </div>
                 </div>
             </div>
@@ -31,24 +37,19 @@
         </div>
         <div class="col-12 mt-3">
             <div class="row">
-                <div class="col-4 text-center mb-4">
-                    <img src="{% static 'assets\images\img1.jpg' %}" width="1080px" alt="" style="max-width: 100%;">
-                </div>
-                <div class="col-4 text-center mb-4">
-                    <img src="{% static 'assets\images\img2.jpg' %}" width="1080px" alt="" style="max-width: 100%;">
-                </div>
-                <div class="col-4 text-center mb-4">
-                    <img src="{% static 'assets\images\img1.jpg' %}" width="1080px" alt="" style="max-width: 100%;">
-                </div>
-                <div class="col-4 text-center mb-4">
-                    <img src="{% static 'assets\images\img2.jpg' %}" width="1080px" alt="" style="max-width: 100%;">
-                </div>
-                <div class="col-4 text-center mb-4">
-                    <img src="{% static 'assets\images\img1.jpg' %}" width="1080px" alt="" style="max-width: 100%;">
-                </div>
-                <div class="col-4 text-center mb-4">
-                    <img src="{% static 'assets\images\img2.jpg' %}" width="1080px" alt="" style="max-width: 100%;">
-                </div>
+                {% for news_post in news_posts %}
+                    <div class="col-4 text-center mb-4">
+                        {% for file in files_list %}
+                            {% if file.post.id == news_post.id %}
+                                {% if file.type == 'image' %}
+                                    <img src="{{ file.file.url }}" width="1080px" alt="" style="max-width: 100%;">
+                                {% elif file.type == 'video' %}
+                                    <img src="{% static 'assets/images/default.video.png' %}" width="1080px" alt="" style="max-width: 100%;">
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </div>
