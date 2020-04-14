@@ -4,11 +4,8 @@ from django.conf import settings
 
 def image_processing(picture, new_file_name):
     try:
-        print('start')
         img = Image.new('RGBA', (1080, 1080), 'black')
         img_to = Image.open(picture)
-        print(picture)
-        print(img_to)
         (width, height) = img_to.size
 
         if width > height:

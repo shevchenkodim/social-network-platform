@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.contrib.auth import get_user_model
+from PIL import Image, ImageDraw, ImageFilter
 from signup.models import UserProfile
 from django.http import JsonResponse
-from .services import image_processing
 from django.conf import settings
 from .models import *
 import uuid
@@ -32,7 +32,7 @@ class NewsView(TemplateView):
 
 def create_new_post(request):
     """Create new user post"""
-    ALLOWED_TYPES_IMAGE = ['jpg', 'jpeg', 'png']
+    ALLOWED_TYPES_IMAGE = ['jpg', 'jpeg']
     ALLOWED_TYPES_VIDEO = ['mp4', 'avi']
     if request.method == 'POST':
         text = request.POST.get('text', '')
@@ -53,15 +53,59 @@ def create_new_post(request):
                 if position > 5:
                     break
                 extension = os.path.splitext(file.name)[1][1:].lower()
+                if extension in ALLOWED_TYPES_VIDEO:
+                    PostFilesModel.objects.create(post=new_post, file=file, type='video', position=position)
                 if extension in ALLOWED_TYPES_IMAGE:
                     new_post_file = PostFilesModel.objects.create(post=new_post, file=file, type='image', position=position)
-                    #new_file_name = uuid.uuid4()
-                    #new_image = image_processing(str(settings.MEDIA_ROOT)+ '/' + str(new_post_file.file), new_file_name)
-                    #new_post_file.file = new_image
-                    #new_post_file.save()
 
-                elif extension in ALLOWED_TYPES_VIDEO:
-                    PostFilesModel.objects.create(post=new_post, file=file, type='video', position=position)
+                    img = Image.new('RGB', (1080, 1080), 'black')
+                    img_to = Image.open(file)
+                    (width, height) = img_to.size
+
+                    if width > height:
+                        new_width  = 1080
+                        new_height = int(new_width * height / width)
+                        img_to = img_to.resize((new_width, new_height), Image.ANTIALIAS)
+                        (width, height) = img_to.size
+                        new_height = int((1080 - height)/2)
+                        img.paste(img_to, (0, new_height))
+
+                        #top
+                        (left, upper, right, lower) = (0, new_height, new_width, new_height*2)
+                        im_crop = img.crop((left, upper, right, lower))
+                        blurred_image = im_crop.filter(ImageFilter.GaussianBlur(10))
+                        img.paste(blurred_image, (0, 0))
+
+                        #botton
+                        (left, upper, right, lower) = (0, 1080-new_height*2, new_width, 1080-new_height)
+                        im_crop = img.crop((left, upper, right, lower))
+                        blurred_image = im_crop.filter(ImageFilter.GaussianBlur(10))
+                        img.paste(blurred_image, (0, 1080-new_height))
+                        img.save(settings.MEDIA_ROOT + '/' + new_post_file.file.name)
+                        new_post_file.file = str(settings.MEDIA_ROOT + '/' + new_post_file.file.name)
+                        new_post_file.save()
+                    else:
+                        new_height = 1080
+                        new_width = int(new_height * width / height)
+                        img_to = img_to.resize((new_width, new_height), Image.ANTIALIAS)
+                        (width, height) = img_to.size
+                        new_width = int((1080 - width)/2)
+                        img.paste(img_to, (new_width, 0))
+
+                        #left
+                        (left, upper, right, lower) = (new_width, 0, new_width*2, 1080)
+                        im_crop = img.crop((left, upper, right, lower))
+                        blurred_image = im_crop.filter(ImageFilter.GaussianBlur(10))
+                        img.paste(blurred_image, (0, 0))
+
+                        #right
+                        (left, upper, right, lower) = (1080-new_width*2, 0, 1080-new_width, 1080)
+                        im_crop = img.crop((left, upper, right, lower))
+                        blurred_image = im_crop.filter(ImageFilter.GaussianBlur(10))
+                        img.paste(blurred_image, (1080-new_width, 0))
+                        img.save(settings.MEDIA_ROOT + '/' + new_post_file.file.name)
+                        new_post_file.file = str(settings.MEDIA_ROOT + '/' + new_post_file.file.name)
+                        new_post_file.save()
                 position += 1
 
             response_data = {'_code' : 0, '_status' : 'ok' }
