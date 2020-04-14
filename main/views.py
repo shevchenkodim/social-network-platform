@@ -125,7 +125,7 @@ class UserPageView(TemplateView):
         news_posts = PostsModel.objects.filter(user=user_obj).order_by('-date_time_create')
         queryset = PostFilesModel.objects.none()
         for post in news_posts:
-            queryset |= PostFilesModel.objects.filter(post_id=post.id)
+            queryset |= PostFilesModel.objects.filter(post_id=post.id)[:1]
         context['news_posts'] = news_posts
         context['files_list'] = queryset
         context['owner_page'] = user_obj
