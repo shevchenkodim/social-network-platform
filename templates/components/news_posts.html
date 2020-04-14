@@ -1,6 +1,7 @@
 {% load static %}
 {% load custom_tags %}
 
+<input name="csrf_token" type="hidden" id="csrf_token" value="{{ csrf_token }}">
 {% for news_post in news_posts %}
 <div class="card text-dark bg-white  mb-4">
     <div class="card-header bg-white">
@@ -77,14 +78,16 @@
     <div id="likes" class="pl-4 pt-1">
         <b><span class="text-dark">{{ news_post.likes_count }} likes</span></b>
     </div>
+    <div id="comment-div-{{ news_post.id }}" class="pl-4 pr-2 pt-1">
+    </div>
     <hr class="w-100">
     <form>
         <div class="row pb-3">
             <div class="col-10 align-items-center pl-4">
-                <input name="name" class="form-control border-0" placeholder="Add a comment..."></input>
+                <input id="comment_text_{{ news_post.id }}" name="comment_text" class="form-control border-0" placeholder="Add a comment..."></input>
             </div>
             <div class="col-2 d-flex align-items-center justify-content-center">
-                <a href="#!" type="submit" class="btn btn-white text-primary">Post</a>
+                <a id="{{ news_post.id }}" href="#!" onclick="return addComment(this);" data-username="{{ user.username }}" data-url="{% url 'create_comment' news_post.id %}" class="btn btn-white text-primary">Post</a>
             </div>
         </div>
     </form>

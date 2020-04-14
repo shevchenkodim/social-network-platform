@@ -98,3 +98,48 @@ $('.create-new-post').on('click', function(){
                     }
         });
 });
+
+function addComment(a) {
+    id = $(a).attr('id');
+    user = $(a).attr('data-username');
+
+    var formData = new FormData();
+    text = $('#comment_text_' + id).val();
+    formData.append('text', text);
+
+    csrf_token =  $('input[name="csrf_token"]').attr('value');
+    formData.append('csrfmiddlewaretoken', csrf_token);
+
+    postUrl = $(a).attr('data-url');
+    $.post({
+            url: postUrl,
+            dataType: "json",
+            data:formData,
+            mimeType: "multipart/form-data",
+            processData:false,
+            contentType: false,
+            statusCode: {
+              500: function() {
+                  $(a).text('Error');
+                  function say() {
+                    $(a).text("Post")
+                  }
+                  setTimeout(say, 3000);
+                  }
+              }
+            },
+        }).done(function(result) {
+                if (result._code == 0 ){
+                    $('#comment-div-' + id).append('<span><b>'+ user +'</b> '+ text +'</span><br>');
+                    text = $('#comment_text_' + id).val('');
+                    }
+                else{
+                    text = $('#comment_text_' + id).val('');
+                    $(a).text('Error');
+                    function say() {
+                      $(a).text("Post")
+                    }
+                    setTimeout(say, 3000);
+                    }
+        });
+}

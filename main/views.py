@@ -30,6 +30,23 @@ class NewsView(TemplateView):
         return context
 
 
+def create_comment(request, pk):
+    """Create new comment"""
+    if request.method == 'POST':
+        text = request.POST.get('text', '')
+        if text == '':
+            response_data = {'_code' : 1, '_status' : 'no' }
+            return JsonResponse(response_data)
+        user = request.user
+        post = PostsModel.objects.get(id=pk)
+        comment = CommentModel.objects.create(user=user, post=post, text=text)
+        response_data = {'_code' : 0, '_status' : 'ok' }
+        return JsonResponse(response_data)
+    else:
+        response_data = {'_code' : 1, '_status' : 'no' }
+        return JsonResponse(response_data)
+
+
 def create_new_post(request):
     """Create new user post"""
     ALLOWED_TYPES_IMAGE = ['jpg', 'jpeg']

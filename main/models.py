@@ -45,3 +45,20 @@ class PostFilesModel(models.Model):
     class Meta:
         verbose_name = 'File'
         verbose_name_plural = 'Files'
+
+
+class CommentModel(models.Model):
+    """Comment models"""
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='user')
+    post = models.ForeignKey(PostsModel, on_delete=models.CASCADE, verbose_name='post')
+    text = models.CharField('Text', max_length=300)
+    date_time_add = models.DateTimeField('Date and time created comment', auto_now_add=True)
+    likes_count = models.IntegerField('Likes count', default=0)
+    reply_to = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True)
+
+    def __str__(self):
+        return f'{self.post.text} - {self.text}'
+
+    class Meta:
+        verbose_name = 'Comment'
+        verbose_name_plural = 'Comments'
