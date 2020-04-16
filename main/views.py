@@ -142,15 +142,10 @@ class UserPageView(TemplateView):
         context = super().get_context_data(**kwargs)
         user_obj = User.objects.get(username=self.kwargs['username'])
         news_posts = PostsModel.objects.filter(user=user_obj).order_by('-date_time_create')
-        files_list = PostFilesModel.objects.filter(post__in=news_posts)
-        comment_list = CommentModel.objects.filter(post__in=news_posts)
-        count_files_in_post = {}
+        queryset = PostFilesModel.objects.none()
         for post in news_posts:
-            files_count = files_list.filter(post=post).count()
-            count_files_in_post[post.id] = files_count
-        context['count_files_in_post'] = count_files_in_post
-        context['comment_list'] = comment_list
+            queryset |= PostFilesModel.objects.filter(post_id=post.id)[:1]
         context['news_posts'] = news_posts
-        context['files_list'] = files_list
+        context['files_list'] = queryset
         context['owner_page'] = user_obj
         return context

@@ -36,9 +36,21 @@
             <hr>
         </div>
         <div class="col-12 mt-3">
-            {% block content %}
-                {% include 'components/news_posts.html' %}
-            {% endblock content %}
+            <div class="row">
+                {% for news_post in news_posts %}
+                    <div class="col-4 text-center mb-4">
+                        {% for file in files_list %}
+                            {% if file.post.id == news_post.id %}
+                                {% if file.type == 'image' %}
+                                    <img src="{{ file.file.url }}" width="1080px" alt="" style="max-width: 100%;">
+                                {% elif file.type == 'video' %}
+                                    <img src="{% static 'assets/images/default.video.png' %}" width="1080px" alt="" style="max-width: 100%;">
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
 {% endblock middle %}
