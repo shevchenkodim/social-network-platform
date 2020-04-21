@@ -11,6 +11,17 @@ import os
 User = get_user_model()
 
 
+class PostDetailView(TemplateView):
+    """Post Detail View"""
+    template_name = "post_detail_page.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        post_obj = PostsModel.objects.get(page_id=self.kwargs['uuid'])
+        context['post_obj'] = post_obj
+        return context
+
+
 class NewsView(TemplateView):
     """News user page"""
     template_name = "news_page.html"

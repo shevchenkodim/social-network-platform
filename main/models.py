@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+import uuid
 User = get_user_model()
 
 
@@ -17,6 +18,7 @@ class HashtagModel(models.Model):
 
 class PostsModel(models.Model):
     """Posts user model"""
+    page_id = models.UUIDField(default=uuid.uuid4, blank=False, unique=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='user')
     text = models.TextField('Text posts', blank=True, max_length=2000)
     date_time_create = models.DateTimeField('Date and time created post', auto_now_add=True)
