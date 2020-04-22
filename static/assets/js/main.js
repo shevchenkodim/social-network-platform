@@ -5,6 +5,10 @@ function open_page_post_detail(a) {
     });
 };
 
+function remove_body_modal_data(a) {
+    $('#modal-body-content-post').text('');
+}
+
 
 $("div #main-manu").mouseover(function() { $(this).addClass("menu-bg border rounded"); });
 $("div #main-manu").mouseout(function() { $(this).removeClass("menu-bg border rounded"); });
