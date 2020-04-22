@@ -1,3 +1,103 @@
 {% load static %}
 
-test text in model
+<div class="card text-dark bg-white">
+    <div class="row">
+        <div class="col-8 p-0 pl-3">
+            <div id="image-post" class="text-center">
+                {% if count_files_in_post > 1 %}
+                <div id="carouselExampleControls{{post_obj.id}}" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        {% for file in files_list %}
+                            {% if file.post.id == post_obj.id %}
+                                {% if file.type == 'image' %}
+                                    <div class="carousel-item {% if file.position == 1 %}active{% endif %}">
+                                        <img src="{{ file.file.url }}" width="1080px" alt="" style="max-width: 100%;">
+                                    </div>
+                                {% elif file.type == 'video' %}
+                                    <div class="carousel-item {% if file.position == 1 %}active{% endif %}">
+                                        <video style="max-width: 100%;" controls>
+                                            <source src="{{ file.file.url }}">
+                                        </video>
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleControls{{post_obj.id}}" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls{{post_obj.id}}" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+                {% else %}
+                    {% for file in files_list %}
+                        {% if file.post.id == post_obj.id %}
+                            {% if file.type == 'image' %}
+                                <img src="{{ file.file.url }}" width="1080px" alt="" style="max-width: 100%;">
+                            {% elif file.type == 'video' %}
+                                <video style="max-width: 100%;" controls>
+                                    <source src="{{ file.file.url }}">
+                                </video>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-4 p-0 pr-3" style="max-width: 100%;">
+            <div class="bg-white border-bottom" >
+                <header class="d-flex align-items-center pr-3 pl-3 pt-2 pb-2">
+                    {% if post_obj.user.userprofile.image and post_obj.user.userprofile.image.url %}
+                        <a href="{% url 'user_page' post_obj.user.username %}"><img style="border-radius: 100px;" src="{{ post_obj.user.userprofile.image.url }}" alt="" width="50" height="50"></a>
+                    {% else %}
+                        <img style="border-radius: 100px;" src="{% static 'assets\images\default.png' %}" alt="" width="40" height="40">
+                    {% endif %}
+                    <h2 class="h5 text-truncate w-100 pl-3"><a href="{% url 'user_page' post_obj.user.username %}" class="text-dark" style="text-decoration: none;">{{ post_obj.user.username }}</a></h2>
+                    <a href="#!" class="text-dark">
+                        <i class="fa fa-ellipsis-h" style="font-size:24px"></i>
+                    </a>
+                </header>
+            </div>
+            {% if post_obj.text %}
+            <div class="row pr-2" style="max-width: 100%; padding-left: 35px;">
+                <p class="mb-0 pb-1 pt-2">{{ post_obj.text }}</p>
+            </div>
+            {% endif %}
+            <div class="row d-flex align-items-center pl-3 pt-2">
+                <div class="col-8 d-flex justify-content-start">
+                    <a href="#!" class="text-dark"><i class="fa fa-heart-o mx-2" style="font-size:27px;"></i></a>
+                    <a href="#!" class="text-dark"><i class="fa fa-comment-o mx-2" style="font-size:27px"></i></a>
+                    <a href="#!" class="text-dark"><i class="fa fa-send-o mx-2 pt-1" style="font-size:23px"></i></a>
+                </div>
+                <div class="col-4 d-flex justify-content-end" style="padding-right: 35px;">
+                    <a href="#!" class="text-dark"><i class="fa fa-bookmark-o mx-2" style="font-size:27px"></i></a>
+                </div>
+            </div>
+            <div id="likes" class="pl-4 pt-1">
+                <b><span class="text-dark">{{ post_obj.likes_count }} likes</span></b>
+            </div>
+            <div id="comment-div-{{ post_obj.id }}" class="pl-4 pr-2 pt-1">
+                {% for comment in comment_list %}
+                    {% if comment.post.id == post_obj.id %}
+                        <span><b>{{ comment.user.username }}</b> {{ comment.text }}</span><br>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <hr class="w-100">
+            <form class="">
+                <div class="row pb-3">
+                    <div class="col-9 align-items-center pl-4">
+                        <input id="comment_text_{{ post_obj.id }}" name="comment_text" class="form-control border-0" placeholder="Add a comment..."></input>
+                    </div>
+                    <div class="col-3 d-flex align-items-center justify-content-center" style="padding-right: 60px;">
+                        <a id="{{ post_obj.id }}" href="#!" onclick="return addComment(this);" data-username="{{ user.username }}" data-url="{% url 'create_comment' post_obj.id %}" class="btn btn-white text-primary">Post</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

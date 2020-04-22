@@ -18,6 +18,11 @@ class PostDetailView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         post_obj = PostsModel.objects.get(page_id=self.kwargs['uuid'])
+        files_list = PostFilesModel.objects.filter(post=post_obj)
+        comment_list = CommentModel.objects.filter(post=post_obj)
+        context['count_files_in_post'] = files_list.count()
+        context['comment_list'] = comment_list
+        context['files_list'] = files_list
         context['post_obj'] = post_obj
         return context
 
