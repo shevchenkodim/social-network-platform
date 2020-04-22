@@ -1,10 +1,9 @@
-$('.test-load').on('click', function() {
-    url = $('#post_detail_url').val();
+function open_page_post_detail(a) {
+    url = $(a).attr('data-url');
     $.get(url, function (data) {
-        $('#all_comments').append(data);
         $('#modal-body-content-post').append(data);
     });
-});
+};
 
 
 $("div #main-manu").mouseover(function() { $(this).addClass("menu-bg border rounded"); });
