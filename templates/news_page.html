@@ -10,7 +10,31 @@
 {% endblock stories %}
 
 {% block content %}
+<button type="button" class="btn btn-primary test-load" data-toggle="modal" data-target="#post-detail-modal">
+  Запустить модальное окно
+</button>
     {% include 'components/news_posts.html' %}
+
+    <!-- Modal -->
+    <div class="modal" id="post-detail-modal" tabindex="-1" role="dialog" aria-labelledby="post-detail-modal-Label" aria-hidden="false" style="opacity: 1;">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="post-detail-modal-Label">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div id="modal-body-content-post" class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock content %}
 
 {% block js %}
