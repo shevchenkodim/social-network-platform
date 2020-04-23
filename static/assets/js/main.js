@@ -1,4 +1,5 @@
 function open_page_post_detail(a) {
+    remove_body_modal_data(a)
     url = $(a).attr('data-url');
     $.get(url, function (data) {
         $('#modal-body-content-post').append(data);
