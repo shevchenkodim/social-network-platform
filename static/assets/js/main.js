@@ -116,7 +116,7 @@ $('.create-new-post').on('click', function(){
 function addComment(a) {
     id = $(a).attr('id');
     user = $(a).attr('data-username');
-
+    
     var formData = new FormData();
     text = $('#comment_text_' + id).val();
     formData.append('text', text);

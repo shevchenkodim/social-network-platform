@@ -89,9 +89,11 @@
             {% endif %}
         {% endfor %}
     </div>
+    {% if count_comments_in_post|get_item:news_post.id > 3 %}
     <div class="row pt-1" style="padding-left: 40px;">
         <a href="#!" data-url="{% url 'post_detail_view' news_post.page_id %}" onclick="open_page_post_detail(this);" style="text-decoration: none;" data-toggle="modal" data-target="#post-detail-modal" class="text-primary">View all comments...</a>
     </div>
+    {% endif %}
     <hr class="w-100">
     <form>
         <div class="row pb-3">
