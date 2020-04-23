@@ -79,7 +79,7 @@
             <div id="likes" class="pl-4 pt-1">
                 <b><span class="text-dark">{{ post_obj.likes_count }} likes</span></b>
             </div>
-            <div id="comment-div-{{ post_obj.id }}" class="pl-4 pr-2 pt-1">
+            <div class="pl-4 pr-2 pt-1 comment-div-{{ post_obj.id }}">
                 {% for comment in comment_list %}
                     {% if comment.post.id == post_obj.id %}
                         <span><b>{{ comment.user.username }}</b> {{ comment.text }}</span><br>
@@ -90,10 +90,10 @@
             <form class="">
                 <div class="row pb-3">
                     <div class="col-9 align-items-center pl-4">
-                        <input id="comment_text_{{ post_obj.id }}" name="comment_text" class="form-control border-0" placeholder="Add a comment..."></input>
+                        <input name="comment_text" class="form-control border-0 comment-text-{{ post_obj.id }}" placeholder="Add a comment..."></input>
                     </div>
                     <div class="col-3 d-flex align-items-center justify-content-center" style="padding-right: 60px;">
-                        <a id="{{ post_obj.id }}" href="#!" onclick="return addComment(this);" data-username="{{ user.username }}" data-url="{% url 'create_comment' post_obj.id %}" class="btn btn-white text-primary">Post</a>
+                        <a id="{{ post_obj.id }}" href="#!" onclick="return addCommentPageInfo(this);" data-username="{{ user.username }}" data-url="{% url 'create_comment' post_obj.id %}" class="btn btn-white text-primary">Post</a>
                     </div>
                 </div>
             </form>

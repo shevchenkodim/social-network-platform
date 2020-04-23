@@ -62,7 +62,11 @@
     </div>
     {% if news_post.text %}
     <div class="row" style="padding-left: 40px;">
-        <p class="mb-0 pb-1 pt-3">{{ news_post.text }}<a href="#!" onclick="open_page_post_detail(this);" data-url="{% url 'post_detail_view' news_post.page_id %}" data-toggle="modal" data-target="#post-detail-modal" style="text-decoration: none;" class="text-primary pl-2">read more...</a></p>
+        <p class="mb-0 pb-1 pt-3">{{ news_post.text|truncatechars:200 }}
+            {% if  news_post.text|length > 200  %}
+            <a href="#!" onclick="open_page_post_detail(this);" data-url="{% url 'post_detail_view' news_post.page_id %}" data-toggle="modal" data-target="#post-detail-modal" style="text-decoration: none;" class="text-primary pl-2">read more...</a>
+            {% endif %}
+        </p>
     </div>
     {% endif %}
     <div class="row d-flex align-items-center pl-3 pt-2">
@@ -84,6 +88,8 @@
                 <span><b>{{ comment.user.username }}</b> {{ comment.text }}</span><br>
             {% endif %}
         {% endfor %}
+    </div>
+    <div class="row pt-1" style="padding-left: 40px;">
         <a href="#!" data-url="{% url 'post_detail_view' news_post.page_id %}" onclick="open_page_post_detail(this);" style="text-decoration: none;" data-toggle="modal" data-target="#post-detail-modal" class="text-primary">View all comments...</a>
     </div>
     <hr class="w-100">
