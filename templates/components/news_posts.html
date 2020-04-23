@@ -19,7 +19,7 @@
     </div>
     <div id="image-post" class="text-center">
         {% if count_files_in_post|get_item:news_post.id > 1 %}
-        <div id="carouselExampleControls{{news_post.id}}" class="carousel slide" data-ride="carousel">
+        <div id="carouselExampleControls{{news_post.id}}" class="carousel slide" data-ride="carousel" data-interval="3600000">
             <div class="carousel-inner">
                 {% for file in files_list %}
                     {% if file.post.id == news_post.id %}
