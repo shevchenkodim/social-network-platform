@@ -21,7 +21,9 @@ class PostDetailView(TemplateView):
         post_obj = PostsModel.objects.get(page_id=self.kwargs['uuid'])
         files_list = PostFilesModel.objects.filter(post=post_obj)
         comment_list = CommentModel.objects.filter(post=post_obj)
+        user_likes_post = LikesModel.objects.filter(post=post_obj, user=self.request.user, is_liked=True)
         context['count_files_in_post'] = files_list.count()
+        context['user_likes_post'] = user_likes_post
         context['comment_list'] = comment_list
         context['files_list'] = files_list
         context['post_obj'] = post_obj
@@ -42,6 +44,8 @@ class NewsView(TemplateView):
             comment_list |= CommentModel.objects.filter(post=post.id)[:3]
         count_files_in_post = { post.id: files_list.filter(post=post.id).count() for post in news_posts}
         count_comments_in_post = { post.id: CommentModel.objects.filter(post=post.id).count() for post in news_posts}
+        user_likes_posts = LikesModel.objects.filter(post__in=news_posts, user=self.request.user, is_liked=True).values_list('post_id', flat=True)
+        context['user_likes_posts'] = user_likes_posts
         context['count_comments_in_post'] = count_comments_in_post
         context['count_files_in_post'] = count_files_in_post
         context['news_posts'] = news_posts
