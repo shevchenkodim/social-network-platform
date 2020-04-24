@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.contrib.auth import get_user_model
 from PIL import Image, ImageDraw, ImageFilter
+from django.core.exceptions import PermissionDenied
 from signup.models import UserProfile
 from django.http import JsonResponse
 from django.conf import settings
@@ -18,6 +19,8 @@ class PostDetailView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        if not self.request.user.is_authenticated:
+            raise PermissionDenied
         post_obj = PostsModel.objects.get(page_id=self.kwargs['uuid'])
         files_list = PostFilesModel.objects.filter(post=post_obj)
         comment_list = CommentModel.objects.filter(post=post_obj)
@@ -36,6 +39,8 @@ class NewsView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        if not self.request.user.is_authenticated:
+            raise PermissionDenied
         profile = UserProfile.objects.get(user=self.request.user)
         news_posts = PostsModel.objects.filter(user__in=profile.folowing.all()).order_by('-date_time_create')
         files_list = PostFilesModel.objects.filter(post__in=news_posts)
@@ -57,6 +62,8 @@ class NewsView(TemplateView):
 def create_comment(request, pk):
     """Create new comment"""
     if request.method == 'POST':
+        if not request.user.is_authenticated:
+            raise PermissionDenied
         text = request.POST.get('text', '')
         if text == '':
             response_data = {'_code' : 1, '_status' : 'no' }
@@ -76,6 +83,8 @@ def create_new_post(request):
     ALLOWED_TYPES_IMAGE = ['jpg', 'jpeg']
     ALLOWED_TYPES_VIDEO = ['mp4', 'avi']
     if request.method == 'POST':
+        if not request.user.is_authenticated:
+            raise PermissionDenied
         text = request.POST.get('text', '')
         files_list = request.FILES.getlist('file')
 
@@ -158,6 +167,8 @@ def create_new_post(request):
 
 def post_likes(request):
     if request.method == 'POST':
+        if not request.user.is_authenticated:
+            raise PermissionDenied
         pk = request.POST.get('post_id')
         try:
             post = PostsModel.objects.get(id=pk)
@@ -201,6 +212,8 @@ class UserPageView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        if not self.request.user.is_authenticated:
+            raise PermissionDenied
         user_obj = User.objects.get(username=self.kwargs['username'])
         news_posts = PostsModel.objects.filter(user=user_obj).order_by('-date_time_create')
         queryset = PostFilesModel.objects.none()
@@ -210,3 +223,8 @@ class UserPageView(TemplateView):
         context['files_list'] = queryset
         context['owner_page'] = user_obj
         return context
+
+
+def permission_denied(request):
+    data = {}
+    return render(request, '403.html', data, status=403)

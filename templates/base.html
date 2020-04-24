@@ -21,24 +21,26 @@
         {% include 'components/navbar.html' %}
     </div>
     <div class="row justify-content-center mt-4" style="padding-top: 65px; padding-left: 50px; padding-right: 50px;">
-        <div class="col-3">
-            <div class="text-dark" style="position: fixed; width: 22%;">
-                {% include 'components/menu.html' %}
+        {% block main_content %}
+            <div class="col-3">
+                <div class="text-dark" style="position: fixed; width: 22%;">
+                    {% include 'components/menu.html' %}
+                </div>
             </div>
-        </div>
-        <div class="col-1">
-        </div>
-        <div class="col-7">
-            {% block middle %}
-                {% block stories %}
-                {% endblock stories %}
+            <div class="col-1">
+            </div>
+            <div class="col-7">
+                {% block middle %}
+                    {% block stories %}
+                    {% endblock stories %}
 
-                {% block content %}
-                {% endblock content %}
-            {% endblock middle %}
-        </div>
-        <div class="col-1">
-        </div>
+                    {% block content %}
+                    {% endblock content %}
+                {% endblock middle %}
+            </div>
+            <div class="col-1">
+            </div>
+            {% endblock main_content %}
     </div>
 
     <!-- Modal Create post -->
