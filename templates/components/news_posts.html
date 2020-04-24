@@ -71,7 +71,7 @@
     {% endif %}
     <div class="row d-flex align-items-center pl-3 pt-2">
         <div class="col-8 d-flex justify-content-start">
-            <a href="#!" class="text-dark"><i class="fa fa-heart-o mx-2" style="font-size:27px;"></i></a>
+            <a href="#!" id="{{ news_post.id }}" onclick="post_likes(this);" class="text-dark"><i id="heart-likes-{{ news_post.id }}" class="fa fa-heart-o mx-2" style="font-size:27px;"></i></a>
             <a href="#!" class="text-dark"><i class="fa fa-send-o mx-2 pt-1" style="font-size:23px"></i></a>
         </div>
         <div class="col-4 d-flex justify-content-end pr-4">
@@ -79,7 +79,7 @@
         </div>
     </div>
     <div id="likes" class="pl-4 pt-1">
-        <b><span class="text-dark">{{ news_post.likes_count }} likes</span></b>
+        <b><span id="count-likes-{{ news_post.id }}" class="text-dark">{{ news_post.likes_count }}</span> likes</b>
     </div>
     <div id="comment-div-{{ news_post.id }}" class="pl-4 pr-2 pt-1">
         {% for comment in comment_list %}

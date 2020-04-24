@@ -44,7 +44,7 @@
     <!-- Modal Create post -->
     <input name="csrf_token" type="hidden" id="csrf_token" value="{{ csrf_token }}">
     <input type="hidden" id="create_new_post" value="{% url 'create_new_post' %}"/>
-    <input type="hidden" id="post_detail_url" value="{% url 'post_detail_view' uuid='dc793650-353d-483b-91d9-0bac62a1b83c' %}"/>
+    <input type="hidden" id="post_likes_url" value="{% url 'post_likes' %}"/>
     <div class="modal fade" id="modal-post-create" tabindex="-1" role="dialog" aria-labelledby="modal-post-create-label" aria-hidden="true">
       <div class="modal-dialog modal-mb modal-dialog-centered" role="document">
         <div class="modal-content" style="background: #fafafa;">

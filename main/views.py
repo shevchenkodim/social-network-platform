@@ -5,6 +5,7 @@ from PIL import Image, ImageDraw, ImageFilter
 from signup.models import UserProfile
 from django.http import JsonResponse
 from django.conf import settings
+from django.db.models import F
 from .models import *
 import uuid
 import os
@@ -149,6 +150,45 @@ def create_new_post(request):
     else:
         response_data = {'_code' : 1, '_status' : 'no' }
         return JsonResponse(response_data)
+
+
+def post_likes(request):
+    if request.method == 'POST':
+        pk = request.POST.get('post_id')
+        try:
+            post = PostsModel.objects.get(id=pk)
+        except PostsModel.DoesNotExist:
+            post = None
+        try:
+            likes = LikesModel.objects.get(user=request.user, post=post)
+        except LikesModel.DoesNotExist:
+            likes = None
+
+
+        if likes == None:
+            likes = LikesModel.objects.create(user=request.user, post=post)
+            post.likes_count = F('likes_count') + 1
+            post.save(update_fields=["likes_count"])
+            class_likes = 'fa fa-heart mx-2'
+        else:
+            if likes.is_liked == True:
+                likes.is_liked = False
+                likes.save()
+                post.likes_count = F('likes_count') - 1
+                post.save(update_fields=["likes_count"])
+                class_likes = 'fa fa-heart-o mx-2'
+            elif likes.is_liked == False:
+                likes.is_liked = True
+                likes.save()
+                post.likes_count = F('likes_count') + 1
+                post.save(update_fields=["likes_count"])
+                class_likes = 'fa fa-heart mx-2'
+        post.refresh_from_db()
+        response_data = {'_code' : 0, '_status' : 'ok', '_likes': post.likes_count, '_class_likes': class_likes}
+    else:
+        response_data = {'_code' : 1, '_status' : 'no' }
+
+    return JsonResponse(response_data)
 
 
 class UserPageView(TemplateView):

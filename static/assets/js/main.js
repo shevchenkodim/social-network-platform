@@ -1,3 +1,53 @@
+function post_likes(a) {
+    var formData = new FormData();
+    post_id = $(a).attr('id');
+    formData.append('post_id', post_id);
+
+    csrf_token =  $('input[name="csrf_token"]').attr('value');
+    formData.append('csrfmiddlewaretoken', csrf_token);
+    postUrl = $('#post_likes_url').val();
+    $.post({url: postUrl,
+            dataType: "json",
+            data:formData,
+            processData:false,
+            contentType: false,
+        }).done(function(result) {
+                if (result._code == 0 ){
+                    $('#heart-likes-' + post_id).attr('class',result._class_likes);
+                    $('#count-likes-' + post_id).text(result._likes);
+                    }
+                else{
+                    }
+        });
+};
+
+
+function post_likes_modal(a) {
+    var formData = new FormData();
+    post_id = $(a).attr('id');
+    formData.append('post_id', post_id);
+
+    csrf_token =  $('input[name="csrf_token"]').attr('value');
+    formData.append('csrfmiddlewaretoken', csrf_token);
+    postUrl = $('#post_likes_url').val();
+    $.post({url: postUrl,
+            dataType: "json",
+            data:formData,
+            processData:false,
+            contentType: false,
+        }).done(function(result) {
+                if (result._code == 0 ){
+                    $('#modal-heart-likes-' + post_id).attr('class',result._class_likes);
+                    $('#modal-count-likes-' + post_id).text(result._likes);
+                    $('#heart-likes-' + post_id).attr('class',result._class_likes);
+                    $('#count-likes-' + post_id).text(result._likes);
+                    }
+                else{
+                    }
+        });
+};
+
+
 function open_page_post_detail(a) {
     remove_body_modal_data(a)
     url = $(a).attr('data-url');
@@ -116,7 +166,7 @@ $('.create-new-post').on('click', function(){
 function addComment(a) {
     id = $(a).attr('id');
     user = $(a).attr('data-username');
-    
+
     var formData = new FormData();
     text = $('#comment_text_' + id).val();
     formData.append('text', text);
