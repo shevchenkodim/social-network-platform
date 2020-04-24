@@ -64,3 +64,10 @@ class CommentModel(models.Model):
     class Meta:
         verbose_name = 'Comment'
         verbose_name_plural = 'Comments'
+
+
+class LikesModel(models.Model):
+    """Post likes model"""
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(PostsModel, on_delete=models.CASCADE)
+    is_liked = models.BooleanField(default=True)
