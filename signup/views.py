@@ -1,13 +1,14 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from django.views.generic import TemplateView
 from django.contrib.auth import login, authenticate
 from . forms import UserRegisterForm, UserLoginForm
 from django.http import HttpResponse, JsonResponse
+from django.contrib import messages
 
 
 class SignIn(TemplateView):
     """Sign in"""
-    template_name = "sign_in.html"
+    template_name = 'sign_in.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -22,14 +23,15 @@ class SignIn(TemplateView):
                 password = form_aut.cleaned_data.get('password')
                 user = authenticate(username=username, password=password)
                 login(request, user)
-                return redirect('/')
+                return redirect(reverse('news_page'))
             else:
-                return HttpResponse('Error')
+                messages.error(request, 'Error! Please check your details or try again later!')
+                return redirect(reverse('signup:sign_in_login'))
 
 
 class SignUp(TemplateView):
     """Sign up"""
-    template_name = "sign_up.html"
+    template_name = 'sign_up.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
