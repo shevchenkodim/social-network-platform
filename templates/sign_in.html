@@ -6,5 +6,43 @@
 {% endblock title %}
 
 {% block main_content %}
+    <div class="row d-flex justyfi-content-center">
+        <div class="col-12 text-center">
+            <h5><b>Sign In</b></h5>
+        </div>
+        <div class="col-12">
+            <form action="{% url 'signup:sign_in_login' %}" validate method="POST">
+                {% csrf_token %}
+                {% if login_form.non_field_errors  %}
+                    <p class="text-danger">
+                        {{ login_form.non_field_errors }}
+                    </p>
+                {% endif %}
 
+                <div class="form-label-group mb-3">
+                    {{login_form.username.label_tag}}
+                    <input required id="{{login_form.username.id_for_label}}" name="{{login_form.username.name}}"
+                    	value="{{login_form.username.value|default_if_none:''}}" type="text" class="form-control" placeholder="Enter your username">
+                    {% if login_form.username.errors %}
+                            <div class="alert-danger" role="alert">
+                                    {{login_form.username.errors }}
+                            </div>
+                    {% endif %}
+                </div>
+
+                <div class="form-label-group mb-3">
+                    {{login_form.password.label_tag}}
+                    <input required id="{{login_form.password.id_for_label}}" name="{{login_form.password.name}}"
+                        value="{{login_form.password.value|default_if_none:''}}" type="password" class="form-control" placeholder="Enter your password">
+                    {% if login_form.password.errors %}
+                            <div class="alert-danger" role="alert">
+                                    {{login_form.password.errors }}
+                            </div>
+                    {% endif %}
+                </div>
+
+                <button class="btn btn-primary" type="submit" name="button">Sign In</button>
+            </form>
+        </div>
+    </div>
 {% endblock main_content %}

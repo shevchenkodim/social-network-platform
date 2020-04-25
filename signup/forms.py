@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 User = get_user_model()
 
-class RegisterForm(UserCreationForm):
+class UserRegisterForm(UserCreationForm):
     password1  = forms.CharField(max_length=64, required=True)
     password2  = None
 
