@@ -15,7 +15,7 @@
         <a href="{% url 'user_page' user.username %}" class="text-dark mx-3"><img style="border-radius: 100px;" src="https://cdn2.iconfinder.com/data/icons/avatar-profile/476/profile_avatar_contact_account_user_default-512.png" alt="" width="30" height="30"></a>
         <a href="{% url 'news_page' %}" class="text-dark"><i class="fa fa-home ml-3" style="font-size:33px"></i></a>
         {% else %}
-            Sign In
+            <a href="{% url 'signup:sign_in_login' %}" class="text-dark" style="text-decoration:none;"><b>Sign In</b></a>
         {% endif %}
     </div>
 </div>
