@@ -1,3 +1,29 @@
+function update_user_avatar(a) {
+    var formData = new FormData();
+    formData.append('file', $('.input-name-file-avatar')[0].files[0]);
+    csrf_token =  $('input[name="csrf_token"]').attr('value');
+    formData.append('csrfmiddlewaretoken', csrf_token);
+    postUrl = $('#update_user_avatar_url').val();
+    $.post({url: postUrl,
+            dataType: "json",
+            data:formData,
+            processData:false,
+            contentType: false,
+        }).done(function(result) {
+                if (result._code == 0 ){
+                    location.reload();
+                    }
+                else{
+                    $(a).text('Error');
+                    function replace_t() {
+                      $(a).text("Update")
+                    }
+                    setTimeout(replace_t, 3000);
+                    }
+        });
+};
+
+
 function upload_img(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();

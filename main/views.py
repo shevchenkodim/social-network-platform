@@ -167,6 +167,7 @@ def create_new_post(request):
 
 
 def post_likes(request):
+    """Add or remove likes"""
     if request.method == 'POST':
         if not request.user.is_authenticated:
             raise PermissionDenied
@@ -228,6 +229,27 @@ class UserPageView(TemplateView):
         return context
 
 
+def user_upload_avatar(request):
+    """Upload user avatar"""
+    if request.method == 'POST':
+        if not request.user.is_authenticated:
+            raise PermissionDenied
+        file = request.FILES
+        f = file.get('file')
+        if f == None:
+            response_data = {'_code' : 1, '_status' : 'no' }
+            return JsonResponse(response_data)
+        profile = UserProfile.objects.get(user=request.user)
+        profile.image = f
+        profile.save()
+        response_data = {'_code' : 0, '_status' : 'ok'}
+    else:
+        response_data = {'_code' : 1, '_status' : 'no' }
+
+    return JsonResponse(response_data)
+
+
 def permission_denied(request):
+    """Rerurn page 403"""
     data = {}
     return render(request, '403.html', data, status=403)
