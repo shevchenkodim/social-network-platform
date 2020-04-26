@@ -11,9 +11,9 @@
             <div class="row">
                 <div class="col-4 text-center">
                     {% if owner_page.userprofile.image and owner_page.userprofile.image.url %}
-                        <a href="#!" class="text-dark"><img style="border-radius: 100px;" src="{{ owner_page.userprofile.image.url }}" alt="" width="100" height="100" style="max-width: 100%;"></a>
+                        <a href="#!" onclick="clear_modal_upload_avatar();" {% if user.id == owner_page.id %}data-toggle="modal" data-target="#modal-upload-avatar"{% endif %} class="text-dark"><img style="border-radius: 100px;" src="{{ owner_page.userprofile.image.url }}" alt="" width="100" height="100" style="max-width: 100%;"></a>
                     {% else %}
-                        <a href="#!" class="text-dark"><img style="border-radius: 100px;" src="{% static 'assets\images\default.png' %}" alt="" width="100" height="100" style="max-width: 100%;"></a>
+                        <a href="#!" onclick="clear_modal_upload_avatar();" {% if user.id == owner_page.id %}data-toggle="modal" data-target="#modal-upload-avatar"{% endif %} class="text-dark"><img style="border-radius: 100px;" src="{% static 'assets\images\default.png' %}" alt="" width="100" height="100" style="max-width: 100%;"></a>
                     {% endif %}
                 </div>
                 <div class="col-8">
@@ -103,4 +103,43 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="modal-upload-avatar" tabindex="-1" role="dialog" aria-labelledby="modal-upload-avatar-label" aria-hidden="true">
+      <div class="modal-dialog modal-mb modal-dialog-centered" role="document">
+        <div class="modal-content" style="background: #fafafa;">
+          <div class="modal-header">
+            <h5 class="modal-title w-100 text-center" id="modal-upload-avatar-label">Upload new photo</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body pt-3 pb-3">
+            <div class="row">
+                <div class="col-12">
+                    <div class="row d-flex justify-content-center">
+                        <div class="image-preview mb-3">
+                        </div>
+                    </div>
+                    <div class="custom-file">
+                      <label class="btn btn-default btn-file d-flex align-items-center border" for="inputGroupFile">
+                           <h6 class="label-name-file-avatar w-75 text-left mr-2" style="white-space: nowrap; overflow: hidden;">
+                               Choose file
+                           </h6>
+                          <input type="file" onchange="upload_img(this);" class="input-name-file-avatar" id="inputGroupFile" style="display: none;" accept="image/jpeg, image/jpg, image/png">
+                      </label>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary"><i id="progress"  role="status" class="fi fi-check"></i>Upload</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
 {% endblock middle %}
+
+{% block js %}
+    <script src="{% static 'assets\js\user_page.js' %}"></script>
+{% endblock js %}
