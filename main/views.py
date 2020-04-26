@@ -56,6 +56,7 @@ class NewsView(TemplateView):
         context['news_posts'] = news_posts
         context['files_list'] = files_list
         context['comment_list'] = comment_list
+        context['menu_action'] = 'news'
         return context
 
 
@@ -219,6 +220,8 @@ class UserPageView(TemplateView):
         queryset = PostFilesModel.objects.none()
         for post in news_posts:
             queryset |= PostFilesModel.objects.filter(post_id=post.id)[:1]
+        if self.request.user == user_obj:
+            context['menu_action'] = 'user_page'
         context['news_posts'] = news_posts
         context['files_list'] = queryset
         context['owner_page'] = user_obj

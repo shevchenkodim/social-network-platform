@@ -28,7 +28,9 @@
         {% block main_content %}
             <div class="col-3">
                 <div class="text-dark" style="position: fixed; width: 22%;">
-                    {% include 'components/menu.html' %}
+                    {% block main_menu %}
+                        {% include 'components/menu.html' %}
+                    {% endblock main_menu %}
                 </div>
             </div>
             <div class="col-1">
