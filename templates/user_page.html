@@ -10,7 +10,11 @@
         <div class="col-12 pl-3 pr-3">
             <div class="row">
                 <div class="col-4 text-center">
-                    <a href="#!" class="text-dark"><img style="border-radius: 100px;" src="https://wallpaperaccess.com/full/550113.jpg" alt="" width="100" height="100" style="max-width: 100%;"></a>
+                    {% if owner_page.userprofile.image and owner_page.userprofile.image.url %}
+                        <a href="#!" class="text-dark"><img style="border-radius: 100px;" src="{{ owner_page.userprofile.image.url }}" alt="" width="100" height="100" style="max-width: 100%;"></a>
+                    {% else %}
+                        <a href="#!" class="text-dark"><img style="border-radius: 100px;" src="{% static 'assets\images\default.png' %}" alt="" width="100" height="100" style="max-width: 100%;"></a>
+                    {% endif %}
                 </div>
                 <div class="col-8">
                     <div class="row">
@@ -35,29 +39,48 @@
             </div>
             <hr>
         </div>
+        {% if owner_page.userprofile.work or owner_page.userprofile.studied or owner_page.userprofile.current_city or owner_page.userprofile.home_town or owner_page.userprofile.relationship or owner_page.userprofile.phone_number %}
         <div class="col-12">
             <div class="row pl-2">
+                {% if owner_page.userprofile.work %}
                 <div class="col-6 mb-1">
                     <i class="fa fa-briefcase" style="font-size:24px"></i><span class="pl-2">{{ owner_page.userprofile.work }}</span>
                 </div>
+                {% endif %}
+
+                {% if owner_page.userprofile.studied %}
                 <div class="col-6 mb-1">
                     <i class="fa fa-graduation-cap" style="font-size:24px"></i><span class="pl-2">{{ owner_page.userprofile.studied }}</span>
                 </div>
+                {% endif %}
+
+                {% if owner_page.userprofile.current_city %}
                 <div class="col-6 mb-1">
                     <i class="fa fa-home" style="font-size:24px"></i><span class="pl-2">{{ owner_page.userprofile.current_city }}</span>
                 </div>
+                {% endif %}
+
+                {% if owner_page.userprofile.home_town %}
                 <div class="col-6 mb-1">
                     <i class="fa fa-map-marker pl-2" style="font-size:24px"></i><span class="pl-3">{{ owner_page.userprofile.home_town }}</span>
                 </div>
+                {% endif %}
+
+                {% if owner_page.userprofile.relationship %}
                 <div class="col-6 mb-1">
                     <i class="fa fa-heart" style="font-size:24px"></i><span class="pl-2">{{ owner_page.userprofile.relationship }}</span>
                 </div>
+                {% endif %}
+
+                {% if owner_page.userprofile.phone_number %}
                 <div class="col-6 mb-1">
                     <i class="fa fa-phone pl-2" style="font-size:24px"></i><span class="pl-3">{{ owner_page.userprofile.phone_number }}</span>
                 </div>
+                {% endif %}
             </div>
             <hr>
         </div>
+        {% endif %}
         <div class="col-12 mt-3">
             <div class="row">
                 {% for news_post in news_posts %}

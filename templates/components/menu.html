@@ -5,7 +5,11 @@
         <div class="row pl-1 d-flex align-items-center">
             <div class="col-12" style="padding-left: 10px;">
                 <div class="pt-1 pb-1 border rounded" style="background: #DCDCDC; padding-left: 15px;">
-                    <a href="#!"><img style="border-radius: 100px;" src="https://cdn2.iconfinder.com/data/icons/avatar-profile/476/profile_avatar_contact_account_user_default-512.png" alt="" width="25" height="25"></a>
+                    {% if user.userprofile.image and user.userprofile.image.url %}
+                        <a href="#!"><img style="border-radius: 100px;" src="{{ user.userprofile.image.url }}" alt="" width="25" height="25"></a>
+                    {% else %}
+                        <a href="#!"><img style="border-radius: 100px;" src="{% static 'assets\images\default.png' %}" alt="" width="25" height="25"></a>
+                    {% endif %}
                     <span class="text-dark" style="font-weight: 600; padding-left: 5px;">First Last_name</span><br>
                 </div>
             </div>

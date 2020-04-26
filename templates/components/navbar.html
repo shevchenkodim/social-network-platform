@@ -12,7 +12,11 @@
         <a href="#!" class="text-dark" data-toggle="modal" data-target="#modal-post-create"><i class="fa fa-plus-square-o mr-3" style="font-size:33px;"></i></i></a>
         <a href="#!" class="text-dark"><i class="fa fa-send mx-3" style="font-size:23px"></i></a>
         <a href="#!" class="text-dark"><i class="fa fa-heart-o mx-3" style="font-size:27px;"></i></a>
-        <a href="{% url 'user_page' user.username %}" class="text-dark mx-3"><img style="border-radius: 100px;" src="https://cdn2.iconfinder.com/data/icons/avatar-profile/476/profile_avatar_contact_account_user_default-512.png" alt="" width="30" height="30"></a>
+        {% if user.userprofile.image and user.userprofile.image.url %}
+            <a href="{% url 'user_page' user.username %}" class="text-dark mx-3"><img style="border-radius: 100px;" src="{{ user.userprofile.image.url }}" alt="" width="30" height="30"></a>
+        {% else %}
+            <a href="{% url 'user_page' user.username %}" class="text-dark mx-3"><img style="border-radius: 100px;" src="{% static 'assets\images\default.png' %}" alt="" width="30" height="30"></a>
+        {% endif %}
         <a href="{% url 'news_page' %}" class="text-dark"><i class="fa fa-home ml-3" style="font-size:33px"></i></a>
         {% else %}
             <a href="{% url 'signup:sign_in_login' %}" class="text-dark" style="text-decoration:none;"><b>Sign In</b></a>
