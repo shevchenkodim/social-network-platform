@@ -13,6 +13,17 @@ import os
 User = get_user_model()
 
 
+class SettingsView(TemplateView):
+    """Settings page View"""
+    template_name = "settings.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if not self.request.user.is_authenticated:
+            raise PermissionDenied
+        return context
+
+
 class PostDetailView(TemplateView):
     """Post Detail View"""
     template_name = "post_detail_page.html"
