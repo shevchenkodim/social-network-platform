@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import UserPageView, PostDetailView, SettingsView, NewsView
+from .views import UserPageView, PostDetailView, SettingsGeneralView, NewsView
 from . import views
 
 
@@ -11,5 +11,5 @@ urlpatterns = [
     path('posts/likes', views.post_likes, name='post_likes'),
     path('comment/create/<int:pk>', views.create_comment, name='create_comment'),
     path('settings/user/upload/avatar', views.user_upload_avatar, name='user_upload_avatar'),
-    path('settings', SettingsView.as_view(), name='settings_view'),
+    path('settings/general', SettingsGeneralView.as_view(), name='settings_general_view'),
 ]

@@ -7,20 +7,23 @@ from signup.models import UserProfile
 from django.http import JsonResponse
 from django.conf import settings
 from django.db.models import F
+from .forms import UserProfileForm
 from .models import *
 import uuid
 import os
 User = get_user_model()
 
 
-class SettingsView(TemplateView):
-    """Settings page View"""
-    template_name = "settings.html"
+class SettingsGeneralView(TemplateView):
+    """Settings general page View"""
+    template_name = "settings_general.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         if not self.request.user.is_authenticated:
             raise PermissionDenied
+        context['form'] = UserProfileForm()
+        context['menu_action'] = 'settings'
         return context
 
 

@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Settings
+{% endblock title %}
+
+{% block middle %}
+    <div class="row mb-4">
+        <div class="col-12 pl-3 pr-3">
+            <ul class="nav nav-tabs">
+              <li class="nav-item">
+                <a class="nav-link text-dark active border" style="background: #fafafa;" href="#">General</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-dark" href="#">Security</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-dark" href="#">Location</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-dark" href="#">Language of the region</a>
+              </li>
+            </ul>
+        </div>
+        <div class="col-12">
+            <div class="row d-flex justify-content-center p-3">
+                <div class="col-8">
+                    <div class="form-label-group mb-3 d-flex align-items-center">
+                        <span class="pr-3">Show info work in user page any user</span>
+                    	<input type="checkbox" value="1" checked="" style="width:20px; height:20px;">
+                    </div>
+
+                    <div class="form-group mb-3">
+                      <label for="exampleInputPassword1">Work</label>
+                      <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Work">
+                    </div>
+
+                    <div class="form-label-group mb-3 d-flex align-items-center">
+                        <span class="pr-3">Show info studied in user page any user</span>
+                        <input type="checkbox" value="1" checked="" style="width:20px; height:20px;">
+                    </div>
+
+                    <div class="form-label-group mb-3 d-flex align-items-center">
+                        <span class="pr-3">Show info current city in user page any user</span>
+                        <input type="checkbox" value="1" checked="" style="width:20px; height:20px;">
+                    </div>
+
+                    <div class="form-label-group mb-3 d-flex align-items-center">
+                        <span class="pr-3">Show info home town in user page any user</span>
+                        <input type="checkbox" value="1" checked="" style="width:20px; height:20px;">
+                    </div>
+
+                    <div class="form-label-group mb-3 d-flex align-items-center">
+                        <span class="pr-3">Show info relationship in user page any user</span>
+                        <input type="checkbox" value="1" checked="" style="width:20px; height:20px;">
+                    </div>
+
+                    <div class="form-label-group mb-3 d-flex align-items-center">
+                        <span class="pr-3">Show info phone number in user page any user</span>
+                        <input type="checkbox" value="1" checked="" style="width:20px; height:20px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock middle %}
+
+{% block js %}
+    <script src=""></script>
+{% endblock js %}
