@@ -42,37 +42,37 @@
         {% if owner_page.userprofile.work or owner_page.userprofile.studied or owner_page.userprofile.current_city or owner_page.userprofile.home_town or owner_page.userprofile.relationship or owner_page.userprofile.phone_number %}
         <div class="col-12">
             <div class="row pl-2">
-                {% if owner_page.userprofile.work %}
+                {% if owner_page.userprofile.work and owner_page.userprofile.is_show_work %}
                 <div class="col-6 mb-1">
                     <i class="fa fa-briefcase" style="font-size:24px"></i><span class="pl-2">{{ owner_page.userprofile.work }}</span>
                 </div>
                 {% endif %}
 
-                {% if owner_page.userprofile.studied %}
+                {% if owner_page.userprofile.studied and owner_page.userprofile.is_show_studied %}
                 <div class="col-6 mb-1">
                     <i class="fa fa-graduation-cap" style="font-size:24px"></i><span class="pl-2">{{ owner_page.userprofile.studied }}</span>
                 </div>
                 {% endif %}
 
-                {% if owner_page.userprofile.current_city %}
+                {% if owner_page.userprofile.current_city and owner_page.userprofile.is_show_current_city %}
                 <div class="col-6 mb-1">
                     <i class="fa fa-home" style="font-size:24px"></i><span class="pl-2">{{ owner_page.userprofile.current_city }}</span>
                 </div>
                 {% endif %}
 
-                {% if owner_page.userprofile.home_town %}
+                {% if owner_page.userprofile.home_town and owner_page.userprofile.is_show_home_town %}
                 <div class="col-6 mb-1">
                     <i class="fa fa-map-marker pl-2" style="font-size:24px"></i><span class="pl-3">{{ owner_page.userprofile.home_town }}</span>
                 </div>
                 {% endif %}
 
-                {% if owner_page.userprofile.relationship %}
+                {% if owner_page.userprofile.relationship and owner_page.userprofile.is_show_relationship %}
                 <div class="col-6 mb-1">
                     <i class="fa fa-heart" style="font-size:24px"></i><span class="pl-2">{{ owner_page.userprofile.relationship }}</span>
                 </div>
                 {% endif %}
 
-                {% if owner_page.userprofile.phone_number %}
+                {% if owner_page.userprofile.phone_number and owner_page.userprofile.is_show_phone_number %}
                 <div class="col-6 mb-1">
                     <i class="fa fa-phone pl-2" style="font-size:24px"></i><span class="pl-3">{{ owner_page.userprofile.phone_number }}</span>
                 </div>
