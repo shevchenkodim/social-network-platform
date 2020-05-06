@@ -16,6 +16,21 @@ import os
 User = get_user_model()
 
 
+class BookmarksView(TemplateView):
+    """Bookmarks page View"""
+    template_name = "bookmarks.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if not self.request.user.is_authenticated:
+            raise PermissionDenied
+        context['menu_action'] = 'bookmarks'
+        return context
+
+    def post(self, request, *args, **kwargs):
+        pass
+
+
 class SettingsGeneralView(TemplateView):
     """Settings general page View"""
     template_name = "settings_general.html"

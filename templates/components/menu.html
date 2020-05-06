@@ -62,8 +62,12 @@
     <div class="col-12 pb-1" style="">
         <div class="row pl-1 d-flex align-items-center">
             <div class="col-12" style="padding-left: 10px;">
-                <div id="main-manu" class="pt-1 pb-1" style="">
-                    <span style="font-weight: 600;"><a href="#!" class="text-dark" style="text-decoration: none;"><i class="fa fa-calendar-check-o mx-3" style="font-size:23px"></i>Events</a></span>
+                {% if menu_action == 'bookmarks' %}
+                    <div class="pt-1 pb-1 border rounded" style="background: #DCDCDC;">
+                {% else %}
+                    <div id="main-manu" class="pt-1 pb-1">
+                {% endif %}
+                    <span style="font-weight: 600;"><a href="{% url 'bookmarks_view' %}" class="text-dark" style="text-decoration: none;"><i class="fa fa-list mx-3" style="font-size:23px"></i>Bookmarks</a></span>
                 </div>
             </div>
         </div>
