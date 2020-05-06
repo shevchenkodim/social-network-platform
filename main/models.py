@@ -71,3 +71,10 @@ class LikesModel(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(PostsModel, on_delete=models.CASCADE)
     is_liked = models.BooleanField(default=True)
+
+
+class Bookmarks(models.Model):
+    """User saved posts"""
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(PostsModel, on_delete=models.CASCADE)
+    date_time_add = models.DateTimeField('Date and time add', auto_now_add=True)

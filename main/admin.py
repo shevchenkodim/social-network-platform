@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import *
+from .models import Bookmarks, HashtagModel, PostsModel, PostFilesModel
 
 
 @admin.register(HashtagModel)
@@ -15,3 +15,8 @@ class PostsModelAdmin(admin.ModelAdmin):
 @admin.register(PostFilesModel)
 class PostFilesModelAdmin(admin.ModelAdmin):
     list_display = ('post', 'file', 'type')
+
+
+@admin.register(Bookmarks)
+class BookmarksAdmin(admin.ModelAdmin):
+    list_display = ('user', 'post')

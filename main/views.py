@@ -8,9 +8,9 @@ from django.http import JsonResponse
 from django.conf import settings
 from django.db.models import F
 from .forms import UserProfileForm
-from signup.models import UserProfile
 from django.contrib import messages
-from .models import *
+from .models import Bookmarks, HashtagModel, PostsModel, PostFilesModel, CommentModel,\
+LikesModel
 import uuid
 import os
 User = get_user_model()
@@ -24,6 +24,11 @@ class BookmarksView(TemplateView):
         context = super().get_context_data(**kwargs)
         if not self.request.user.is_authenticated:
             raise PermissionDenied
+        list_bookmarks = Bookmarks.objects.filter(user=self.request.user).order_by('-date_time_add').values_list('post_id', flat=True)
+        posts = PostsModel.objects.filter(id__in=list_bookmarks)
+        queryset = [PostFilesModel.objects.filter(post_id=post.id)[:1] for post in posts]
+        context['news_posts'] = posts
+        context['files_list'] = queryset
         context['menu_action'] = 'bookmarks'
         return context
 
