@@ -20,7 +20,7 @@
                     <div class="row">
                         <h5>{{ owner_page.username }}</h5>
                         {% if user.id == owner_page.id %}
-                            <a href="#" class="btn btn-sm btn-outline-secondary ml-3">Edit Profile</a>
+                            <a href="{% url 'settings_general_view' %}" class="btn btn-sm btn-outline-secondary ml-3">Edit Profile</a>
                         {% endif %}
                     </div>
                     <div class="row pt-1">
