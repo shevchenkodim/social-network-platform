@@ -26,25 +26,42 @@
         <div class="col-12">
             <div class="row d-flex justify-content-center p-3">
                 <div class="col-12">
-                    <form action="#!" method="POST">
+                    <form action="{% url 'settings_general_view' %}" method="POST">
                         {% csrf_token %}
+                        {% if form.non_field_errors  %}
+                            <p class="text-danger">
+                                {{ form.non_field_errors }}
+                            </p>
+                        {% endif %}
+
                         <div class="row">
                             <div class="col-12">
-                                 <label for="exampleInputPassword1">You work</label>
+                                 <label for="{{form.work.id_for_label}}">You work</label>
                             </div>
                             <div class="col-12 mb-3">
                                 <div class="row">
                                     <div class="col-7 pr-3">
-                                        <input type="text" class="form-control m-0 w-100" id="exampleInputPassword1" placeholder="Work" style="max-width: 350px;">
+                                        <input type="text" class="form-control m-0 w-100" id="{{form.work.id_for_label}}" placeholder="Work" maxlength="100" name="{{form.work.name}}"
+                                        	value="{{form.work.value|default_if_none:''}}" style="max-width: 350px;">
+                                        {% if form.work.errors %}
+                                                <div class="alert-danger" role="alert">
+                                                        {{form.work.errors }}
+                                                </div>
+                                        {% endif %}
                                     </div>
                                     <div class="col-5 pl-0 d-flex align-items-center">
                                         <div class="d-flex align-items-center">
                                             <div class="row">
                                                 <div class="col-2 pt-2">
-                                                    <input type="checkbox" value="1" checked="" style="width:20px; height:20px;">
+                                                    <input id="{{form.is_show_work.id_for_label}}" name="{{form.is_show_work.name}}" type="checkbox" {% if form.is_show_work.value %}checked{% endif %} style="width:20px; height:20px;">
+                                                    {% if form.is_show_work.errors %}
+                                                            <div class="alert-danger" role="alert">
+                                                                    {{form.is_show_work.errors }}
+                                                            </div>
+                                                    {% endif %}
                                                 </div>
                                                 <div class="col-10 d-flex align-items-center">
-                                                    <span>Show info work in your page</span>
+                                                    <span>Show work in profile</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -53,21 +70,32 @@
                             </div>
 
                             <div class="col-12">
-                                 <label for="exampleInputPassword1">You studied</label>
+                                 <label for="{{form.studied.id_for_label}}">You studied</label>
                             </div>
                             <div class="col-12 mb-3">
                                 <div class="row">
                                     <div class="col-7 pr-3">
-                                        <input type="text" class="form-control m-0 w-100" id="exampleInputPassword1" placeholder="Studied" style="max-width: 350px;">
+                                        <input type="text" class="form-control m-0 w-100" id="{{form.studied.id_for_label}}"  placeholder="Studied" name="{{form.studied.name}}"
+                                        value="{{form.studied.value|default_if_none:''}}" style="max-width: 350px;">
+                                        {% if form.studied.errors %}
+                                                <div class="alert-danger" role="alert">
+                                                        {{form.studied.errors }}
+                                                </div>
+                                        {% endif %}
                                     </div>
                                     <div class="col-5 pl-0 d-flex align-items-center">
                                         <div class="d-flex align-items-center">
                                             <div class="row">
                                                 <div class="col-2 pl-3 pt-2">
-                                                    <input type="checkbox" value="1" checked="" style="width:20px; height:20px;">
+                                                    <input id="{{form.is_show_studied.id_for_label}}" name="{{form.is_show_studied.name}}" type="checkbox" {% if form.is_show_studied.value %}checked{% endif %} style="width:20px; height:20px;">
+                                                    {% if form.is_show_studied.errors %}
+                                                            <div class="alert-danger" role="alert">
+                                                                    {{form.is_show_studied.errors }}
+                                                            </div>
+                                                    {% endif %}
                                                 </div>
                                                 <div class="col-10 d-flex align-items-center">
-                                                    <span>Show info studied in your page</span>
+                                                    <span>Show studied in profile</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -75,22 +103,34 @@
                                 </div>
                             </div>
 
+
                             <div class="col-12">
-                                 <label for="exampleInputPassword1">You current city</label>
+                                 <label for="{{form.current_city.id_for_label}}">You current city</label>
                             </div>
                             <div class="col-12 mb-3">
                                 <div class="row">
                                     <div class="col-7 pr-3">
-                                        <input type="text" class="form-control m-0 w-100" id="exampleInputPassword1" placeholder="Current city" style="max-width: 350px;">
+                                        <input type="text" class="form-control m-0 w-100" id="{{form.current_city.id_for_label}}" placeholder="Current city" name="{{form.current_city.name}}"
+                                        value="{{form.current_city.value|default_if_none:''}}" style="max-width: 350px;">
+                                        {% if form.current_city.errors %}
+                                                <div class="alert-danger" role="alert">
+                                                        {{form.current_city.errors }}
+                                                </div>
+                                        {% endif %}
                                     </div>
                                     <div class="col-5 pl-0 d-flex align-items-center">
                                         <div class="d-flex align-items-center">
                                             <div class="row">
                                                 <div class="col-2 pl-3 pt-2">
-                                                    <input type="checkbox" value="1" checked="" style="width:20px; height:20px;">
+                                                    <input id="{{form.is_show_current_city.id_for_label}}" name="{{form.is_show_current_city.name}}" type="checkbox" {% if form.is_show_current_city.value %}checked{% endif %} style="width:20px; height:20px;">
+                                                    {% if form.is_show_current_city.errors %}
+                                                            <div class="alert-danger" role="alert">
+                                                                    {{form.is_show_current_city.errors }}
+                                                            </div>
+                                                    {% endif %}
                                                 </div>
                                                 <div class="col-10 d-flex align-items-center">
-                                                    <span>Show info current city in your page</span>
+                                                    <span>Show current city in profile</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -98,22 +138,34 @@
                                 </div>
                             </div>
 
+
                             <div class="col-12">
-                                 <label for="exampleInputPassword1">You home town</label>
+                                 <label for="{{form.studied.id_for_label}}">You home town</label>
                             </div>
                             <div class="col-12 mb-3">
                                 <div class="row">
                                     <div class="col-7 pr-3">
-                                        <input type="text" class="form-control m-0 w-100" id="exampleInputPassword1" placeholder="Home town" style="max-width: 350px;">
+                                        <input type="text" class="form-control m-0 w-100" id="{{form.home_town.id_for_label}}"  placeholder="Home town" name="{{form.home_town.name}}"
+                                        value="{{form.home_town.value|default_if_none:''}}" style="max-width: 350px;">
+                                        {% if form.home_town.errors %}
+                                                <div class="alert-danger" role="alert">
+                                                        {{form.home_town.errors }}
+                                                </div>
+                                        {% endif %}
                                     </div>
                                     <div class="col-5 pl-0 d-flex align-items-center">
                                         <div class="d-flex align-items-center">
                                             <div class="row">
                                                 <div class="col-2 pl-3 pt-2">
-                                                    <input type="checkbox" value="1" checked="" style="width:20px; height:20px;">
+                                                    <input id="{{form.is_show_home_town.id_for_label}}" name="{{form.is_show_home_town.name}}" type="checkbox" {% if form.is_show_home_town.value %}checked{% endif %} style="width:20px; height:20px;">
+                                                    {% if form.is_show_home_town.errors %}
+                                                            <div class="alert-danger" role="alert">
+                                                                    {{form.is_show_home_town.errors }}
+                                                            </div>
+                                                    {% endif %}
                                                 </div>
                                                 <div class="col-10 d-flex align-items-center">
-                                                    <span>Show info home town in your page</span>
+                                                    <span>Show home town in profile</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -121,22 +173,34 @@
                                 </div>
                             </div>
 
+
                             <div class="col-12">
-                                 <label for="exampleInputPassword1">You relationship</label>
+                                 <label for="{{form.relationship.id_for_label}}">You relationship</label>
                             </div>
                             <div class="col-12 mb-3">
                                 <div class="row">
                                     <div class="col-7 pr-3">
-                                        <input type="text" class="form-control m-0 w-100" id="exampleInputPassword1" placeholder="Relationship" style="max-width: 350px;">
+                                        <input type="text" class="form-control m-0 w-100" id="{{form.relationship.id_for_label}}"  placeholder="Relationship" name="{{form.relationship.name}}"
+                                        value="{{form.relationship.value|default_if_none:''}}" style="max-width: 350px;">
+                                        {% if form.relationship.errors %}
+                                                <div class="alert-danger" role="alert">
+                                                        {{form.relationship.errors }}
+                                                </div>
+                                        {% endif %}
                                     </div>
                                     <div class="col-5 pl-0 d-flex align-items-center">
                                         <div class="d-flex align-items-center">
                                             <div class="row">
                                                 <div class="col-2 pl-3 pt-2">
-                                                    <input type="checkbox" value="1" checked="" style="width:20px; height:20px;">
+                                                    <input id="{{form.is_show_relationship.id_for_label}}" name="{{form.is_show_relationship.name}}" type="checkbox" {% if form.is_show_relationship.value %}checked{% endif %} style="width:20px; height:20px;">
+                                                    {% if form.is_show_relationship.errors %}
+                                                            <div class="alert-danger" role="alert">
+                                                                    {{form.is_show_relationship.errors }}
+                                                            </div>
+                                                    {% endif %}
                                                 </div>
                                                 <div class="col-10 d-flex align-items-center">
-                                                    <span>Show info relationship in your page</span>
+                                                    <span>Show relationship in profile</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -144,22 +208,34 @@
                                 </div>
                             </div>
 
+
                             <div class="col-12">
-                                 <label for="exampleInputPassword1">You Phone number</label>
+                                 <label for="{{form.phone_number.id_for_label}}">You phone number</label>
                             </div>
                             <div class="col-12 mb-3">
                                 <div class="row">
                                     <div class="col-7 pr-3">
-                                        <input type="text" class="form-control m-0 w-100" id="exampleInputPassword1" placeholder="Phone number" style="max-width: 350px;">
+                                        <input type="text" class="form-control m-0 w-100" id="{{form.phone_number.id_for_label}}"  placeholder="Phone number" name="{{form.phone_number.name}}"
+                                        value="{{form.phone_number.value|default_if_none:''}}" style="max-width: 350px;">
+                                        {% if form.phone_number.errors %}
+                                                <div class="alert-danger" role="alert">
+                                                        {{form.phone_number.errors }}
+                                                </div>
+                                        {% endif %}
                                     </div>
                                     <div class="col-5 pl-0 d-flex align-items-center">
                                         <div class="d-flex align-items-center">
                                             <div class="row">
                                                 <div class="col-2 pl-3 pt-2">
-                                                    <input type="checkbox" value="1" checked="" style="width:20px; height:20px;">
+                                                    <input id="{{form.is_show_phone_number.id_for_label}}" name="{{form.is_show_phone_number.name}}" type="checkbox" {% if form.is_show_phone_number.value %}checked{% endif %} style="width:20px; height:20px;">
+                                                    {% if form.is_show_phone_number.errors %}
+                                                            <div class="alert-danger" role="alert">
+                                                                    {{form.is_show_phone_number.errors }}
+                                                            </div>
+                                                    {% endif %}
                                                 </div>
                                                 <div class="col-10 d-flex align-items-center">
-                                                    <span>Show info phone number in your page</span>
+                                                    <span>Show studied in profile</span>
                                                 </div>
                                             </div>
                                         </div>
