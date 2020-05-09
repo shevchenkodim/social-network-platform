@@ -1,3 +1,25 @@
+function bookmarks(el) {
+    data_id = $(el).attr('data-id');
+    let formData = new FormData();
+    csrf_token =  $('input[name="csrf_token"]').attr('value');
+    formData.append('csrfmiddlewaretoken', csrf_token);
+
+    postUrl = $(el).attr('data-url');
+    $.post({url: postUrl,
+            dataType: "json",
+            data:formData,
+            processData:false,
+            contentType: false,
+        }).done(function(result) {
+                if (result._code == 0 ){
+                        $('i#bookmarks_icon_' + data_id).attr('class', result._class_icon);
+                    }
+                else{
+                    }
+        });
+};
+
+
 function post_likes(a) {
     var formData = new FormData();
     post_id = $(a).attr('id');

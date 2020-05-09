@@ -36,8 +36,27 @@ class BookmarksView(TemplateView):
         context['menu_action'] = 'bookmarks'
         return context
 
-    def post(self, request, *args, **kwargs):
-        pass
+
+def bookmarks_add_remove(request, pk):
+    """Create and delate Bookmarks posts"""
+    if request.method == 'POST':
+        if not request.user.is_authenticated:
+            raise PermissionDenied
+        try:
+            bookmarks = Bookmarks.objects.get(user=request.user, post_id=pk)
+            bookmarks.delete()
+            class_icon = 'fa fa-bookmark-o mx-2'
+        except Bookmarks.DoesNotExist:
+            bookmarks = Bookmarks.objects.create(user=request.user, post_id=pk)
+            class_icon = 'fa fa-bookmark mx-2'
+            # messages.success(request, 'Your successfully add post to Bookmarks!')
+
+        response_data = {'_code' : 0, '_status' : 'ok', '_class_icon': class_icon }
+        return JsonResponse(response_data)
+    else:
+        # messages.error(request, 'Error! Please try again later!')
+        response_data = {'_code' : 1, '_status' : 'no' }
+        return JsonResponse(response_data)
 
 
 class SettingsGeneralView(TemplateView):

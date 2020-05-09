@@ -72,7 +72,7 @@
                     <a href="#!" class="text-dark"><i class="fa fa-send-o mx-2 pt-1" style="font-size:23px"></i></a>
                 </div>
                 <div class="col-4 d-flex justify-content-end" style="padding-right: 35px;">
-                    <a href="#!" class="text-dark"><i class="fa fa-bookmark-o mx-2" style="font-size:27px"></i></a>
+                    <a href="#!" data-id={{ post_obj.id }} onclick="bookmarks(this);" data-url="{% url 'bookmarks_add_remove' post_obj.id %}" class="text-dark"><i id="bookmarks_icon_{{ post_obj.id }}" class="fa fa-bookmark-o mx-2" style="font-size:27px"></i></a>
                 </div>
             </div>
             <div id="likes" class="pl-4 pt-1">

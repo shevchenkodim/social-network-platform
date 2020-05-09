@@ -14,4 +14,5 @@ urlpatterns = [
     path('settings/user/upload/avatar', views.user_upload_avatar, name='user_upload_avatar'),
     path('settings/general', SettingsGeneralView.as_view(), name='settings_general_view'),
     path('bookmarks', BookmarksView.as_view(), name='bookmarks_view'),
+    path('bookmarks/<pk>/action', views.bookmarks_add_remove, name='bookmarks_add_remove'),
 ]
