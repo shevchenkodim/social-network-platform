@@ -26,7 +26,11 @@ class BookmarksView(TemplateView):
             raise PermissionDenied
         list_bookmarks = Bookmarks.objects.filter(user=self.request.user).order_by('-date_time_add').values_list('post_id', flat=True)
         posts = PostsModel.objects.filter(id__in=list_bookmarks)
-        queryset = [PostFilesModel.objects.filter(post_id=post.id)[:1] for post in posts]
+
+        queryset = PostFilesModel.objects.none()
+        for post in posts:
+            queryset |= PostFilesModel.objects.filter(post_id=post.id)[:1]
+
         context['news_posts'] = posts
         context['files_list'] = queryset
         context['menu_action'] = 'bookmarks'
