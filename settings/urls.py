@@ -4,5 +4,5 @@ from . import views
 
 app_name = 'settings'
 urlpatterns = [
-    path('settings/general', SettingsGeneralView.as_view(), name='settings_general_view'),
+    path('general', SettingsGeneralView.as_view(), name='settings_general_view'),
 ]
