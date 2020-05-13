@@ -7,7 +7,6 @@ from signup.models import UserProfile
 from django.http import JsonResponse
 from django.conf import settings
 from django.db.models import F
-from .forms import UserProfileForm
 from django.contrib import messages
 from .models import Bookmarks, HashtagModel, PostsModel, PostFilesModel, CommentModel,\
 LikesModel
@@ -57,33 +56,6 @@ def bookmarks_add_remove(request, pk):
         # messages.error(request, 'Error! Please try again later!')
         response_data = {'_code' : 1, '_status' : 'no' }
         return JsonResponse(response_data)
-
-
-class SettingsGeneralView(TemplateView):
-    """Settings general page View"""
-    template_name = "settings_general.html"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        if not self.request.user.is_authenticated:
-            raise PermissionDenied
-        context['form'] = UserProfileForm(instance=UserProfile.objects.get(user=self.request.user))
-        context['menu_action'] = 'settings'
-        return context
-
-    def post(self, request, *args, **kwargs):
-        if request.method == 'POST':
-            form_aut = UserProfileForm(data=request.POST, instance=UserProfile.objects.get(user=self.request.user))
-            if form_aut.is_valid():
-                form_aut.save()
-                messages.success(request, 'Your information has been successfully updated!')
-                return redirect(reverse('settings_general_view'))
-            else:
-                messages.error(request, 'Error! Please try again later!')
-                return redirect(reverse('settings_general_view'))
-        else:
-            response_data = {'_code' : 1, '_status' : 'no' }
-            return JsonResponse(response_data)
 
 
 class PostDetailView(TemplateView):

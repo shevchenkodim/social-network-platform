@@ -23,7 +23,7 @@
         <div class="col-12">
             <div class="row d-flex justify-content-center p-3">
                 <div class="col-12">
-                    <form action="{% url 'settings_general_view' %}" method="POST">
+                    <form action="{% url 'settings:settings_general_view' %}" method="POST">
                         {% csrf_token %}
                         {% if form.non_field_errors  %}
                             <p class="text-danger">

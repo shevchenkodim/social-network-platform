@@ -40,7 +40,7 @@ INSTALLED_APPS = [
 
     'main',
     'signup',
-    'mptt',
+    'settings',
 ]
 
 MIDDLEWARE = [
