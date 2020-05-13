@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'main',
     'signup',
     'settings',
+    'messenger',
 ]
 
 MIDDLEWARE = [
