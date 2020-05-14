@@ -5,5 +5,5 @@ from . import views
 app_name = 'messenger'
 urlpatterns = [
     path('', MessengerView.as_view(), name='messenger'),
-    path('<uuid>/', ChatView.as_view(), name='chat'),
+    path('chat/<uuid>/', ChatView.as_view(), name='chat'),
 ]

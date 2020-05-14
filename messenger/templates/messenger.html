@@ -14,53 +14,36 @@
                 <i class="material-icons" style="font-size:36px">library_add</i>
                 <h2 class="h5 text-truncate pl-3">
                     <a href="#!" class="text-dark" style="text-decoration: none;">
-                        Create new chat!
+                        Create chat!
                     </a>
                 </h2>
             </div>
         </div>
         <div class="card-body pb-0">
+            {% for chat in chats %}
             <div class="row mb-3">
-                <div class="col-3">
-                    <img style="border-radius: 100px;" src="https://static10.tgstat.ru/channels/_0/38/38d980d494e7dd012dc630341bfedb39.jpg" alt="" width="55" height="55">
+                <div class="col-4 p-0 d-flex justify-content-center">
+                    {% if chat.image and chat.image.url %}
+                        <a href="{% url 'messenger:chat' chat.chat_id %}">
+                            <img style="max-width:100%;" src="{{ chat.image.url }}" alt="" width="auto" height="55">
+                        </a>
+                    {% else %}
+                        <a href="{% url 'messenger:chat' chat.chat_id %}">
+                            <img style="max-width:100%;" src="{% static 'assets\images\default.png' %}" alt="" width="auto" height="55">
+                        </a>
+                    {% endif %}
                 </div>
-                <div class="col-9">
+                <div class="col-8 d-flex align-items-center">
                     <div class="row">
-                        <h2 class="h5 text-truncate w-100 pl-3"><a href="#!" class="text-dark" style="text-decoration: none;">username</a></h2>
-                    </div>
-                    <div class="row pl-3 text-muted">
-                        las or message text
+                        <h2 class="h5 text-truncate w-100 pl-3">
+                            <a href="{% url 'messenger:chat' chat.chat_id %}" class="text-dark" style="text-decoration: none;">
+                                {{ chat.chat_name }}
+                            </a>
+                        </h2>
                     </div>
                 </div>
             </div>
-
-            <div class="row mb-3">
-                <div class="col-3">
-                    <img style="border-radius: 100px;" src="https://static10.tgstat.ru/channels/_0/38/38d980d494e7dd012dc630341bfedb39.jpg" alt="" width="55" height="55">
-                </div>
-                <div class="col-9">
-                    <div class="row">
-                        <h2 class="h5 text-truncate w-100 pl-3"><a href="#!" class="text-dark" style="text-decoration: none;">username</a></h2>
-                    </div>
-                    <div class="row pl-3 text-muted">
-                        las or message text
-                    </div>
-                </div>
-            </div>
-
-            <div class="row mb-3">
-                <div class="col-3">
-                    <img style="border-radius: 100px;" src="https://static10.tgstat.ru/channels/_0/38/38d980d494e7dd012dc630341bfedb39.jpg" alt="" width="55" height="55">
-                </div>
-                <div class="col-9">
-                    <div class="row">
-                        <h2 class="h5 text-truncate w-100 pl-3"><a href="#!" class="text-dark" style="text-decoration: none;">username</a></h2>
-                    </div>
-                    <div class="row pl-3 text-muted">
-                        las or message text
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock main_menu %}
