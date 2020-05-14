@@ -14,9 +14,9 @@
             <i class="fa fa-send mx-3" style="font-size:23px"></i>
         </a>
         {% if user.userprofile.image and user.userprofile.image.url %}
-            <a href="{% url 'user_page' user.username %}" class="text-dark mx-3"><img style="border-radius: 100px;" src="{{ user.userprofile.image.url }}" alt="" width="30" height="30"></a>
+            <a id="user-url" href="{% url 'user_page' user.username %}" class="text-dark mx-3"><img id="user-images" style="border-radius: 100px;" src="{{ user.userprofile.image.url }}" alt="" width="30" height="30"></a>
         {% else %}
-            <a href="{% url 'user_page' user.username %}" class="text-dark mx-3"><img style="border-radius: 100px;" src="{% static 'assets\images\default.png' %}" alt="" width="30" height="30"></a>
+            <a id="user-url" href="{% url 'user_page' user.username %}" class="text-dark mx-3"><img id="user-images" style="border-radius: 100px;" src="{% static 'assets\images\default.png' %}" alt="" width="30" height="30"></a>
         {% endif %}
         <a href="{% url 'news_page' %}" class="text-dark"><i class="fa fa-home ml-3" style="font-size:33px"></i></a>
         {% else %}

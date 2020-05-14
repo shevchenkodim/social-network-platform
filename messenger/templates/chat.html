@@ -66,7 +66,7 @@
             <i class="fa fa-info-circle" style="font-size:24px"></i>
         </header>
     </div>
-    <div class="card-body">
+    <div id="block-messages" class="card-body">
             <div class="row d-flex justify-content-center pb-2">
                 Created chat {{ chat_page.date_create }}
             </div>
@@ -92,7 +92,7 @@
                         </a>
                     {% else %}
                         <a href="{% url 'user_page' message.from_id.username %}">
-                            <img src="{% static 'assets\images\default.png' %}" alt="" width="auto" height="50">
+                            <img style="border-radius: 100px;" src="{% static 'assets\images\default.png' %}" alt="" width="auto" height="50">
                         </a>
                     {% endif %}
                     <span class="pl-3">{{ message.content }}</span>
@@ -107,15 +107,79 @@
                 <i class="fa fa-image pl-3 pr-3" style="font-size:36px"></i>
             </div>
             <div class="pr-3" style="width: 70%;">
-                <input type="text" class="border-0 p-2 w-100" name="" value="" placeholder="Your message...">
+                <input id="chat-message-input" type="text" class="border-0 p-2 w-100" name="" value="" placeholder="Your message...">
             </div>
             <div class="d-flex justify-content-end">
-                <a href="#!" class="btn border-0 end">Send</a>
+                <a href="#!" data-user-id="{{ user.id }}" id="chat-message-submit" class="btn border-0">Send</a>
             </div>
         </div>
 
     </div>
 </div>
+{{ chat_page.id|json_script:"chat_id" }}
+<script>
+    const chat_id = JSON.parse(document.getElementById('chat_id').textContent);
+
+    const chatSocket = new WebSocket(
+        'ws://'
+        + window.location.host
+        + '/ws/messenger/'
+        + chat_id
+        + '/'
+    );
+    console.log(chatSocket);
+
+    //Add to div message
+    chatSocket.onmessage = function(e) {
+        const data = JSON.parse(e.data);
+        if (data.user_id == $('#chat-message-submit').attr('data-user-id')) {
+            document.querySelector('#block-messages').insertAdjacentHTML('beforeend', '\
+                <div class="row d-flex justify-content-end align-items-center pr-2 mb-2 mt-2">\
+                    <span class="pr-3">'+ data.message +'</span>\
+                    <a href="'+ data.user_url +'">\
+                        <img class="" style="border-radius: 100px;" src="'+ data.user_image +'"\ alt="" width="40" height="40">\
+                    </a>\
+                </div>\
+            ');
+        } else {
+            document.querySelector('#block-messages').insertAdjacentHTML('beforeend', '\
+                <div class="row d-flex justify-content-start align-items-center pl-2 mb-2 mt-2">\
+                    <a href="'+ data.user_url +'">\
+                        <img class="" style="border-radius: 100px;" src="'+ data.user_image +'"\ alt="" width="40" height="40">\
+                    </a>\
+                    <span class="pl-3">'+ data.message +'</span>\
+                </div>\
+            ');
+        }
+    };
+
+    //Info closed connect
+    chatSocket.onclose = function(e) {
+        console.error('Chat socket closed unexpectedly');
+    };
+
+    document.querySelector('#chat-message-input').focus();
+    document.querySelector('#chat-message-input').onkeyup = function(e) {
+        if (e.keyCode === 13) {  // enter, return
+            document.querySelector('#chat-message-submit').click();
+        }
+    };
+
+    document.querySelector('#chat-message-submit').onclick = function(e) {
+        const messageInputDom = document.querySelector('#chat-message-input');
+        const message = messageInputDom.value;
+        const user_id = $('#chat-message-submit').attr('data-user-id');
+        const user_image = $('#user-images').attr('src');
+        const user_url = $('#user-url').attr('href');
+        chatSocket.send(JSON.stringify({
+            'message': message,
+            'user_id': user_id,
+            'user_url': user_url,
+            'user_image': user_image
+        }));
+        messageInputDom.value = '';
+    };
+</script>
 {% endblock middle %}
 
 
