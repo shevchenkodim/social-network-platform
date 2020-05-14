@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 import uuid
+import os
+from django.conf import settings
 User = get_user_model()
 
 
@@ -40,6 +42,7 @@ class PostFilesModel(models.Model):
     file = models.FileField('File', max_length=255, upload_to='posts/image/')
     type = models.CharField('Type file', max_length=100)
     position = models.IntegerField('Position in post', default=0)
+    video_gif = models.ImageField('video_gif', upload_to='posts/gif/', blank=True, null=True)
 
     def __str__(self):
         return f'{self.file} - {self.type}'

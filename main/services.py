@@ -1,6 +1,27 @@
 from PIL import Image, ImageDraw, ImageFilter
 from django.conf import settings
+from .models import PostFilesModel
+from moviepy.editor import *
+import os
 
+def generate_gif_for_video(file_id):
+    file = PostFilesModel.objects.get(id=file_id)
+    name = file.file.url
+    name = name.split("/")
+    full_name = name[-1]
+    name = full_name.split(".")
+    name_gif = name[0]
+    clip = (VideoFileClip(os.path.join(settings.BASE_DIR, 'media/posts/image', full_name)))
+    clip.subclip((15.0),(18.0))
+    clip.resize(0.5)
+    clip.write_gif(os.path.join(settings.BASE_DIR, 'media/posts/gif/') +  name_gif +'.gif')
+
+    # print(os.path.join(settings.BASE_DIR, 'media/posts/image', full_name))
+    # print(os.path.exists(os.path.join(settings.BASE_DIR, 'media/posts/image', full_name)))
+    # # gif = os.system('ffmpeg -ss 10 -t 15 -i ' + os.path.join(settings.BASE_DIR, 'media/posts/image', full_name) + ' -vf "fps=10,scale=320:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" -loop 0 ' + os.path.join(settings.BASE_DIR, 'media/posts/image') +  name_gif +'.gif')
+    file.video_gif =  name_gif +'.gif'
+    file.save()
+    return True
 
 def image_processing(picture, new_file_name):
     try:

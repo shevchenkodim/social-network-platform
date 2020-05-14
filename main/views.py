@@ -10,6 +10,7 @@ from django.db.models import F
 from django.contrib import messages
 from .models import Bookmarks, HashtagModel, PostsModel, PostFilesModel, CommentModel,\
 LikesModel
+from .services import generate_gif_for_video
 import uuid
 import os
 User = get_user_model()
@@ -152,7 +153,8 @@ def create_new_post(request):
                     break
                 extension = os.path.splitext(file.name)[1][1:].lower()
                 if extension in ALLOWED_TYPES_VIDEO:
-                    PostFilesModel.objects.create(post=new_post, file=file, type='video', position=position)
+                    video = PostFilesModel.objects.create(post=new_post, file=file, type='video', position=position)
+                    generate_gif_for_video(video.id)
                 if extension in ALLOWED_TYPES_IMAGE:
                     new_post_file = PostFilesModel.objects.create(post=new_post, file=file, type='image', position=position)
 
