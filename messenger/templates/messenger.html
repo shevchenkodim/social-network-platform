@@ -9,12 +9,45 @@
 
 {% block main_menu %}
     <div class="card text-dark bg-white  mb-4">
-        <div class="card-header bg-white p-0 pt-2">
-            <header class="d-flex align-items-center justify-content-center ">
-                <h5 class="pt-1 pb-1">Your chats</h5>
-            </header>
+        <div class="card-header bg-white p-0 pt-3 pb-3">
+            <div class="row d-flex align-items-center justify-content-center">
+                <i class="material-icons" style="font-size:36px">library_add</i>
+                <h2 class="h5 text-truncate pl-3">
+                    <a href="#!" class="text-dark" style="text-decoration: none;">
+                        Create new chat!
+                    </a>
+                </h2>
+            </div>
         </div>
         <div class="card-body pb-0">
+            <div class="row mb-3">
+                <div class="col-3">
+                    <img style="border-radius: 100px;" src="https://static10.tgstat.ru/channels/_0/38/38d980d494e7dd012dc630341bfedb39.jpg" alt="" width="55" height="55">
+                </div>
+                <div class="col-9">
+                    <div class="row">
+                        <h2 class="h5 text-truncate w-100 pl-3"><a href="#!" class="text-dark" style="text-decoration: none;">username</a></h2>
+                    </div>
+                    <div class="row pl-3 text-muted">
+                        las or message text
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-3">
+                    <img style="border-radius: 100px;" src="https://static10.tgstat.ru/channels/_0/38/38d980d494e7dd012dc630341bfedb39.jpg" alt="" width="55" height="55">
+                </div>
+                <div class="col-9">
+                    <div class="row">
+                        <h2 class="h5 text-truncate w-100 pl-3"><a href="#!" class="text-dark" style="text-decoration: none;">username</a></h2>
+                    </div>
+                    <div class="row pl-3 text-muted">
+                        las or message text
+                    </div>
+                </div>
+            </div>
+
             <div class="row mb-3">
                 <div class="col-3">
                     <img style="border-radius: 100px;" src="https://static10.tgstat.ru/channels/_0/38/38d980d494e7dd012dc630341bfedb39.jpg" alt="" width="55" height="55">
@@ -35,30 +68,8 @@
 
 {% block middle %}
 <div class="card text-dark bg-white  mb-4" style="position: fixed; width: 53%; height: 80%;">
-    <div class="card-header bg-white">
-        <header class="d-flex align-items-center">
-            <img style="border-radius: 100px;" src="{% static 'assets\images\default.png' %}" alt="" width="40" height="40">
-            <h2 class="h5 text-truncate w-100 pl-3"><a href="#!" class="text-dark" style="text-decoration: none;">username</a></h2>
-            <i class="fa fa-info-circle" style="font-size:24px"></i>
-        </header>
-    </div>
-    <div class="card-body">
-        e
-    </div>
-    <div class="card-footer bg-white pl-5 pr-5">
-        <div class="row rounded-pill border p-2 d-flex justify-content-center">
-            <div>
-                <i class="fa fa-smile-o pl-1" style="font-size:36px"></i>
-                <i class="fa fa-image pl-3 pr-3" style="font-size:36px"></i>
-            </div>
-            <div class="pr-3" style="width: 70%;">
-                <input type="text" class="border-0 p-2 w-100" name="" value="" placeholder="Your message...">
-            </div>
-            <div class="d-flex justify-content-end">
-                <a href="#!" class="btn border-0 end">Send</a>
-            </div>
-        </div>
-
+    <div class="card-body d-flex justify-content-center align-items-center">
+        Please choise your chat messages!
     </div>
 </div>
 {% endblock middle %}

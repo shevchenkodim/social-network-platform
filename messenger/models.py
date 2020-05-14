@@ -7,11 +7,14 @@ User = get_user_model()
 
 class UserChat(models.Model):
     """User chat uuid id"""
+    director = models.ForeignKey(User, on_delete=models.CASCADE, related_name='director')
     date_create = models.DateTimeField(auto_now_add=True)
+    chat_name = models.CharField(max_length=128, blank=False, default='default_chat')
+    image = models.ImageField(upload_to='chats/', blank=True)
     chat_id = models.UUIDField(default=uuid.uuid4())
 
     def __str__(self):
-        return f'User chat uuid = {self.chat_id}'
+        return f'User chat {self.chat_name}, uuid = {self.chat_id}'
 
 
 class UserMessages(models.Model):
