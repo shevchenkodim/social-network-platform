@@ -50,7 +50,7 @@
 
 
 {% block middle %}
-<div class="card text-dark bg-white  mb-4" style="position: fixed; width: 53%; height: 80%;">
+<div class="card text-dark bg-white  mb-4" style="position: fixed; width: 53%; height: 83%;">
     <div class="card-header bg-white">
         <header class="d-flex align-items-center">
             {% if chat_page.image and chat_page.image.url %}
@@ -66,7 +66,7 @@
             <i class="fa fa-info-circle" style="font-size:24px"></i>
         </header>
     </div>
-    <div id="block-messages" class="card-body">
+    <div id="block-messages" class="card-body overflow-auto">
             <div class="row d-flex justify-content-center pb-2">
                 Created chat {{ chat_page.date_create }}
             </div>
@@ -103,10 +103,10 @@
     <div class="card-footer bg-white pl-5 pr-5">
         <div class="row rounded-pill border p-2 d-flex justify-content-center">
             <div>
-                <i class="fa fa-smile-o pl-1" style="font-size:36px"></i>
+                <i id="emoji-button" class="fa fa-smile-o pl-1" style="font-size:36px"></i>
                 <i class="fa fa-image pl-3 pr-3" style="font-size:36px"></i>
             </div>
-            <div class="pr-3" style="width: 70%;">
+            <div class="pr-3" style="width: 60%;">
                 <input id="chat-message-input" type="text" class="border-0 p-2 w-100" name="" value="" placeholder="Your message...">
             </div>
             <div class="d-flex justify-content-end">
@@ -150,7 +150,9 @@
                     <span class="pl-3">'+ data.message +'</span>\
                 </div>\
             ');
-        }
+        };
+        let objDiv = document.getElementById("block-messages");
+        objDiv.scrollTop = objDiv.scrollHeight;
     };
 
     //Info closed connect
@@ -184,4 +186,21 @@
 
 
 {% block js %}
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@joeattardi/emoji-button@3.0.3/dist/index.min.js"></script> -->
+    <script src="{% static 'assets\js\emoji.min.js' %}"></script>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+          const button = document.querySelector('#emoji-button');
+          const picker = new EmojiButton();
+
+          picker.on('emoji', emoji => {
+            document.querySelector('#chat-message-input').value += emoji;
+          });
+
+          button.addEventListener('click', () => {
+            picker.togglePicker(button);
+          });
+        });
+    </script>
 {% endblock js %}
