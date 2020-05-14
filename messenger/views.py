@@ -27,5 +27,12 @@ class ChatView(TemplateView):
         context = super().get_context_data(**kwargs)
         if not self.request.user.is_authenticated:
             raise PermissionDenied
-        context['chat_id'] = self.kwargs['uuid']
+        user_in_chat = UsersInChat.objects.filter(user=self.request.user).values_list('chat_id_id', flat=True)
+        chats = UserChat.objects.filter(id__in=user_in_chat)
+        chat = UserChat.objects.get(chat_id=self.kwargs['uuid'])
+        messages = UserMessages.objects.filter(chat_id=chat).order_by('-created_at')
+        context['messages'] = messages
+        context['chat_page'] = chat
+        context['chats'] = chats
+
         return context

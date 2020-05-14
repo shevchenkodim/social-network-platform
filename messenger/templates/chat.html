@@ -9,25 +9,41 @@
 
 {% block main_menu %}
     <div class="card text-dark bg-white  mb-4">
-        <div class="card-header bg-white p-0 pt-2">
-            <header class="d-flex align-items-center justify-content-center ">
-                <h5 class="pt-1 pb-1">Your chats</h5>
-            </header>
+        <div class="card-header bg-white p-0 pt-3 pb-3">
+            <div class="row d-flex align-items-center justify-content-center">
+                <i class="material-icons" style="font-size:36px">library_add</i>
+                <h2 class="h5 text-truncate pl-3">
+                    <a href="#!" class="text-dark" style="text-decoration: none;">
+                        Create chat!
+                    </a>
+                </h2>
+            </div>
         </div>
-        <div class="card-body pb-0">
-            <div class="row mb-3">
-                <div class="col-3">
-                    <img style="border-radius: 100px;" src="https://static10.tgstat.ru/channels/_0/38/38d980d494e7dd012dc630341bfedb39.jpg" alt="" width="55" height="55">
+        <div class="card-body pl-3 pr-3" style="padding-bottom:2px; padding-top:2px;">
+            {% for chat in chats %}
+            <div class="row pb-2 pt-2" {% if chat.chat_id == chat_page.chat_id %}style="background: #DCDCDC;"{% endif %}>
+                <div class="col-4 p-0 d-flex justify-content-center">
+                    {% if chat.image and chat.image.url %}
+                        <a href="{% url 'messenger:chat' chat.chat_id %}">
+                            <img style="max-width:100%;" src="{{ chat.image.url }}" alt="" width="auto" height="55">
+                        </a>
+                    {% else %}
+                        <a href="{% url 'messenger:chat' chat.chat_id %}">
+                            <img style="max-width:100%;" src="{% static 'assets\images\default.png' %}" alt="" width="auto" height="55">
+                        </a>
+                    {% endif %}
                 </div>
-                <div class="col-9">
+                <div class="col-8 d-flex align-items-center">
                     <div class="row">
-                        <h2 class="h5 text-truncate w-100 pl-3"><a href="#!" class="text-dark" style="text-decoration: none;">username</a></h2>
-                    </div>
-                    <div class="row pl-3 text-muted">
-                        las or message text
+                        <h2 class="h5 text-truncate w-100 pl-3">
+                            <a href="{% url 'messenger:chat' chat.chat_id %}" class="text-dark" style="text-decoration: none;">
+                                {{ chat.chat_name }}
+                            </a>
+                        </h2>
                     </div>
                 </div>
             </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock main_menu %}
@@ -37,13 +53,52 @@
 <div class="card text-dark bg-white  mb-4" style="position: fixed; width: 53%; height: 80%;">
     <div class="card-header bg-white">
         <header class="d-flex align-items-center">
-            <img style="border-radius: 100px;" src="{% static 'assets\images\default.png' %}" alt="" width="40" height="40">
-            <h2 class="h5 text-truncate w-100 pl-3"><a href="#!" class="text-dark" style="text-decoration: none;">username</a></h2>
+            {% if chat_page.image and chat_page.image.url %}
+                <img src="{{ chat_page.image.url }}" alt="" width="auto" height="50">
+            {% else %}
+                <img src="{% static 'assets\images\default.png' %}" alt="" width="auto" height="50">
+            {% endif %}
+            <h2 class="h5 text-truncate w-100 pl-3">
+                <a href="#!" class="text-dark" style="text-decoration: none;">
+                    {{ chat_page.chat_name }}
+                </a>
+            </h2>
             <i class="fa fa-info-circle" style="font-size:24px"></i>
         </header>
     </div>
     <div class="card-body">
-        e
+            <div class="row d-flex justify-content-center pb-2">
+                Created chat {{ chat_page.date_create }}
+            </div>
+        {% for message in messages %}
+            {% if message.from_id.id == user.id %}
+                <div class="row d-flex justify-content-end align-items-center pr-2 mb-2 mt-2">
+                    <span class="pr-3">{{ message.content }}</span>
+                    {% if message.from_id.userprofile.image and message.from_id.userprofile.image.url %}
+                        <a href="{% url 'user_page' message.from_id.username %}">
+                            <img class="" style="border-radius: 100px;" src="{{ message.from_id.userprofile.image.url }}" alt="" width="40" height="40">
+                        </a>
+                    {% else %}
+                        <a href="{% url 'user_page' message.from_id.username %}">
+                            <img src="{% static 'assets\images\default.png' %}" alt="" width="auto" height="50">
+                        </a>
+                    {% endif %}
+                </div>
+            {% else %}
+                <div class="row d-flex justify-content-start align-items-center pl-2 mb-2 mt-2">
+                    {% if message.from_id.userprofile.image and message.from_id.userprofile.image.url %}
+                        <a href="{% url 'user_page' message.from_id.username %}">
+                            <img class="" style="border-radius: 100px;" src="{{ message.from_id.userprofile.image.url }}" alt="" width="40" height="40">
+                        </a>
+                    {% else %}
+                        <a href="{% url 'user_page' message.from_id.username %}">
+                            <img src="{% static 'assets\images\default.png' %}" alt="" width="auto" height="50">
+                        </a>
+                    {% endif %}
+                    <span class="pl-3">{{ message.content }}</span>
+                </div>
+            {% endif %}
+        {% endfor %}
     </div>
     <div class="card-footer bg-white pl-5 pr-5">
         <div class="row rounded-pill border p-2 d-flex justify-content-center">

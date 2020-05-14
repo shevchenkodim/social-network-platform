@@ -10,7 +10,7 @@ class UserChatAdmin(admin.ModelAdmin):
 
 @admin.register(UserMessages)
 class UserMessagesAdmin(admin.ModelAdmin):
-    list_display = ('to_id', 'from_id', 'content', 'created_at')
+    list_display = ('from_id', 'content', 'created_at')
 
 
 @admin.register(UsersInChat)

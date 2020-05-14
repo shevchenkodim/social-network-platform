@@ -19,8 +19,8 @@ class UserChat(models.Model):
 
 class UserMessages(models.Model):
     """User messages for chat"""
-    to_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name='to_id')
-    from_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name='from_id')
+    chat_id = models.ForeignKey(UserChat, on_delete=models.CASCADE)
+    from_id = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.CharField(max_length=1024, blank=False, null=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
