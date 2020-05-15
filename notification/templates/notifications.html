@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+    Notifications
+{% endblock title %}
+
+{% block middle %}
+<div class="row pl-3 pr-3 mb-4">
+    <div class="card" style="width:100%;">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-6">
+                    <h5 class="card-title text-truncate mb-0 w-100">
+                        {% trans "Notifications" %}
+                    </h5>
+                </div>
+                <div class="col-6 d-flex justify-content-end">
+                    <a id="notifications_read_all"
+                        href="#!"
+                        class="btn btn-sm btn-primary"
+                        data-toggle-ajax-url="">
+                        {% trans "Read all" %}
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body pt-2">
+            <table class="table-hover" style="width:100%;">
+                <thead>
+                    <tr>
+                        <thead>
+                            <th class="text-center" style="width:80%;">{% trans "Message" %}</th>
+                            <th class="text-center" style="width:20%;">{% trans "Status" %}</th>
+                        </thead>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for notification in list_notifications %}
+                        <!-- NOTIFICATION -->
+                        <tr>
+                            <td>
+                                <p class="fs--15 m-0 font-weight-normal">
+                                    {{ notification.message }}
+                                </p>
+                                <!-- date -->
+                                <small class="d-block fs--11 text-muted pt-1">
+                                    {{ notification.date }}
+                                </small>
+                            </td>
+                            <td class="d-flex justify-content-center">
+                                <!-- badge -->
+                                {% if notification.status == 'new' %}
+                                    <span id="status_notification_{{ notification.id }}"
+                                        class="badge badge-success font-weight-normal mt-1">
+                                        {% trans 'new' %}
+                                    </span>
+                                {% else %}
+                                    <span class="badge badge-secondary font-weight-normal mt-1">{% trans 'readed' %}</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <!-- /NOTIFICATION -->
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="row d-flex justify-content-center mb-3">
+    <!-- pagination : medium -->
+    <div class="row justify-content-center">
+        <nav aria-label="pagination">
+        	<ul class="pagination pagination-pill justify-content-center justify-content-md-start">
+
+                {% if list_notifications.has_previous %}
+        		<li class="page-item">
+        			<a class="page-link" href="{% url 'notification:notifications' %}?page={{ list_notifications.previous_page_number }}" tabindex="-1" aria-disabled="true">{% trans "Prev" %}</a>
+        		</li>
+
+        		<li class="page-item">
+        			<a class="page-link" href="{% url 'notification:notifications' %}?page={{ list_notifications.previous_page_number }}">{{ list_notifications.previous_page_number }}</a>
+        		</li>
+                {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" href="#!" tabindex="-1" aria-disabled="true">{% trans "Prev" %}</a>
+                </li>
+                {% endif %}
+
+        		<li class="page-item active" aria-current="page">
+        			<a class="page-link bg-primary-soft" href="#">{{ list_notifications.number }}<span class="sr-only">(current)</span></a>
+        		</li>
+
+                {% if list_notifications.has_next %}
+        		<li class="page-item">
+        			<a class="page-link" href="{% url 'notification:notifications' %}?page={{ list_notifications.next_page_number }}">{{ list_notifications.next_page_number }}</a>
+        		</li>
+
+        		<li class="page-item">
+        			<a class="page-link" href="{% url 'notification:notifications' %}?page={{ list_notifications.next_page_number }}">{% trans "Next" %}</a>
+        		</li>
+                {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" href="#!">{% trans "Next" %}</a>
+                </li>
+                {% endif %}
+        	</ul>
+        </nav>
+    </div>
+    <!-- /pagination : medium -->
+</div>
+{% endblock middle %}
+
+{% block js %}
+    <script src=""></script>
+{% endblock js %}
