@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 
 {% block title %}
-    Messenger
+    Messenger{% trans "Send" %}
 {% endblock title %}
 
 
@@ -11,10 +12,10 @@
     <div class="card text-dark bg-white  mb-4">
         <div class="card-header bg-white p-0 pt-3 pb-3">
             <div class="row d-flex align-items-center justify-content-center">
-                <i class="material-icons" style="font-size:36px">library_add</i>
+                <i class="material-icons" style="font-size:36px">{% trans "library_add" %}</i>
                 <h2 class="h5 text-truncate pl-3">
                     <a href="#!" class="text-dark" style="text-decoration: none;">
-                        Create chat!
+                        {% trans "Create chat!" %}
                     </a>
                 </h2>
             </div>
@@ -52,7 +53,7 @@
 {% block middle %}
 <div class="card text-dark bg-white  mb-4" style="position: fixed; width: 53%; height: 80%;">
     <div class="card-body d-flex justify-content-center align-items-center">
-        Please choise your chat messages!
+        {% trans "Please choise your chat messages!" %}
     </div>
 </div>
 {% endblock middle %}
