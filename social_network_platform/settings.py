@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'signup',
     'settings',
     'messenger',
+    'notification',
 ]
 
 MIDDLEWARE = [
