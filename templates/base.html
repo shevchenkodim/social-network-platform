@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -6,7 +7,7 @@
         <meta charset="utf-8">
         <title>
             {% block title %}
-                Social Network
+                {% trans "Social Network" %}
             {% endblock title %}
         </title>
         <link rel="stylesheet" href="{% static 'assets\css\bootstrap.min.css' %}" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -57,7 +58,7 @@
       <div class="modal-dialog modal-mb modal-dialog-centered" role="document">
         <div class="modal-content" style="background: #fafafa;">
           <div class="modal-header">
-            <h5 class="modal-title w-100 text-center" id="modal-post-create-label">Create new post</h5>
+            <h5 class="modal-title w-100 text-center" id="modal-post-create-label">{% trans "Create new post" %}</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -73,13 +74,13 @@
                     <h2 class="h5 text-truncate w-100 pl-3">{{ user.username }}</h2>
                 </div>
                 <div class="col-12 mt-3">
-                     <textarea id="text-create-post" class="border-0" placeholder="What you  mean?" rows="5" style="outline: none; width: 100%; background: #fafafa; resize: none;" ></textarea>
+                     <textarea id="text-create-post" class="border-0" placeholder="{% trans 'What you  mean?' %}" rows="5" style="outline: none; width: 100%; background: #fafafa; resize: none;" ></textarea>
                 </div>
                 <div class="col-12 mt-3 mb-2">
                     <div class="custom-file">
                       <label class="btn btn-default btn-file d-flex align-items-center border" for="inputGroupFile03">
                            <h6 class="label-name-file-post w-75 text-left mr-2" style="white-space: nowrap; overflow: hidden;">
-                               Choose file
+                               {% trans "Choose file" %}
                            </h6>
                            <i class="fa fa-image pr-3" style="font-size:30px"></i>
                            <i class="fa fa-youtube-play pr-2" style="font-size:36px"></i>
@@ -95,8 +96,13 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary create-new-post"><i id="progress"  role="status" class="fi fi-check"></i>Create</button>
-            <button type="button" class="btn btn-secondary close-modal-create-post" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary create-new-post">
+                <i id="progress"  role="status" class="fi fi-check"></i>
+                {% trans "Create" %}
+            </button>
+            <button type="button" class="btn btn-secondary close-modal-create-post" data-dismiss="modal">
+                {% trans "Close" %}
+            </button>
           </div>
         </div>
       </div>

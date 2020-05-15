@@ -1,15 +1,16 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block title %}
-    Page 400
+    {% trans "Page 400" %}
 {% endblock title %}
 
 {% block main_content %}
     <div class="row w-100 pt-5">
         <div class="col-12 d-flex justify-content-center">
             <h5>
-                Error 400 - Invalid request!
+                {% trans "Error 400 - Invalid request!" %}
             </h5>
         </div>
     </div>

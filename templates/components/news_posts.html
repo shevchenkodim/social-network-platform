@@ -1,5 +1,6 @@
 {% load static %}
 {% load custom_tags %}
+{% load i18n %}
 
 <input name="csrf_token" type="hidden" id="csrf_token" value="{{ csrf_token }}">
 {% if news_posts %}
@@ -40,11 +41,11 @@
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleControls{{news_post.id}}" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
+                    <span class="sr-only">{% trans "Previous" %}</span>
                 </a>
                 <a class="carousel-control-next" href="#carouselExampleControls{{news_post.id}}" role="button" data-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
+                    <span class="sr-only">{% trans "Next" %}</span>
                 </a>
             </div>
             {% else %}
@@ -65,7 +66,7 @@
         <div class="row" style="padding-left: 40px;">
             <p class="mb-0 pb-1 pt-3">{{ news_post.text|truncatechars:200 }}
                 {% if  news_post.text|length > 200  %}
-                <a href="#!" onclick="open_page_post_detail(this);" data-url="{% url 'post_detail_view' news_post.page_id %}" data-toggle="modal" data-target="#post-detail-modal" style="text-decoration: none;" class="text-primary pl-2">read more...</a>
+                <a href="#!" onclick="open_page_post_detail(this);" data-url="{% url 'post_detail_view' news_post.page_id %}" data-toggle="modal" data-target="#post-detail-modal" style="text-decoration: none;" class="text-primary pl-2">{% trans "read more..." %}</a>
                 {% endif %}
             </p>
         </div>
@@ -81,7 +82,7 @@
             </div>
         </div>
         <div id="likes" class="pl-4 pt-1">
-            <b><span id="count-likes-{{ news_post.id }}" class="text-dark">{{ news_post.likes_count }}</span> likes</b>
+            <b><span id="count-likes-{{ news_post.id }}" class="text-dark">{{ news_post.likes_count }}</span> {% trans "likes" %}</b>
         </div>
         <div id="comment-div-{{ news_post.id }}" class="pl-4 pr-2 pt-1">
             {% for comment in comment_list %}
@@ -92,17 +93,19 @@
         </div>
         {% if count_comments_in_post|get_item:news_post.id > 3 %}
         <div class="row pt-1" style="padding-left: 40px;">
-            <a href="#!" data-url="{% url 'post_detail_view' news_post.page_id %}" onclick="open_page_post_detail(this);" style="text-decoration: none;" data-toggle="modal" data-target="#post-detail-modal" class="text-primary">View all comments...</a>
+            <a href="#!" data-url="{% url 'post_detail_view' news_post.page_id %}" onclick="open_page_post_detail(this);" style="text-decoration: none;" data-toggle="modal" data-target="#post-detail-modal" class="text-primary">
+                {% trans "View all comments..." %}
+            </a>
         </div>
         {% endif %}
         <hr class="w-100">
         <form>
             <div class="row pb-3">
                 <div class="col-10 align-items-center pl-4">
-                    <input id="comment_text_{{ news_post.id }}" name="comment_text" class="form-control border-0" placeholder="Add a comment..."></input>
+                    <input id="comment_text_{{ news_post.id }}" name="comment_text" class="form-control border-0" placeholder="{% trans 'Add a comment...' %}"></input>
                 </div>
                 <div class="col-2 d-flex align-items-center justify-content-center">
-                    <a id="{{ news_post.id }}" href="#!" onclick="return addComment(this);" data-username="{{ user.username }}" data-url="{% url 'create_comment' news_post.id %}" class="btn btn-white text-primary">Post</a>
+                    <a id="{{ news_post.id }}" href="#!" onclick="return addComment(this);" data-username="{{ user.username }}" data-url="{% url 'create_comment' news_post.id %}" class="btn btn-white text-primary">{% trans "Post" %}</a>
                 </div>
             </div>
         </form>
@@ -110,6 +113,6 @@
     {% endfor %}
 {% else %}
     <div class="row d-flex justify-content-center">
-        Your don't have news
+        {% trans "Your don't have news" %}
     </div>
 {% endif %}

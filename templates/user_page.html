@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block title %}
-    Social Network
+    {% trans "Social Network" %}
 {% endblock title %}
 
 {% block middle %}
@@ -20,16 +21,16 @@
                     <div class="row">
                         <h5>{{ owner_page.username }}</h5>
                         {% if user.id == owner_page.id %}
-                            <a href="{% url 'settings:settings_general_view' %}" class="btn btn-sm btn-outline-secondary ml-3">Edit Profile</a>
+                            <a href="{% url 'settings:settings_general_view' %}" class="btn btn-sm btn-outline-secondary ml-3">{% trans "Edit Profile" %}</a>
                         {% endif %}
                     </div>
                     <div class="row pt-1">
                         <h6>{{ news_posts.count }} posts</h6>
                         <h6><a href="#!" class="text-dark ml-4" style="text-decoration: none;">
-                            {{ owner_page.userprofile.folowers.count }} followers
+                            {{ owner_page.userprofile.folowers.count }} {% trans "followers" %}
                         </a></h6>
                         <h6><a href="#!" class="text-dark ml-4" style="text-decoration: none;">
-                            {{ owner_page.userprofile.folowing.count }} following
+                            {{ owner_page.userprofile.folowing.count }} {% trans "following" %}
                         </a></h6>
                     </div>
                     <div class="row pt-1">
@@ -109,7 +110,7 @@
       <div class="modal-dialog modal-mb modal-dialog-centered" role="document">
         <div class="modal-content" style="background: #fafafa;">
           <div class="modal-header">
-            <h5 class="modal-title w-100 text-center" id="modal-upload-avatar-label">Upload new photo</h5>
+            <h5 class="modal-title w-100 text-center" id="modal-upload-avatar-label">{% trans "Upload new photo" %}</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -124,7 +125,7 @@
                     <div class="custom-file">
                       <label class="btn btn-default btn-file d-flex align-items-center border" for="inputGroupFile">
                            <h6 class="label-name-file-avatar w-75 text-left mr-2" style="white-space: nowrap; overflow: hidden;">
-                               Choose file
+                               {% trans "Choose file" %}
                            </h6>
                           <input type="file" onchange="upload_img(this);" class="input-name-file-avatar" id="inputGroupFile" style="display: none;" accept="image/jpeg, image/jpg, image/png">
                       </label>
@@ -133,8 +134,13 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" onclick="update_user_avatar(this);" class="btn btn-primary"><i id="progress" role="status" class="fi fi-check"></i>Upload</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" onclick="update_user_avatar(this);" class="btn btn-primary">
+                <i id="progress" role="status" class="fi fi-check"></i>
+                {% trans "Upload" %}
+            </button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                {% trans "Close" %}
+            </button>
           </div>
         </div>
       </div>
