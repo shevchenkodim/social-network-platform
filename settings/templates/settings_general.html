@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block title %}
-    Settings
+    {% trans "Settings" %}
 {% endblock title %}
 
 {% block middle %}
@@ -11,13 +12,13 @@
             <div class="card-header">
                 <ul class="nav nav-tabs">
                   <li class="nav-item">
-                    <a class="nav-link text-dark active border" href="#">General</a>
+                    <a class="nav-link text-dark active border" href="#">{% trans "General" %}</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link text-dark" href="#">Security</a>
+                    <a class="nav-link text-dark" href="#">{% trans "Security" %}</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link text-dark" href="#">Language of the region</a>
+                    <a class="nav-link text-dark" href="#">{% trans "Language of the region" %}</a>
                   </li>
                 </ul>
             </div>
@@ -32,12 +33,12 @@
 
                     <div class="row">
                         <div class="col-12">
-                             <label for="{{form.work.id_for_label}}">You work</label>
+                             <label for="{{form.work.id_for_label}}">{% trans "You work" %}</label>
                         </div>
                         <div class="col-12 mb-3">
                             <div class="row">
                                 <div class="col-7 pr-3">
-                                    <input type="text" class="form-control m-0 w-100" id="{{form.work.id_for_label}}" placeholder="Work" maxlength="100" name="{{form.work.name}}"
+                                    <input type="text" class="form-control m-0 w-100" id="{{form.work.id_for_label}}" placeholder="{% trans 'Work' %}" maxlength="100" name="{{form.work.name}}"
                                         value="{{form.work.value|default_if_none:''}}" style="max-width: 350px;">
                                     {% if form.work.errors %}
                                             <div class="alert-danger" role="alert">
@@ -57,7 +58,7 @@
                                                 {% endif %}
                                             </div>
                                             <div class="col-10 d-flex align-items-center">
-                                                <span>Show work in profile</span>
+                                                <span>{% trans "Show work in profile" %}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -66,12 +67,12 @@
                         </div>
 
                         <div class="col-12">
-                             <label for="{{form.studied.id_for_label}}">You studied</label>
+                             <label for="{{form.studied.id_for_label}}">{% trans "You studied" %}</label>
                         </div>
                         <div class="col-12 mb-3">
                             <div class="row">
                                 <div class="col-7 pr-3">
-                                    <input type="text" class="form-control m-0 w-100" id="{{form.studied.id_for_label}}"  placeholder="Studied" name="{{form.studied.name}}"
+                                    <input type="text" class="form-control m-0 w-100" id="{{form.studied.id_for_label}}"  placeholder="{% trans 'Studied' %}" name="{{form.studied.name}}"
                                     value="{{form.studied.value|default_if_none:''}}" style="max-width: 350px;">
                                     {% if form.studied.errors %}
                                             <div class="alert-danger" role="alert">
@@ -91,7 +92,7 @@
                                                 {% endif %}
                                             </div>
                                             <div class="col-10 d-flex align-items-center">
-                                                <span>Show studied in profile</span>
+                                                <span>{% trans "Show studied in profile" %}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -101,12 +102,12 @@
 
 
                         <div class="col-12">
-                             <label for="{{form.current_city.id_for_label}}">You current city</label>
+                             <label for="{{form.current_city.id_for_label}}">{% trans "You current city" %}</label>
                         </div>
                         <div class="col-12 mb-3">
                             <div class="row">
                                 <div class="col-7 pr-3">
-                                    <input type="text" class="form-control m-0 w-100" id="{{form.current_city.id_for_label}}" placeholder="Current city" name="{{form.current_city.name}}"
+                                    <input type="text" class="form-control m-0 w-100" id="{{form.current_city.id_for_label}}" placeholder="{% trans 'Current city' %}" name="{{form.current_city.name}}"
                                     value="{{form.current_city.value|default_if_none:''}}" style="max-width: 350px;">
                                     {% if form.current_city.errors %}
                                             <div class="alert-danger" role="alert">
@@ -126,7 +127,7 @@
                                                 {% endif %}
                                             </div>
                                             <div class="col-10 d-flex align-items-center">
-                                                <span>Show current city in profile</span>
+                                                <span>{% trans "Show current city in profile" %}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -136,12 +137,12 @@
 
 
                         <div class="col-12">
-                             <label for="{{form.studied.id_for_label}}">You home town</label>
+                             <label for="{{form.studied.id_for_label}}">{% trans "Your home town" %}</label>
                         </div>
                         <div class="col-12 mb-3">
                             <div class="row">
                                 <div class="col-7 pr-3">
-                                    <input type="text" class="form-control m-0 w-100" id="{{form.home_town.id_for_label}}"  placeholder="Home town" name="{{form.home_town.name}}"
+                                    <input type="text" class="form-control m-0 w-100" id="{{form.home_town.id_for_label}}"  placeholder="{% trans 'Home town' %}" name="{{form.home_town.name}}"
                                     value="{{form.home_town.value|default_if_none:''}}" style="max-width: 350px;">
                                     {% if form.home_town.errors %}
                                             <div class="alert-danger" role="alert">
@@ -161,7 +162,7 @@
                                                 {% endif %}
                                             </div>
                                             <div class="col-10 d-flex align-items-center">
-                                                <span>Show home town in profile</span>
+                                                <span>{% trans "Show home town in profile" %}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -171,12 +172,12 @@
 
 
                         <div class="col-12">
-                             <label for="{{form.relationship.id_for_label}}">You relationship</label>
+                             <label for="{{form.relationship.id_for_label}}">{% trans "You relationship" %}</label>
                         </div>
                         <div class="col-12 mb-3">
                             <div class="row">
                                 <div class="col-7 pr-3">
-                                    <input type="text" class="form-control m-0 w-100" id="{{form.relationship.id_for_label}}"  placeholder="Relationship" name="{{form.relationship.name}}"
+                                    <input type="text" class="form-control m-0 w-100" id="{{form.relationship.id_for_label}}"  placeholder="{% trans 'Relationship' %}" name="{{form.relationship.name}}"
                                     value="{{form.relationship.value|default_if_none:''}}" style="max-width: 350px;">
                                     {% if form.relationship.errors %}
                                             <div class="alert-danger" role="alert">
@@ -196,7 +197,7 @@
                                                 {% endif %}
                                             </div>
                                             <div class="col-10 d-flex align-items-center">
-                                                <span>Show relationship in profile</span>
+                                                <span>{% trans "Show relationship in profile" %}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -206,12 +207,12 @@
 
 
                         <div class="col-12">
-                             <label for="{{form.phone_number.id_for_label}}">You phone number</label>
+                             <label for="{{form.phone_number.id_for_label}}">{% trans "You phone number" %}</label>
                         </div>
                         <div class="col-12 mb-3">
                             <div class="row">
                                 <div class="col-7 pr-3">
-                                    <input type="text" class="form-control m-0 w-100" id="{{form.phone_number.id_for_label}}"  placeholder="Phone number" name="{{form.phone_number.name}}"
+                                    <input type="text" class="form-control m-0 w-100" id="{{form.phone_number.id_for_label}}"  placeholder="{% trans 'Phone number' %}" name="{{form.phone_number.name}}"
                                     value="{{form.phone_number.value|default_if_none:''}}" style="max-width: 350px;">
                                     {% if form.phone_number.errors %}
                                             <div class="alert-danger" role="alert">
@@ -231,7 +232,7 @@
                                                 {% endif %}
                                             </div>
                                             <div class="col-10 d-flex align-items-center">
-                                                <span>Show studied in profile</span>
+                                                <span>{% trans "Show studied in profile" %}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -241,7 +242,7 @@
                     </div>
                     <div class="col-12 pl-0">
                         <button class="btn btn-primary" type="submit" name="button" style="width: 30%;">
-                            Save info
+                            {% trans "Save info" %}
                         </button>
                     </div>
                 </form>

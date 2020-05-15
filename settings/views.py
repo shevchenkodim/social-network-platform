@@ -5,6 +5,7 @@ from .forms import UserProfileForm
 from signup.models import UserProfile
 from django.http import JsonResponse
 from django.contrib import messages
+from django.utils.translation import gettext_lazy as _
 
 # Create your views here.
 
@@ -25,10 +26,10 @@ class SettingsGeneralView(TemplateView):
             form_aut = UserProfileForm(data=request.POST, instance=UserProfile.objects.get(user=self.request.user))
             if form_aut.is_valid():
                 form_aut.save()
-                messages.success(request, 'Your information has been successfully updated!')
+                messages.success(request, _('Your information has been successfully updated!'))
                 return redirect(reverse('settings:settings_general_view'))
             else:
-                messages.error(request, 'Error! Please try again later!')
+                messages.error(request, _('Error! Please try again later!'))
                 return redirect(reverse('settings:settings_general_view'))
         else:
             response_data = {'_code' : 1, '_status' : 'no' }
