@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block title %}
-    Sign Up
+    {% trans "Sign Up" %}
 {% endblock title %}
 
 {% block main_content %}
     <div class="row d-flex justyfi-content-center">
         <div class="col-12 text-center">
-            <h5><b>Sign up</b></h5>
+            <h5><b>{% trans "Sign Up" %}</b></h5>
         </div>
         <div class="col-12">
             <form action="{% url 'signup:sign_up_register' %}" validate method="POST">
@@ -22,7 +23,7 @@
                 <div class="form-label-group mb-3">
                     {{register_form.username.label_tag}}
                     <input required id="{{register_form.username.id_for_label}}" name="{{register_form.username.name}}"
-                        value="{{register_form.username.value|default_if_none:''}}" type="text" class="form-control" placeholder="Your username">
+                        value="{{register_form.username.value|default_if_none:''}}" type="text" class="form-control" placeholder="{% trans 'Your username' %}">
                     {% if register_form.username.errors %}
                             <div class="alert-danger" role="alert">
                                     {{register_form.username.errors }}
@@ -33,7 +34,7 @@
                 <div class="form-label-group mb-3">
                     {{register_form.first_name.label_tag}}
                     <input required id="{{register_form.first_name.id_for_label}}" name="{{register_form.first_name.name}}"
-                        value="{{register_form.first_name.value|default_if_none:''}}" type="text" class="form-control" placeholder="Your first_name">
+                        value="{{register_form.first_name.value|default_if_none:''}}" type="text" class="form-control" placeholder="{% trans 'Your first_name' %}">
                     {% if register_form.first_name.errors %}
                             <div class="alert-danger" role="alert">
                                     {{register_form.first_name.errors }}
@@ -44,7 +45,7 @@
                 <div class="form-label-group mb-3">
                     {{register_form.last_name.label_tag}}
                     <input required id="{{register_form.last_name.id_for_label}}" name="{{register_form.last_name.name}}"
-                        value="{{register_form.last_name.value|default_if_none:''}}" type="text" class="form-control" placeholder="Your last_name">
+                        value="{{register_form.last_name.value|default_if_none:''}}" type="text" class="form-control" placeholder="{% trans 'Your last_name' %}">
                     {% if register_form.last_name.errors %}
                             <div class="alert-danger" role="alert">
                                     {{register_form.last_name.errors }}
@@ -55,7 +56,7 @@
                 <div class="form-label-group mb-3">
                     {{register_form.email.label_tag}}
                     <input required id="{{register_form.email.id_for_label}}" name="{{register_form.email.name}}"
-                        value="{{register_form.email.value|default_if_none:''}}" type="email" class="form-control" placeholder="Your last_name">
+                        value="{{register_form.email.value|default_if_none:''}}" type="email" class="form-control" placeholder="{% trans 'Your last_name' %}">
                     {% if register_form.email.errors %}
                             <div class="alert-danger" role="alert">
                                     {{register_form.email.errors }}
@@ -64,9 +65,9 @@
                 </div>
 
                 <div class="form-label-group mb-3">
-                    <label for="{{register_form.password1.id_for_label}}">Password:</label>
+                    <label for="{{register_form.password1.id_for_label}}">{% trans "Password:" %}</label>
                     <input required id="{{register_form.password1.id_for_label}}" name="{{register_form.password1.name}}"
-                        value="{{register_form.password1.value|default_if_none:''}}" type="password" class="form-control" placeholder="Your password">
+                        value="{{register_form.password1.value|default_if_none:''}}" type="password" class="form-control" placeholder="{% trans 'Your password' %}">
                     {% if register_form.password1.errors %}
                             <div class="alert-danger" role="alert">
                                     {{register_form.password1.errors }}
@@ -76,10 +77,10 @@
                 <div class="form-label-group mb-3">
                     <div class="row">
                         <div class="col">
-                            <button class="btn btn-primary" type="submit" name="button">Sign Up</button>
+                            <button class="btn btn-primary" type="submit" name="button">{% trans "Sign Up" %}</button>
                         </div>
                         <div class="col d-flex align-items-center justify-content-end">
-                            <a href="{% url 'signup:sign_in_login' %}">I can log in</a>
+                            <a href="{% url 'signup:sign_in_login' %}">{% trans "I can log in" %}</a>
                         </div>
                     </div>
                 </div>

@@ -3,6 +3,7 @@ from django.views.generic import TemplateView
 from django.contrib.auth import login, authenticate
 from . forms import UserRegisterForm, UserLoginForm
 from django.http import HttpResponse, JsonResponse
+from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import logout
 from django.contrib import messages
 from . models import UserProfile
@@ -27,7 +28,7 @@ class SignIn(TemplateView):
                 login(request, user)
                 return redirect(reverse('news_page'))
             else:
-                messages.error(request, 'Error! Please check your details or try again later!')
+                messages.error(request, _('Error! Please check your details or try again later!'))
                 return redirect(reverse('signup:sign_in_login'))
 
 
@@ -52,7 +53,7 @@ class SignUp(TemplateView):
                 login(request, user)
                 return redirect(reverse('news_page'))
             else:
-                messages.error(request, 'Error! Please check your details or try again later!')
+                messages.error(request, _('Error! Please check your details or try again later!'))
                 return redirect(reverse('signup:sign_up_register'))
 
 

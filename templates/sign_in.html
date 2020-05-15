@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block title %}
-    Sign In
+    {% trans "Sign In" %}
 {% endblock title %}
 
 {% block main_content %}
     <div class="row d-flex justyfi-content-center">
         <div class="col-12 text-center">
-            <h5><b>Sign In</b></h5>
+            <h5><b>{% trans "Sign In" %}</b></h5>
         </div>
         <div class="col-12">
             <form action="{% url 'signup:sign_in_login' %}" validate method="POST">
@@ -22,7 +23,7 @@
                 <div class="form-label-group mb-3">
                     {{login_form.username.label_tag}}
                     <input required id="{{login_form.username.id_for_label}}" name="{{login_form.username.name}}"
-                    	value="{{login_form.username.value|default_if_none:''}}" type="text" class="form-control" placeholder="Enter your username">
+                    	value="{{login_form.username.value|default_if_none:''}}" type="text" class="form-control" placeholder="{% trans 'Enter your username' %}">
                     {% if login_form.username.errors %}
                             <div class="alert-danger" role="alert">
                                     {{login_form.username.errors }}
@@ -33,7 +34,7 @@
                 <div class="form-label-group mb-3">
                     {{login_form.password.label_tag}}
                     <input required id="{{login_form.password.id_for_label}}" name="{{login_form.password.name}}"
-                        value="{{login_form.password.value|default_if_none:''}}" type="password" class="form-control" placeholder="Enter your password">
+                        value="{{login_form.password.value|default_if_none:''}}" type="password" class="form-control" placeholder="{% trans 'Enter your password' %}">
                     {% if login_form.password.errors %}
                             <div class="alert-danger" role="alert">
                                     {{login_form.password.errors }}
@@ -43,10 +44,10 @@
                 <div class="form-label-group mb-3">
                     <div class="row">
                         <div class="col">
-                            <button class="btn btn-primary" type="submit" name="button">Sign In</button>
+                            <button class="btn btn-primary" type="submit" name="button">{% trans "Sign In" %}</button>
                         </div>
                         <div class="col d-flex align-items-center">
-                            <a href="{% url 'signup:sign_up_register' %}">I don't have an account</a>
+                            <a href="{% url 'signup:sign_up_register' %}">{% trans "I don't have an account" %}</a>
                         </div>
                     </div>
                 </div>
