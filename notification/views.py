@@ -19,5 +19,6 @@ class NotificationsView(LoginRequiredMixin, TemplateView):
         page = request.GET.get('page', 1)
         queryset = paginator.page(page)
         self.extra_context['list_notifications'] = queryset
+        self.extra_context['menu_action'] = 'menu_notification'
 
         return super(NotificationsView, self).get(request)
