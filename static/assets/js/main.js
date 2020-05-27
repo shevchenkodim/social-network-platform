@@ -105,6 +105,13 @@ $('.close-modal-create-post').on('click', function() {
 
 $('.div-progressbar').hide();
 
+$(".input-name-file-post").on("change", function() {
+    if ($(".input-name-file-post")[0].files.length > 5) {
+        alert("You can select only 5 images");
+        $('.label-name-file-post').text('Choose file');
+        document.getElementById('input-name-file-post').value = "";
+    }
+});
 
 $('.create-new-post').on('click', function(){
     $('.div-progressbar').show();
