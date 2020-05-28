@@ -64,7 +64,7 @@ def _processingImage(file):
             print(e)
 
 
-def _processingVideo():
+def _processingVideo(file):
     gif = os.system('ffmpeg -ss 10 -t 15 -i test.mp4  -filter_complex "[0]fps=10,scale=-1:640,crop=ih:ih" test.gif')
     pass
 
@@ -77,7 +77,7 @@ def processingImagesAndVideos(request, post_id):
             if file.type == 'image':
                 _processingImage(file)
             elif file.type == 'video':
-                _processingVideo()
+                _processingVideo(file)
         messages.success(request, 'Your successfully add new post! Please reload this page! :)')
     except Exception as e:
         print(e)
