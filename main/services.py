@@ -65,6 +65,7 @@ def _processingImage(file):
 
 
 def _processingVideo():
+    gif = os.system('ffmpeg -ss 10 -t 15 -i test.mp4  -filter_complex "[0]fps=10,scale=-1:640,crop=ih:ih" test.gif')
     pass
 
 
