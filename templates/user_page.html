@@ -93,7 +93,11 @@
                                         {% if file.type == 'image' %}
                                             <img src="{{ file.file.url }}" width="1080px" alt="" style="max-width: 100%;">
                                         {% elif file.type == 'video' %}
-                                            <img src="{% static 'assets/images/default.video.png' %}" width="1080px" alt="" style="max-width: 100%;">
+                                            {% if file.video_gif and file.video_gif.url %}
+                                                <img src="{{ file.video_gif.url }}" width="1080px" alt="" style="max-width: 100%;">
+                                            {% else %}
+                                                <img src="{% static 'assets/images/default.video.png' %}" width="1080px" alt="" style="max-width: 100%;">
+                                            {% endif %}
                                         {% endif %}
                                     </div>
                                 </a>

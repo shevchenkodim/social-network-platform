@@ -43,7 +43,7 @@ class PostFilesModel(models.Model):
     file = models.FileField(_('File'), max_length=255, upload_to='posts/image/')
     type = models.CharField(_('Type file'), max_length=100)
     position = models.IntegerField(_('Position in post'), default=0)
-    video_gif = models.ImageField(_('video_gif'), upload_to='posts/gif/', blank=True, null=True)
+    video_gif = models.ImageField(_('video_gif'),max_length=255, upload_to='posts/gif/', blank=True, null=True)
 
     def __str__(self):
         return f'{self.file} - {self.type}'

@@ -60,18 +60,26 @@ def _processingImage(file):
                 file.save()
             elif width == height:
                 pass
+            return True
         except Exception as e:
             print(e)
+            return False
 
 
 def _processingVideo(file):
-    gif = os.system('ffmpeg -ss 10 -t 15 -i test.mp4  -filter_complex "[0]fps=10,scale=-1:640,crop=ih:ih" test.gif')
-    pass
+    fileName = str(file.file).split('/')[-1]
+    try:
+        gif = os.system('ffmpeg -ss 10 -t 15 -i '+ str('media/posts/image/' + fileName).replace('/', '\\') +'  -filter_complex "[0]fps=10,scale=-1:640,crop=ih:ih" ' + str('media/posts/gif/' + fileName.split('.')[0] + '.gif'))
+        file.video_gif = str('posts/gif/' + fileName.split('.')[0] + '.gif')
+        file.save()
+        return True
+    except Exception as e:
+        print(e)
+        return False
 
 
 def processingImagesAndVideos(request, post_id):
     files = get_list_or_404(PostFilesModel, post_id=post_id)
-    print(files)
     try:
         for file in files:
             if file.type == 'image':
