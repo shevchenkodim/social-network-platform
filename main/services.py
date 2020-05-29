@@ -86,7 +86,7 @@ def processingImagesAndVideos(request, post_id):
                 _processingImage(file)
             elif file.type == 'video':
                 _processingVideo(file)
-        messages.success(request, 'Your successfully add new post! Please reload this page! :)')
+        # messages.success(request, 'Your successfully add new post! Please reload this page! :)')
     except Exception as e:
         print(e)
-        messages.error(request, 'Error! Please try again later!')
+        # messages.error(request, 'Error! Please try again later!')

@@ -11,6 +11,7 @@ from django.contrib import messages
 from .models import Bookmarks, HashtagModel, PostsModel, PostFilesModel, CommentModel,\
 LikesModel
 from .services import processingImagesAndVideos
+import threading
 import uuid
 import os
 User = get_user_model()
@@ -157,10 +158,16 @@ def create_new_post(request):
                 if extension in ALLOWED_TYPES_IMAGE:
                     postFile = PostFilesModel.objects.create(post=new_post, file=file, type='image', position=position)
                 position += 1
-            processingImagesAndVideos(request, new_post.id)
+
+            my_thread = threading.Thread(target=processingImagesAndVideos, name=new_post.id, args=(request, new_post.id))
+            my_thread.start()
+
+            # processingImagesAndVideos(request, new_post.id)
+            messages.success(request, 'Your successfully add new post! :)')
             response_data = {'_code' : 0, '_status' : 'ok' }
             return JsonResponse(response_data)
     else:
+        messages.error(request, 'Error! Please try again later!')
         response_data = {'_code' : 1, '_status' : 'no' }
         return JsonResponse(response_data)
 
