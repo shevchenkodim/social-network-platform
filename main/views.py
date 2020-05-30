@@ -243,13 +243,16 @@ def user_upload_avatar(request):
         file = request.FILES
         f = file.get('file')
         if f == None:
+            messages.error(request, 'Error! Please try again later!')
             response_data = {'_code' : 1, '_status' : 'no' }
             return JsonResponse(response_data)
         profile = UserProfile.objects.get(user=request.user)
         profile.image = f
         profile.save()
+        messages.success(request, 'Your successfully update image!')
         response_data = {'_code' : 0, '_status' : 'ok'}
     else:
+        messages.error(request, 'Error! Please try again later!')
         response_data = {'_code' : 1, '_status' : 'no' }
 
     return JsonResponse(response_data)
