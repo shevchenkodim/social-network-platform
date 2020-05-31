@@ -64,12 +64,12 @@
                     {{ chat_page.chat_name }}
                 </a>
             </h2>
-            <i class="fa fa-info-circle" style="font-size:24px"></i>
+            <i class="fa fa-info-circle" style="font-size:24px" data-toggle="tooltip" data-placement="top" title="{% trans 'Director' %}: {{ chat_page.director }}. {% trans 'Created chat' %} {{ chat_page.date_create }}"></i>
         </header>
     </div>
     <div id="block-messages" class="card-body overflow-auto" style="background-image: url('{% static 'assets\images\messenger\fon2.jpg' %}');">
         <div class="row d-flex justify-content-center pb-2 created-chat">
-            Created chat {{ chat_page.date_create }}
+            {% trans "Created chat" %} {{ chat_page.date_create }}
         </div>
         {% for message in messages %}
             {% if message.from_id.id == user.id %}
