@@ -1,0 +1,32 @@
+{% load static %}
+{% load i18n %}
+
+{% for message in messages %}
+    {% if message.from_id.id == user.id %}
+        <div class="row d-flex justify-content-end align-items-center pr-2 mb-2 mt-2">
+            <span class="pr-3">{{ message.content }}</span>
+            {% if message.from_id.userprofile.image and message.from_id.userprofile.image.url %}
+                <a href="{% url 'user_page' message.from_id.username %}">
+                    <img class="" style="border-radius: 100px;" src="{{ message.from_id.userprofile.image.url }}" alt="" width="40" height="40">
+                </a>
+            {% else %}
+                <a href="{% url 'user_page' message.from_id.username %}">
+                    <img src="{% static 'assets\images\default.png' %}" alt="" width="auto" height="50">
+                </a>
+            {% endif %}
+        </div>
+    {% else %}
+        <div class="row d-flex justify-content-start align-items-center pl-2 mb-2 mt-2">
+            {% if message.from_id.userprofile.image and message.from_id.userprofile.image.url %}
+                <a href="{% url 'user_page' message.from_id.username %}">
+                    <img class="" style="border-radius: 100px;" src="{{ message.from_id.userprofile.image.url }}" alt="" width="40" height="40">
+                </a>
+            {% else %}
+                <a href="{% url 'user_page' message.from_id.username %}">
+                    <img style="border-radius: 100px;" src="{% static 'assets\images\default.png' %}" alt="" width="auto" height="50">
+                </a>
+            {% endif %}
+            <span class="pl-3">{{ message.content }}</span>
+        </div>
+    {% endif %}
+{% endfor %}
