@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-05 07:28+0300\n"
+"POT-Creation-Date: 2020-06-05 08:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,80 +18,68 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\main\models.py:26
+#: .\main\models.py:27
 msgid "Text posts"
 msgstr "Text posts"
 
-#: .\main\models.py:27
+#: .\main\models.py:29
 msgid "Date and time created post"
 msgstr "Date and time created post"
 
-#: .\main\models.py:28
-msgid "hashtag"
-msgstr "hashtag"
-
-#: .\main\models.py:29 .\main\models.py:62
+#: .\main\models.py:32 .\main\models.py:71
 msgid "Likes count"
 msgstr "Likes count"
 
-#: .\main\models.py:30
+#: .\main\models.py:33
 msgid "Comments count"
 msgstr "Comments count"
 
-#: .\main\models.py:36 .\templates\components\news_posts.html:108
+#: .\main\models.py:39 .\templates\components\news_posts.html:108
 #: .\templates\post_detail_page.html:96
 msgid "Post"
 msgstr "Post"
 
-#: .\main\models.py:37
+#: .\main\models.py:40
 msgid "Posts"
 msgstr "Posts"
 
-#: .\main\models.py:42 .\main\models.py:59
-msgid "post"
-msgstr "post"
-
-#: .\main\models.py:43 .\main\models.py:52
+#: .\main\models.py:47 .\main\models.py:58
 msgid "File"
 msgstr "File"
 
-#: .\main\models.py:44
+#: .\main\models.py:49
 msgid "Type file"
 msgstr "Type file"
 
-#: .\main\models.py:45
+#: .\main\models.py:50
 msgid "Position in post"
 msgstr "Position in post"
 
-#: .\main\models.py:46
+#: .\main\models.py:52
 msgid "video_gif"
 msgstr "video_gif"
 
-#: .\main\models.py:53
+#: .\main\models.py:59
 msgid "Files"
 msgstr "Files"
 
-#: .\main\models.py:58
-msgid "user"
-msgstr "user"
-
-#: .\main\models.py:60
+#: .\main\models.py:68
 msgid "Text"
 msgstr "Text"
 
-#: .\main\models.py:61
+#: .\main\models.py:70
 msgid "Date and time created comment"
 msgstr "Date and time created comment"
 
-#: .\main\models.py:69
+#: .\main\models.py:79
 msgid "Comment"
 msgstr "Comment"
 
-#: .\main\models.py:70
+#: .\main\models.py:80
 msgid "Comments"
 msgstr "Comments"
 
-#: .\main\models.py:84
+#: .\main\models.py:95
 msgid "Date and time add"
 msgstr "Date and time add"
 
@@ -127,22 +115,6 @@ msgstr "Send"
 msgid "Please choise your chat messages!"
 msgstr "Please choise your chat messages!"
 
-#: .\notification\models.py:13
-msgid "User to"
-msgstr "User to"
-
-#: .\notification\models.py:16
-msgid "User from"
-msgstr "User from"
-
-#: .\notification\models.py:17 .\notification\templates\notifications.html:34
-msgid "Message"
-msgstr "Message"
-
-#: .\notification\models.py:20 .\notification\templates\notifications.html:35
-msgid "Status"
-msgstr "Status"
-
 #: .\notification\templates\notifications.html:6
 #: .\notification\templates\notifications.html:16
 #: .\templates\components\menu.html:61
@@ -152,6 +124,14 @@ msgstr "Notifications"
 #: .\notification\templates\notifications.html:24
 msgid "Read all"
 msgstr "Read all"
+
+#: .\notification\templates\notifications.html:34
+msgid "Message"
+msgstr "Message"
+
+#: .\notification\templates\notifications.html:35
+msgid "Status"
+msgstr "Status"
 
 #: .\notification\templates\notifications.html:57
 msgid "new"
@@ -210,7 +190,7 @@ msgstr "Show work in profile"
 msgid "You studied"
 msgstr "You studied"
 
-#: .\settings\templates\settings_general.html:82 .\signup\models.py:13
+#: .\settings\templates\settings_general.html:82 .\signup\models.py:14
 msgid "Studied"
 msgstr "Studied"
 
@@ -247,7 +227,7 @@ msgstr "Show home town in profile"
 msgid "You relationship"
 msgstr "You relationship"
 
-#: .\settings\templates\settings_general.html:200 .\signup\models.py:19
+#: .\settings\templates\settings_general.html:200 .\signup\models.py:25
 msgid "Relationship"
 msgstr "Relationship"
 
@@ -259,7 +239,7 @@ msgstr "Show relationship in profile"
 msgid "You phone number"
 msgstr "You phone number"
 
-#: .\settings\templates\settings_general.html:240 .\signup\models.py:24
+#: .\settings\templates\settings_general.html:240 .\signup\models.py:35
 msgid "Phone number"
 msgstr "Phone number"
 
@@ -287,67 +267,59 @@ msgstr "Error! Please try again later!"
 msgid "Your language successfully updated!"
 msgstr "Your language successfully updated!"
 
-#: .\signup\models.py:12
+#: .\signup\models.py:13
 msgid "Show info work in user page any user"
 msgstr "Show info work in user page any user"
 
-#: .\signup\models.py:14
+#: .\signup\models.py:16
 msgid "Show info studied in user page any user"
 msgstr "Show info studied in user page any user"
 
-#: .\signup\models.py:15
+#: .\signup\models.py:18
 msgid "Current City"
 msgstr "Current City"
 
-#: .\signup\models.py:16
+#: .\signup\models.py:20
 msgid "Show info current city in user page any user"
 msgstr "Show info current city in user page any user"
 
-#: .\signup\models.py:17
+#: .\signup\models.py:21
 msgid "Home Town"
 msgstr "Home Town"
 
-#: .\signup\models.py:18
+#: .\signup\models.py:23
 msgid "Show info home town in user page any user"
 msgstr "Show info home town in user page any user"
 
-#: .\signup\models.py:20
+#: .\signup\models.py:27
 msgid "Show info relationship in user page any user"
 msgstr "Show info relationship in user page any user"
 
-#: .\signup\models.py:21
+#: .\signup\models.py:29
 msgid "Image user"
 msgstr "Image user"
 
-#: .\signup\models.py:22
-msgid "folower"
-msgstr "folower"
-
-#: .\signup\models.py:23
-msgid "folow"
-msgstr "folow"
-
-#: .\signup\models.py:25
+#: .\signup\models.py:37
 msgid "Show info phone number in user page any user"
 msgstr "Show info phone number in user page any user"
 
-#: .\signup\models.py:26
+#: .\signup\models.py:39
 msgid "Verified phone number"
 msgstr "Verified phone number"
 
-#: .\signup\models.py:27
+#: .\signup\models.py:41
 msgid "Unique Verification email UUID"
 msgstr "Unique Verification email UUID"
 
-#: .\signup\models.py:28
+#: .\signup\models.py:42
 msgid "Verified email"
 msgstr "Verified email"
 
-#: .\signup\models.py:34
+#: .\signup\models.py:48
 msgid "User_Profile"
 msgstr "User_Profile"
 
-#: .\signup\models.py:35
+#: .\signup\models.py:49
 msgid "User_Profiles"
 msgstr "User_Profiles"
 

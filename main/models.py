@@ -22,10 +22,13 @@ class HashtagModel(models.Model):
 class PostsModel(models.Model):
     """Posts user model"""
     page_id = models.UUIDField(default=uuid.uuid4, blank=False, unique=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='user')
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, verbose_name='user')
     text = models.TextField(_('Text posts'), blank=True, max_length=2000)
-    date_time_create = models.DateTimeField(_('Date and time created post'), auto_now_add=True)
-    hashtag = models.ManyToManyField(HashtagModel, blank=True, verbose_name=_('hashtag'), related_name='hashtags')
+    date_time_create = models.DateTimeField(
+        _('Date and time created post'), auto_now_add=True)
+    hashtag = models.ManyToManyField(
+        HashtagModel, blank=True, verbose_name='hashtag', related_name='hashtags')
     likes_count = models.IntegerField(_('Likes count'), default=0)
     comments_count = models.IntegerField(_('Comments count'), default=0)
 
@@ -39,11 +42,14 @@ class PostsModel(models.Model):
 
 class PostFilesModel(models.Model):
     """Post files models"""
-    post = models.ForeignKey(PostsModel, on_delete=models.CASCADE, verbose_name=_('post'))
-    file = models.FileField(_('File'), max_length=255, upload_to='posts/image/')
+    post = models.ForeignKey(
+        PostsModel, on_delete=models.CASCADE, verbose_name='post')
+    file = models.FileField(_('File'), max_length=255,
+                            upload_to='posts/image/')
     type = models.CharField(_('Type file'), max_length=100)
     position = models.IntegerField(_('Position in post'), default=0)
-    video_gif = models.ImageField(_('video_gif'),max_length=255, upload_to='posts/gif/', blank=True, null=True)
+    video_gif = models.ImageField(
+        _('video_gif'), max_length=255, upload_to='posts/gif/', blank=True, null=True)
 
     def __str__(self):
         return f'{self.file} - {self.type}'
@@ -55,12 +61,16 @@ class PostFilesModel(models.Model):
 
 class CommentModel(models.Model):
     """Comment models"""
-    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_('user'))
-    post = models.ForeignKey(PostsModel, on_delete=models.CASCADE, verbose_name=_('post'))
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, verbose_name='user')
+    post = models.ForeignKey(
+        PostsModel, on_delete=models.CASCADE, verbose_name='post')
     text = models.CharField(_('Text'), max_length=300)
-    date_time_add = models.DateTimeField(_('Date and time created comment'), auto_now_add=True)
+    date_time_add = models.DateTimeField(
+        _('Date and time created comment'), auto_now_add=True)
     likes_count = models.IntegerField(_('Likes count'), default=0)
-    reply_to = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True)
+    reply_to = models.ForeignKey(
+        'self', on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
         return f'{self.post.text} - {self.text}'
@@ -81,4 +91,5 @@ class Bookmarks(models.Model):
     """User saved posts"""
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(PostsModel, on_delete=models.CASCADE)
-    date_time_add = models.DateTimeField(_('Date and time add'), auto_now_add=True)
+    date_time_add = models.DateTimeField(
+        _('Date and time add'), auto_now_add=True)
