@@ -1,0 +1,555 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-06-05 07:28+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\main\models.py:26
+msgid "Text posts"
+msgstr "Text posts"
+
+#: .\main\models.py:27
+msgid "Date and time created post"
+msgstr "Date and time created post"
+
+#: .\main\models.py:28
+msgid "hashtag"
+msgstr "hashtag"
+
+#: .\main\models.py:29 .\main\models.py:62
+msgid "Likes count"
+msgstr "Likes count"
+
+#: .\main\models.py:30
+msgid "Comments count"
+msgstr "Comments count"
+
+#: .\main\models.py:36 .\templates\components\news_posts.html:108
+#: .\templates\post_detail_page.html:96
+msgid "Post"
+msgstr "Post"
+
+#: .\main\models.py:37
+msgid "Posts"
+msgstr "Posts"
+
+#: .\main\models.py:42 .\main\models.py:59
+msgid "post"
+msgstr "post"
+
+#: .\main\models.py:43 .\main\models.py:52
+msgid "File"
+msgstr "File"
+
+#: .\main\models.py:44
+msgid "Type file"
+msgstr "Type file"
+
+#: .\main\models.py:45
+msgid "Position in post"
+msgstr "Position in post"
+
+#: .\main\models.py:46
+msgid "video_gif"
+msgstr "video_gif"
+
+#: .\main\models.py:53
+msgid "Files"
+msgstr "Files"
+
+#: .\main\models.py:58
+msgid "user"
+msgstr "user"
+
+#: .\main\models.py:60
+msgid "Text"
+msgstr "Text"
+
+#: .\main\models.py:61
+msgid "Date and time created comment"
+msgstr "Date and time created comment"
+
+#: .\main\models.py:69
+msgid "Comment"
+msgstr "Comment"
+
+#: .\main\models.py:70
+msgid "Comments"
+msgstr "Comments"
+
+#: .\main\models.py:84
+msgid "Date and time add"
+msgstr "Date and time add"
+
+#: .\messenger\templates\chat.html:7
+msgid "Chat"
+msgstr "Chat"
+
+#: .\messenger\templates\chat.html:15 .\messenger\templates\messenger.html:15
+msgid "library_add"
+msgstr "library_add"
+
+#: .\messenger\templates\chat.html:18 .\messenger\templates\messenger.html:18
+msgid "Create chat!"
+msgstr "Create chat!"
+
+#: .\messenger\templates\chat.html:67
+msgid "Director"
+msgstr "Director"
+
+#: .\messenger\templates\chat.html:67 .\messenger\templates\chat.html:72
+msgid "Created chat"
+msgstr "Created chat"
+
+#: .\messenger\templates\chat.html:111
+msgid "Your message..."
+msgstr "Your message..."
+
+#: .\messenger\templates\chat.html:115 .\messenger\templates\messenger.html:7
+msgid "Send"
+msgstr "Send"
+
+#: .\messenger\templates\messenger.html:56
+msgid "Please choise your chat messages!"
+msgstr "Please choise your chat messages!"
+
+#: .\notification\models.py:13
+msgid "User to"
+msgstr "User to"
+
+#: .\notification\models.py:16
+msgid "User from"
+msgstr "User from"
+
+#: .\notification\models.py:17 .\notification\templates\notifications.html:34
+msgid "Message"
+msgstr "Message"
+
+#: .\notification\models.py:20 .\notification\templates\notifications.html:35
+msgid "Status"
+msgstr "Status"
+
+#: .\notification\templates\notifications.html:6
+#: .\notification\templates\notifications.html:16
+#: .\templates\components\menu.html:61
+msgid "Notifications"
+msgstr "Notifications"
+
+#: .\notification\templates\notifications.html:24
+msgid "Read all"
+msgstr "Read all"
+
+#: .\notification\templates\notifications.html:57
+msgid "new"
+msgstr "new"
+
+#: .\notification\templates\notifications.html:60
+msgid "readed"
+msgstr "readed"
+
+#: .\notification\templates\notifications.html:80
+#: .\notification\templates\notifications.html:88
+msgid "Prev"
+msgstr "Prev"
+
+#: .\notification\templates\notifications.html:102
+#: .\notification\templates\notifications.html:106
+#: .\templates\components\news_posts.html:48
+#: .\templates\post_detail_page.html:33
+msgid "Next"
+msgstr "Next"
+
+#: .\settings\templates\settings_general.html:6
+#: .\settings\templates\settings_language.html:6
+#: .\templates\components\menu.html:89
+msgid "Settings"
+msgstr "Settings"
+
+#: .\settings\templates\settings_general.html:16
+#: .\settings\templates\settings_language.html:16
+msgid "General"
+msgstr "General"
+
+#: .\settings\templates\settings_general.html:19
+#: .\settings\templates\settings_language.html:19
+msgid "Security"
+msgstr "Security"
+
+#: .\settings\templates\settings_general.html:23
+#: .\settings\templates\settings_language.html:23
+msgid "Language of the region"
+msgstr "Language of the region"
+
+#: .\settings\templates\settings_general.html:38
+msgid "You work"
+msgstr "You work"
+
+#: .\settings\templates\settings_general.html:44 .\signup\models.py:11
+msgid "Work"
+msgstr "Work"
+
+#: .\settings\templates\settings_general.html:67
+msgid "Show work in profile"
+msgstr "Show work in profile"
+
+#: .\settings\templates\settings_general.html:76
+msgid "You studied"
+msgstr "You studied"
+
+#: .\settings\templates\settings_general.html:82 .\signup\models.py:13
+msgid "Studied"
+msgstr "Studied"
+
+#: .\settings\templates\settings_general.html:105
+#: .\settings\templates\settings_general.html:264
+msgid "Show studied in profile"
+msgstr "Show studied in profile"
+
+#: .\settings\templates\settings_general.html:115
+msgid "You current city"
+msgstr "You current city"
+
+#: .\settings\templates\settings_general.html:121
+msgid "Current city"
+msgstr "Current city"
+
+#: .\settings\templates\settings_general.html:145
+msgid "Show current city in profile"
+msgstr "Show current city in profile"
+
+#: .\settings\templates\settings_general.html:155
+msgid "Your home town"
+msgstr "Your home town"
+
+#: .\settings\templates\settings_general.html:161
+msgid "Home town"
+msgstr "Home town"
+
+#: .\settings\templates\settings_general.html:184
+msgid "Show home town in profile"
+msgstr "Show home town in profile"
+
+#: .\settings\templates\settings_general.html:194
+msgid "You relationship"
+msgstr "You relationship"
+
+#: .\settings\templates\settings_general.html:200 .\signup\models.py:19
+msgid "Relationship"
+msgstr "Relationship"
+
+#: .\settings\templates\settings_general.html:224
+msgid "Show relationship in profile"
+msgstr "Show relationship in profile"
+
+#: .\settings\templates\settings_general.html:234
+msgid "You phone number"
+msgstr "You phone number"
+
+#: .\settings\templates\settings_general.html:240 .\signup\models.py:24
+msgid "Phone number"
+msgstr "Phone number"
+
+#: .\settings\templates\settings_general.html:274
+msgid "Save info"
+msgstr "Save info"
+
+#: .\settings\templates\settings_language.html:31
+msgid "Choice your language"
+msgstr "Choice your language"
+
+#: .\settings\templates\settings_language.html:40
+msgid "Save changes"
+msgstr "Save changes"
+
+#: .\settings\views.py:34
+msgid "Your information has been successfully updated!"
+msgstr "Your information has been successfully updated!"
+
+#: .\settings\views.py:37 .\settings\views.py:63
+msgid "Error! Please try again later!"
+msgstr "Error! Please try again later!"
+
+#: .\settings\views.py:60
+msgid "Your language successfully updated!"
+msgstr "Your language successfully updated!"
+
+#: .\signup\models.py:12
+msgid "Show info work in user page any user"
+msgstr "Show info work in user page any user"
+
+#: .\signup\models.py:14
+msgid "Show info studied in user page any user"
+msgstr "Show info studied in user page any user"
+
+#: .\signup\models.py:15
+msgid "Current City"
+msgstr "Current City"
+
+#: .\signup\models.py:16
+msgid "Show info current city in user page any user"
+msgstr "Show info current city in user page any user"
+
+#: .\signup\models.py:17
+msgid "Home Town"
+msgstr "Home Town"
+
+#: .\signup\models.py:18
+msgid "Show info home town in user page any user"
+msgstr "Show info home town in user page any user"
+
+#: .\signup\models.py:20
+msgid "Show info relationship in user page any user"
+msgstr "Show info relationship in user page any user"
+
+#: .\signup\models.py:21
+msgid "Image user"
+msgstr "Image user"
+
+#: .\signup\models.py:22
+msgid "folower"
+msgstr "folower"
+
+#: .\signup\models.py:23
+msgid "folow"
+msgstr "folow"
+
+#: .\signup\models.py:25
+msgid "Show info phone number in user page any user"
+msgstr "Show info phone number in user page any user"
+
+#: .\signup\models.py:26
+msgid "Verified phone number"
+msgstr "Verified phone number"
+
+#: .\signup\models.py:27
+msgid "Unique Verification email UUID"
+msgstr "Unique Verification email UUID"
+
+#: .\signup\models.py:28
+msgid "Verified email"
+msgstr "Verified email"
+
+#: .\signup\models.py:34
+msgid "User_Profile"
+msgstr "User_Profile"
+
+#: .\signup\models.py:35
+msgid "User_Profiles"
+msgstr "User_Profiles"
+
+#: .\signup\views.py:31 .\signup\views.py:56
+msgid "Error! Please check your details or try again later!"
+msgstr "Error! Please check your details or try again later!"
+
+#: .\social_network_platform\settings.py:149
+msgid "English"
+msgstr "English"
+
+#: .\social_network_platform\settings.py:150
+msgid "Русский"
+msgstr "Русский"
+
+#: .\social_network_platform\settings.py:151
+msgid "Український"
+msgstr "Український"
+
+#: .\templates\400.html:6
+msgid "Page 400"
+msgstr "Page 400"
+
+#: .\templates\400.html:13
+msgid "Error 400 - Invalid request!"
+msgstr "Error 400 - Invalid request!"
+
+#: .\templates\403.html:6
+msgid "Page 403"
+msgstr "Page 403"
+
+#: .\templates\403.html:13
+msgid "Error 403 - access denied!"
+msgstr "Error 403 - access denied!"
+
+#: .\templates\404.html:6
+msgid "Page 404"
+msgstr "Page 404"
+
+#: .\templates\404.html:13
+msgid "Error 404 - Page not found!"
+msgstr "Error 404 - Page not found!"
+
+#: .\templates\500.html:6
+msgid "Page 500"
+msgstr "Page 500"
+
+#: .\templates\500.html:13
+msgid "Error 500 - Server error!"
+msgstr "Error 500 - Server error!"
+
+#: .\templates\base.html:10 .\templates\news_page.html:6
+#: .\templates\user_page.html:6
+msgid "Social Network"
+msgstr "Social Network"
+
+#: .\templates\base.html:61
+msgid "Create new post"
+msgstr "Create new post"
+
+#: .\templates\base.html:77
+msgid "What you  mean?"
+msgstr "What you  mean?"
+
+#: .\templates\base.html:83 .\templates\user_page.html:132
+msgid "Choose file"
+msgstr "Choose file"
+
+#: .\templates\base.html:101
+msgid "Create"
+msgstr "Create"
+
+#: .\templates\base.html:104 .\templates\user_page.html:146
+msgid "Close"
+msgstr "Close"
+
+#: .\templates\bookmarks.html:6 .\templates\components\menu.html:75
+msgid "Bookmarks"
+msgstr "Bookmarks"
+
+#: .\templates\bookmarks.html:14
+msgid "Your saved posts"
+msgstr "Your saved posts"
+
+#: .\templates\components\block_stories.html:11
+#: .\templates\components\block_stories.html:17
+#: .\templates\components\block_stories.html:23
+#: .\templates\components\block_stories.html:29
+#: .\templates\components\block_stories.html:35
+#: .\templates\components\block_stories.html:41
+#: .\templates\components\block_stories.html:47
+#: .\templates\components\block_stories.html:53
+#: .\templates\components\block_stories.html:59
+#: .\templates\components\block_stories.html:65
+#: .\templates\components\block_stories.html:71
+#: .\templates\components\block_stories.html:77
+#: .\templates\components\block_stories.html:83
+#: .\templates\components\block_stories.html:89
+msgid "usernam.."
+msgstr "usernam.."
+
+#: .\templates\components\menu.html:36
+msgid "News"
+msgstr "News"
+
+#: .\templates\components\menu.html:47
+msgid "Messenger"
+msgstr "Messenger"
+
+#: .\templates\components\menu.html:102
+msgid "Log Out"
+msgstr "Log Out"
+
+#: .\templates\components\navbar.html:24 .\templates\sign_in.html:6
+#: .\templates\sign_in.html:12 .\templates\sign_in.html:47
+msgid "Sign In"
+msgstr "Sign In"
+
+#: .\templates\components\news_posts.html:44
+#: .\templates\post_detail_page.html:29
+msgid "Previous"
+msgstr "Previous"
+
+#: .\templates\components\news_posts.html:69
+msgid "read more..."
+msgstr "read more..."
+
+#: .\templates\components\news_posts.html:85
+#: .\templates\post_detail_page.html:80
+msgid "likes"
+msgstr "likes"
+
+#: .\templates\components\news_posts.html:97
+msgid "View all comments..."
+msgstr "View all comments..."
+
+#: .\templates\components\news_posts.html:105
+#: .\templates\post_detail_page.html:93
+msgid "Add a comment..."
+msgstr "Add a comment..."
+
+#: .\templates\components\news_posts.html:116
+msgid "Your don't have news"
+msgstr "Your don't have news"
+
+#: .\templates\sign_in.html:26
+msgid "Enter your username"
+msgstr "Enter your username"
+
+#: .\templates\sign_in.html:37
+msgid "Enter your password"
+msgstr "Enter your password"
+
+#: .\templates\sign_in.html:50
+msgid "I don't have an account"
+msgstr "I don't have an account"
+
+#: .\templates\sign_up.html:6 .\templates\sign_up.html:12
+#: .\templates\sign_up.html:80
+msgid "Sign Up"
+msgstr "Sign Up"
+
+#: .\templates\sign_up.html:26
+msgid "Your username"
+msgstr "Your username"
+
+#: .\templates\sign_up.html:37
+msgid "Your first_name"
+msgstr "Your first_name"
+
+#: .\templates\sign_up.html:48 .\templates\sign_up.html:59
+msgid "Your last_name"
+msgstr "Your last_name"
+
+#: .\templates\sign_up.html:68
+msgid "Password:"
+msgstr "Password:"
+
+#: .\templates\sign_up.html:70
+msgid "Your password"
+msgstr "Your password"
+
+#: .\templates\sign_up.html:83
+msgid "I can log in"
+msgstr "I can log in"
+
+#: .\templates\user_page.html:24
+msgid "Edit Profile"
+msgstr "Edit Profile"
+
+#: .\templates\user_page.html:30
+msgid "followers"
+msgstr "followers"
+
+#: .\templates\user_page.html:33
+msgid "following"
+msgstr "following"
+
+#: .\templates\user_page.html:117
+msgid "Upload new photo"
+msgstr "Upload new photo"
+
+#: .\templates\user_page.html:143
+msgid "Upload"
+msgstr "Upload"
