@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+{% trans "Settings" %}
+{% endblock title %}
+
+{% block middle %}
+<div class="row pl-3 pr-3 mb-4">
+    <div class="card" style="width:100%;">
+        <div class="card-header">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link text-dark"
+                        href="{% url 'settings:settings_general_view' %}">{% trans "General" %}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="#">{% trans "Security" %}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark active border"
+                        href="{% url 'settings:settings_language_view' %}">{% trans "Language of the region" %}</a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <form action="{% url 'settings:settings_language_view' %}" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="choice_language">{% trans "Choice your language" %}</label>
+                    <select class="form-control" name="language" id="choice_language">
+                        <option>English</option>
+                        <option>Русский</option>
+                        <option>Український</option>
+                    </select>
+                </div>
+
+                <button class="btn btn-primary" type="submit" name="button" style="width: 30%;">
+                    {% trans "Save changes" %}
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock middle %}
+
+{% block js %}
+<script src=""></script>
+{% endblock js %}

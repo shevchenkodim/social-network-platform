@@ -3,254 +3,283 @@
 {% load i18n %}
 
 {% block title %}
-    {% trans "Settings" %}
+{% trans "Settings" %}
 {% endblock title %}
 
 {% block middle %}
-    <div class="row pl-3 pr-3 mb-4">
-        <div class="card" style="width:100%;">
-            <div class="card-header">
-                <ul class="nav nav-tabs">
-                  <li class="nav-item">
-                    <a class="nav-link text-dark active border" href="#">{% trans "General" %}</a>
-                  </li>
-                  <li class="nav-item">
+<div class="row pl-3 pr-3 mb-4">
+    <div class="card" style="width:100%;">
+        <div class="card-header">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link text-dark active border"
+                        href="{% url 'settings:settings_general_view' %}">{% trans "General" %}</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link text-dark" href="#">{% trans "Security" %}</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link text-dark" href="#">{% trans "Language of the region" %}</a>
-                  </li>
-                </ul>
-            </div>
-            <div class="card-body">
-                <form action="{% url 'settings:settings_general_view' %}" method="POST">
-                    {% csrf_token %}
-                    {% if form.non_field_errors  %}
-                        <p class="text-danger">
-                            {{ form.non_field_errors }}
-                        </p>
-                    {% endif %}
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark"
+                        href="{% url 'settings:settings_language_view' %}">{% trans "Language of the region" %}</a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <form action="{% url 'settings:settings_general_view' %}" method="POST">
+                {% csrf_token %}
+                {% if form.non_field_errors  %}
+                <p class="text-danger">
+                    {{ form.non_field_errors }}
+                </p>
+                {% endif %}
 
-                    <div class="row">
-                        <div class="col-12">
-                             <label for="{{form.work.id_for_label}}">{% trans "You work" %}</label>
-                        </div>
-                        <div class="col-12 mb-3">
-                            <div class="row">
-                                <div class="col-7 pr-3">
-                                    <input type="text" class="form-control m-0 w-100" id="{{form.work.id_for_label}}" placeholder="{% trans 'Work' %}" maxlength="100" name="{{form.work.name}}"
-                                        value="{{form.work.value|default_if_none:''}}" style="max-width: 350px;">
-                                    {% if form.work.errors %}
-                                            <div class="alert-danger" role="alert">
-                                                    {{form.work.errors }}
-                                            </div>
-                                    {% endif %}
+                <div class="row">
+                    <div class="col-12">
+                        <label for="{{form.work.id_for_label}}">{% trans "You work" %}</label>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <div class="row">
+                            <div class="col-7 pr-3">
+                                <input type="text" class="form-control m-0 w-100" id="{{form.work.id_for_label}}"
+                                    placeholder="{% trans 'Work' %}" maxlength="100" name="{{form.work.name}}"
+                                    value="{{form.work.value|default_if_none:''}}" style="max-width: 350px;">
+                                {% if form.work.errors %}
+                                <div class="alert-danger" role="alert">
+                                    {{form.work.errors }}
                                 </div>
-                                <div class="col-5 pl-0 d-flex align-items-center">
-                                    <div class="d-flex align-items-center">
-                                        <div class="row">
-                                            <div class="col-2 pt-2">
-                                                <input id="{{form.is_show_work.id_for_label}}" name="{{form.is_show_work.name}}" type="checkbox" {% if form.is_show_work.value %}checked{% endif %} style="width:20px; height:20px;">
-                                                {% if form.is_show_work.errors %}
-                                                        <div class="alert-danger" role="alert">
-                                                                {{form.is_show_work.errors }}
-                                                        </div>
-                                                {% endif %}
+                                {% endif %}
+                            </div>
+                            <div class="col-5 pl-0 d-flex align-items-center">
+                                <div class="d-flex align-items-center">
+                                    <div class="row">
+                                        <div class="col-2 pt-2">
+                                            <input id="{{form.is_show_work.id_for_label}}"
+                                                name="{{form.is_show_work.name}}" type="checkbox"
+                                                {% if form.is_show_work.value %}checked{% endif %}
+                                                style="width:20px; height:20px;">
+                                            {% if form.is_show_work.errors %}
+                                            <div class="alert-danger" role="alert">
+                                                {{form.is_show_work.errors }}
                                             </div>
-                                            <div class="col-10 d-flex align-items-center">
-                                                <span>{% trans "Show work in profile" %}</span>
-                                            </div>
+                                            {% endif %}
+                                        </div>
+                                        <div class="col-10 d-flex align-items-center">
+                                            <span>{% trans "Show work in profile" %}</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="col-12">
-                             <label for="{{form.studied.id_for_label}}">{% trans "You studied" %}</label>
-                        </div>
-                        <div class="col-12 mb-3">
-                            <div class="row">
-                                <div class="col-7 pr-3">
-                                    <input type="text" class="form-control m-0 w-100" id="{{form.studied.id_for_label}}"  placeholder="{% trans 'Studied' %}" name="{{form.studied.name}}"
+                    <div class="col-12">
+                        <label for="{{form.studied.id_for_label}}">{% trans "You studied" %}</label>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <div class="row">
+                            <div class="col-7 pr-3">
+                                <input type="text" class="form-control m-0 w-100" id="{{form.studied.id_for_label}}"
+                                    placeholder="{% trans 'Studied' %}" name="{{form.studied.name}}"
                                     value="{{form.studied.value|default_if_none:''}}" style="max-width: 350px;">
-                                    {% if form.studied.errors %}
-                                            <div class="alert-danger" role="alert">
-                                                    {{form.studied.errors }}
-                                            </div>
-                                    {% endif %}
+                                {% if form.studied.errors %}
+                                <div class="alert-danger" role="alert">
+                                    {{form.studied.errors }}
                                 </div>
-                                <div class="col-5 pl-0 d-flex align-items-center">
-                                    <div class="d-flex align-items-center">
-                                        <div class="row">
-                                            <div class="col-2 pl-3 pt-2">
-                                                <input id="{{form.is_show_studied.id_for_label}}" name="{{form.is_show_studied.name}}" type="checkbox" {% if form.is_show_studied.value %}checked{% endif %} style="width:20px; height:20px;">
-                                                {% if form.is_show_studied.errors %}
-                                                        <div class="alert-danger" role="alert">
-                                                                {{form.is_show_studied.errors }}
-                                                        </div>
-                                                {% endif %}
+                                {% endif %}
+                            </div>
+                            <div class="col-5 pl-0 d-flex align-items-center">
+                                <div class="d-flex align-items-center">
+                                    <div class="row">
+                                        <div class="col-2 pl-3 pt-2">
+                                            <input id="{{form.is_show_studied.id_for_label}}"
+                                                name="{{form.is_show_studied.name}}" type="checkbox"
+                                                {% if form.is_show_studied.value %}checked{% endif %}
+                                                style="width:20px; height:20px;">
+                                            {% if form.is_show_studied.errors %}
+                                            <div class="alert-danger" role="alert">
+                                                {{form.is_show_studied.errors }}
                                             </div>
-                                            <div class="col-10 d-flex align-items-center">
-                                                <span>{% trans "Show studied in profile" %}</span>
-                                            </div>
+                                            {% endif %}
+                                        </div>
+                                        <div class="col-10 d-flex align-items-center">
+                                            <span>{% trans "Show studied in profile" %}</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
 
-                        <div class="col-12">
-                             <label for="{{form.current_city.id_for_label}}">{% trans "You current city" %}</label>
-                        </div>
-                        <div class="col-12 mb-3">
-                            <div class="row">
-                                <div class="col-7 pr-3">
-                                    <input type="text" class="form-control m-0 w-100" id="{{form.current_city.id_for_label}}" placeholder="{% trans 'Current city' %}" name="{{form.current_city.name}}"
+                    <div class="col-12">
+                        <label for="{{form.current_city.id_for_label}}">{% trans "You current city" %}</label>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <div class="row">
+                            <div class="col-7 pr-3">
+                                <input type="text" class="form-control m-0 w-100"
+                                    id="{{form.current_city.id_for_label}}" placeholder="{% trans 'Current city' %}"
+                                    name="{{form.current_city.name}}"
                                     value="{{form.current_city.value|default_if_none:''}}" style="max-width: 350px;">
-                                    {% if form.current_city.errors %}
-                                            <div class="alert-danger" role="alert">
-                                                    {{form.current_city.errors }}
-                                            </div>
-                                    {% endif %}
+                                {% if form.current_city.errors %}
+                                <div class="alert-danger" role="alert">
+                                    {{form.current_city.errors }}
                                 </div>
-                                <div class="col-5 pl-0 d-flex align-items-center">
-                                    <div class="d-flex align-items-center">
-                                        <div class="row">
-                                            <div class="col-2 pl-3 pt-2">
-                                                <input id="{{form.is_show_current_city.id_for_label}}" name="{{form.is_show_current_city.name}}" type="checkbox" {% if form.is_show_current_city.value %}checked{% endif %} style="width:20px; height:20px;">
-                                                {% if form.is_show_current_city.errors %}
-                                                        <div class="alert-danger" role="alert">
-                                                                {{form.is_show_current_city.errors }}
-                                                        </div>
-                                                {% endif %}
+                                {% endif %}
+                            </div>
+                            <div class="col-5 pl-0 d-flex align-items-center">
+                                <div class="d-flex align-items-center">
+                                    <div class="row">
+                                        <div class="col-2 pl-3 pt-2">
+                                            <input id="{{form.is_show_current_city.id_for_label}}"
+                                                name="{{form.is_show_current_city.name}}" type="checkbox"
+                                                {% if form.is_show_current_city.value %}checked{% endif %}
+                                                style="width:20px; height:20px;">
+                                            {% if form.is_show_current_city.errors %}
+                                            <div class="alert-danger" role="alert">
+                                                {{form.is_show_current_city.errors }}
                                             </div>
-                                            <div class="col-10 d-flex align-items-center">
-                                                <span>{% trans "Show current city in profile" %}</span>
-                                            </div>
+                                            {% endif %}
+                                        </div>
+                                        <div class="col-10 d-flex align-items-center">
+                                            <span>{% trans "Show current city in profile" %}</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
 
-                        <div class="col-12">
-                             <label for="{{form.studied.id_for_label}}">{% trans "Your home town" %}</label>
-                        </div>
-                        <div class="col-12 mb-3">
-                            <div class="row">
-                                <div class="col-7 pr-3">
-                                    <input type="text" class="form-control m-0 w-100" id="{{form.home_town.id_for_label}}"  placeholder="{% trans 'Home town' %}" name="{{form.home_town.name}}"
+                    <div class="col-12">
+                        <label for="{{form.studied.id_for_label}}">{% trans "Your home town" %}</label>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <div class="row">
+                            <div class="col-7 pr-3">
+                                <input type="text" class="form-control m-0 w-100" id="{{form.home_town.id_for_label}}"
+                                    placeholder="{% trans 'Home town' %}" name="{{form.home_town.name}}"
                                     value="{{form.home_town.value|default_if_none:''}}" style="max-width: 350px;">
-                                    {% if form.home_town.errors %}
-                                            <div class="alert-danger" role="alert">
-                                                    {{form.home_town.errors }}
-                                            </div>
-                                    {% endif %}
+                                {% if form.home_town.errors %}
+                                <div class="alert-danger" role="alert">
+                                    {{form.home_town.errors }}
                                 </div>
-                                <div class="col-5 pl-0 d-flex align-items-center">
-                                    <div class="d-flex align-items-center">
-                                        <div class="row">
-                                            <div class="col-2 pl-3 pt-2">
-                                                <input id="{{form.is_show_home_town.id_for_label}}" name="{{form.is_show_home_town.name}}" type="checkbox" {% if form.is_show_home_town.value %}checked{% endif %} style="width:20px; height:20px;">
-                                                {% if form.is_show_home_town.errors %}
-                                                        <div class="alert-danger" role="alert">
-                                                                {{form.is_show_home_town.errors }}
-                                                        </div>
-                                                {% endif %}
+                                {% endif %}
+                            </div>
+                            <div class="col-5 pl-0 d-flex align-items-center">
+                                <div class="d-flex align-items-center">
+                                    <div class="row">
+                                        <div class="col-2 pl-3 pt-2">
+                                            <input id="{{form.is_show_home_town.id_for_label}}"
+                                                name="{{form.is_show_home_town.name}}" type="checkbox"
+                                                {% if form.is_show_home_town.value %}checked{% endif %}
+                                                style="width:20px; height:20px;">
+                                            {% if form.is_show_home_town.errors %}
+                                            <div class="alert-danger" role="alert">
+                                                {{form.is_show_home_town.errors }}
                                             </div>
-                                            <div class="col-10 d-flex align-items-center">
-                                                <span>{% trans "Show home town in profile" %}</span>
-                                            </div>
+                                            {% endif %}
+                                        </div>
+                                        <div class="col-10 d-flex align-items-center">
+                                            <span>{% trans "Show home town in profile" %}</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
 
-                        <div class="col-12">
-                             <label for="{{form.relationship.id_for_label}}">{% trans "You relationship" %}</label>
-                        </div>
-                        <div class="col-12 mb-3">
-                            <div class="row">
-                                <div class="col-7 pr-3">
-                                    <input type="text" class="form-control m-0 w-100" id="{{form.relationship.id_for_label}}"  placeholder="{% trans 'Relationship' %}" name="{{form.relationship.name}}"
+                    <div class="col-12">
+                        <label for="{{form.relationship.id_for_label}}">{% trans "You relationship" %}</label>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <div class="row">
+                            <div class="col-7 pr-3">
+                                <input type="text" class="form-control m-0 w-100"
+                                    id="{{form.relationship.id_for_label}}" placeholder="{% trans 'Relationship' %}"
+                                    name="{{form.relationship.name}}"
                                     value="{{form.relationship.value|default_if_none:''}}" style="max-width: 350px;">
-                                    {% if form.relationship.errors %}
-                                            <div class="alert-danger" role="alert">
-                                                    {{form.relationship.errors }}
-                                            </div>
-                                    {% endif %}
+                                {% if form.relationship.errors %}
+                                <div class="alert-danger" role="alert">
+                                    {{form.relationship.errors }}
                                 </div>
-                                <div class="col-5 pl-0 d-flex align-items-center">
-                                    <div class="d-flex align-items-center">
-                                        <div class="row">
-                                            <div class="col-2 pl-3 pt-2">
-                                                <input id="{{form.is_show_relationship.id_for_label}}" name="{{form.is_show_relationship.name}}" type="checkbox" {% if form.is_show_relationship.value %}checked{% endif %} style="width:20px; height:20px;">
-                                                {% if form.is_show_relationship.errors %}
-                                                        <div class="alert-danger" role="alert">
-                                                                {{form.is_show_relationship.errors }}
-                                                        </div>
-                                                {% endif %}
+                                {% endif %}
+                            </div>
+                            <div class="col-5 pl-0 d-flex align-items-center">
+                                <div class="d-flex align-items-center">
+                                    <div class="row">
+                                        <div class="col-2 pl-3 pt-2">
+                                            <input id="{{form.is_show_relationship.id_for_label}}"
+                                                name="{{form.is_show_relationship.name}}" type="checkbox"
+                                                {% if form.is_show_relationship.value %}checked{% endif %}
+                                                style="width:20px; height:20px;">
+                                            {% if form.is_show_relationship.errors %}
+                                            <div class="alert-danger" role="alert">
+                                                {{form.is_show_relationship.errors }}
                                             </div>
-                                            <div class="col-10 d-flex align-items-center">
-                                                <span>{% trans "Show relationship in profile" %}</span>
-                                            </div>
+                                            {% endif %}
+                                        </div>
+                                        <div class="col-10 d-flex align-items-center">
+                                            <span>{% trans "Show relationship in profile" %}</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
 
-                        <div class="col-12">
-                             <label for="{{form.phone_number.id_for_label}}">{% trans "You phone number" %}</label>
-                        </div>
-                        <div class="col-12 mb-3">
-                            <div class="row">
-                                <div class="col-7 pr-3">
-                                    <input type="text" class="form-control m-0 w-100" id="{{form.phone_number.id_for_label}}"  placeholder="{% trans 'Phone number' %}" name="{{form.phone_number.name}}"
+                    <div class="col-12">
+                        <label for="{{form.phone_number.id_for_label}}">{% trans "You phone number" %}</label>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <div class="row">
+                            <div class="col-7 pr-3">
+                                <input type="text" class="form-control m-0 w-100"
+                                    id="{{form.phone_number.id_for_label}}" placeholder="{% trans 'Phone number' %}"
+                                    name="{{form.phone_number.name}}"
                                     value="{{form.phone_number.value|default_if_none:''}}" style="max-width: 350px;">
-                                    {% if form.phone_number.errors %}
-                                            <div class="alert-danger" role="alert">
-                                                    {{form.phone_number.errors }}
-                                            </div>
-                                    {% endif %}
+                                {% if form.phone_number.errors %}
+                                <div class="alert-danger" role="alert">
+                                    {{form.phone_number.errors }}
                                 </div>
-                                <div class="col-5 pl-0 d-flex align-items-center">
-                                    <div class="d-flex align-items-center">
-                                        <div class="row">
-                                            <div class="col-2 pl-3 pt-2">
-                                                <input id="{{form.is_show_phone_number.id_for_label}}" name="{{form.is_show_phone_number.name}}" type="checkbox" {% if form.is_show_phone_number.value %}checked{% endif %} style="width:20px; height:20px;">
-                                                {% if form.is_show_phone_number.errors %}
-                                                        <div class="alert-danger" role="alert">
-                                                                {{form.is_show_phone_number.errors }}
-                                                        </div>
-                                                {% endif %}
+                                {% endif %}
+                            </div>
+                            <div class="col-5 pl-0 d-flex align-items-center">
+                                <div class="d-flex align-items-center">
+                                    <div class="row">
+                                        <div class="col-2 pl-3 pt-2">
+                                            <input id="{{form.is_show_phone_number.id_for_label}}"
+                                                name="{{form.is_show_phone_number.name}}" type="checkbox"
+                                                {% if form.is_show_phone_number.value %}checked{% endif %}
+                                                style="width:20px; height:20px;">
+                                            {% if form.is_show_phone_number.errors %}
+                                            <div class="alert-danger" role="alert">
+                                                {{form.is_show_phone_number.errors }}
                                             </div>
-                                            <div class="col-10 d-flex align-items-center">
-                                                <span>{% trans "Show studied in profile" %}</span>
-                                            </div>
+                                            {% endif %}
+                                        </div>
+                                        <div class="col-10 d-flex align-items-center">
+                                            <span>{% trans "Show studied in profile" %}</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 pl-0">
-                        <button class="btn btn-primary" type="submit" name="button" style="width: 30%;">
-                            {% trans "Save info" %}
-                        </button>
-                    </div>
-                </form>
-            </div>
+                </div>
+                <div class="col-12 pl-0">
+                    <button class="btn btn-primary" type="submit" name="button" style="width: 30%;">
+                        {% trans "Save info" %}
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
+</div>
 {% endblock middle %}
 
 {% block js %}
-    <script src=""></script>
+<script src=""></script>
 {% endblock js %}
