@@ -1,0 +1,529 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-06-05 09:39+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: .\main\models.py:27
+msgid "Text posts"
+msgstr "Текст поста"
+
+#: .\main\models.py:29
+msgid "Date and time created post"
+msgstr "Дата и время создания поста"
+
+#: .\main\models.py:32 .\main\models.py:71
+msgid "Likes count"
+msgstr "Количество лайков"
+
+#: .\main\models.py:33
+msgid "Comments count"
+msgstr "Количество коментариев"
+
+#: .\main\models.py:39 .\templates\components\news_posts.html:108
+#: .\templates\post_detail_page.html:96
+msgid "Post"
+msgstr "Пост"
+
+#: .\main\models.py:40
+msgid "Posts"
+msgstr "Посты"
+
+#: .\main\models.py:47 .\main\models.py:58
+msgid "File"
+msgstr "Файл"
+
+#: .\main\models.py:49
+msgid "Type file"
+msgstr "Тип файла"
+
+#: .\main\models.py:50
+msgid "Position in post"
+msgstr "Позицыя в посте"
+
+#: .\main\models.py:52
+msgid "video_gif"
+msgstr "гифка"
+
+#: .\main\models.py:59
+msgid "Files"
+msgstr "Файлы"
+
+#: .\main\models.py:68
+msgid "Text"
+msgstr "Текст"
+
+#: .\main\models.py:70
+msgid "Date and time created comment"
+msgstr "Дата и время создания коментария"
+
+#: .\main\models.py:79
+msgid "Comment"
+msgstr "Коментарий"
+
+#: .\main\models.py:80
+msgid "Comments"
+msgstr "Коментарии"
+
+#: .\main\models.py:95
+msgid "Date and time add"
+msgstr "Дата и время добавления"
+
+#: .\messenger\templates\chat.html:7
+msgid "Chat"
+msgstr "Чат"
+
+#: .\messenger\templates\chat.html:15 .\messenger\templates\messenger.html:15
+msgid "library_add"
+msgstr "library_add"
+
+#: .\messenger\templates\chat.html:18 .\messenger\templates\messenger.html:18
+msgid "Create chat!"
+msgstr "Создание чата!"
+
+#: .\messenger\templates\chat.html:67
+msgid "Director"
+msgstr "Владелец"
+
+#: .\messenger\templates\chat.html:67 .\messenger\templates\chat.html:72
+msgid "Created chat"
+msgstr "Чат создан"
+
+#: .\messenger\templates\chat.html:111
+msgid "Your message..."
+msgstr "Ваше сообщение..."
+
+#: .\messenger\templates\chat.html:115 .\messenger\templates\messenger.html:7
+msgid "Send"
+msgstr "Отправить"
+
+#: .\messenger\templates\messenger.html:56
+msgid "Please choise your chat messages!"
+msgstr "Пожалуйста выберите чат!"
+
+#: .\notification\templates\notifications.html:6
+#: .\notification\templates\notifications.html:16
+#: .\templates\components\menu.html:61
+msgid "Notifications"
+msgstr "Уведомления"
+
+#: .\notification\templates\notifications.html:24
+msgid "Read all"
+msgstr "Прочитать все"
+
+#: .\notification\templates\notifications.html:34
+msgid "Message"
+msgstr "Сообщение"
+
+#: .\notification\templates\notifications.html:35
+msgid "Status"
+msgstr "Статус"
+
+#: .\notification\templates\notifications.html:57
+msgid "new"
+msgstr "new"
+
+#: .\notification\templates\notifications.html:60
+msgid "readed"
+msgstr "readed"
+
+#: .\notification\templates\notifications.html:80
+#: .\notification\templates\notifications.html:88
+msgid "Prev"
+msgstr "Предыдущая"
+
+#: .\notification\templates\notifications.html:102
+#: .\notification\templates\notifications.html:106
+#: .\templates\components\news_posts.html:48
+#: .\templates\post_detail_page.html:33
+msgid "Next"
+msgstr "Следующая"
+
+#: .\settings\templates\settings_general.html:6
+#: .\settings\templates\settings_language.html:6
+#: .\templates\components\menu.html:89
+msgid "Settings"
+msgstr "Настройки"
+
+#: .\settings\templates\settings_general.html:16
+#: .\settings\templates\settings_language.html:16
+msgid "General"
+msgstr "Главние"
+
+#: .\settings\templates\settings_general.html:19
+#: .\settings\templates\settings_language.html:19
+msgid "Security"
+msgstr "Безопасность"
+
+#: .\settings\templates\settings_general.html:23
+#: .\settings\templates\settings_language.html:23
+msgid "Language of the region"
+msgstr "Язык в вашем регионе"
+
+#: .\settings\templates\settings_general.html:38
+msgid "You work"
+msgstr "Ваша работа"
+
+#: .\settings\templates\settings_general.html:44 .\signup\models.py:11
+msgid "Work"
+msgstr "Работа"
+
+#: .\settings\templates\settings_general.html:67
+msgid "Show work in profile"
+msgstr "Показать работу в профиле"
+
+#: .\settings\templates\settings_general.html:76
+msgid "You studied"
+msgstr "Вы учитесь/отучились"
+
+#: .\settings\templates\settings_general.html:82 .\signup\models.py:14
+msgid "Studied"
+msgstr "Учился"
+
+#: .\settings\templates\settings_general.html:105
+#: .\settings\templates\settings_general.html:264
+msgid "Show studied in profile"
+msgstr "Показать изученное в профиле"
+
+#: .\settings\templates\settings_general.html:115
+msgid "You current city"
+msgstr "Ваш текущий город"
+
+#: .\settings\templates\settings_general.html:121
+msgid "Current city"
+msgstr "Текущий город"
+
+#: .\settings\templates\settings_general.html:145
+msgid "Show current city in profile"
+msgstr "Показать ваш текущий город в профиле"
+
+#: .\settings\templates\settings_general.html:155
+msgid "Your home town"
+msgstr "Ваш родной город"
+
+#: .\settings\templates\settings_general.html:161
+msgid "Home town"
+msgstr "Родной город"
+
+#: .\settings\templates\settings_general.html:184
+msgid "Show home town in profile"
+msgstr "Показать ваш родной город в профиле"
+
+#: .\settings\templates\settings_general.html:194
+msgid "You relationship"
+msgstr "Вашы отношения"
+
+#: .\settings\templates\settings_general.html:200 .\signup\models.py:25
+msgid "Relationship"
+msgstr "Отношения"
+
+#: .\settings\templates\settings_general.html:224
+msgid "Show relationship in profile"
+msgstr "Показать ваши отношения в профиле"
+
+#: .\settings\templates\settings_general.html:234
+msgid "You phone number"
+msgstr "Ваш мобильный телефон"
+
+#: .\settings\templates\settings_general.html:240 .\signup\models.py:35
+msgid "Phone number"
+msgstr "Мобильный телефон"
+
+#: .\settings\templates\settings_general.html:274
+msgid "Save info"
+msgstr "Сохранить информацию"
+
+#: .\settings\templates\settings_language.html:31
+msgid "Choice your language"
+msgstr "ВыВыбери свой языкбер"
+
+#: .\settings\templates\settings_language.html:40
+msgid "Save changes"
+msgstr "Сохранить изменения"
+
+#: .\settings\views.py:34
+msgid "Your information has been successfully updated!"
+msgstr "Ваша информация была успешно обновлена!"
+
+#: .\settings\views.py:37 .\settings\views.py:63
+msgid "Error! Please try again later!"
+msgstr "Ошибка! Пожалуйста, попробуйте позже!"
+
+#: .\settings\views.py:60
+msgid "Your language successfully updated!"
+msgstr "Ваш язык успешно обновлен!"
+
+#: .\signup\models.py:13
+msgid "Show info work in user page any user"
+msgstr "Показать информацию о работе на странице профиля любому пользователю"
+
+#: .\signup\models.py:16
+msgid "Show info studied in user page any user"
+msgstr "Показать информацию о учобе на странице профиля любому пользователю"
+
+#: .\signup\models.py:18
+msgid "Current City"
+msgstr "Текущий город"
+
+#: .\signup\models.py:20
+msgid "Show info current city in user page any user"
+msgstr "Показать информацию о текущем городе на страничке профиля любому пользователю"
+
+#: .\signup\models.py:21
+msgid "Home Town"
+msgstr "Родной город"
+
+#: .\signup\models.py:23
+msgid "Show info home town in user page any user"
+msgstr "Показать информацию о родном городе на страничке профиля любому пользователю"
+
+#: .\signup\models.py:27
+msgid "Show info relationship in user page any user"
+msgstr "Показать информацию о отношениях на страничке профиля любому пользователю"
+
+#: .\signup\models.py:29
+msgid "Image user"
+msgstr "Картинка пользователя"
+
+#: .\signup\models.py:37
+msgid "Show info phone number in user page any user"
+msgstr "Показать информацию о мобильном телефоне на страничке профиля любому пользователю"
+
+#: .\signup\models.py:39
+msgid "Verified phone number"
+msgstr "Проверений мобильный телефон"
+
+#: .\signup\models.py:41
+msgid "Unique Verification email UUID"
+msgstr "Уникальный UUID для проверки адресу электронной почты"
+
+#: .\signup\models.py:42
+msgid "Verified email"
+msgstr "Провереный email"
+
+#: .\signup\models.py:48
+msgid "User_Profile"
+msgstr "Профиль пользователя"
+
+#: .\signup\models.py:49
+msgid "User_Profiles"
+msgstr "Профиль пользователей"
+
+#: .\signup\views.py:31 .\signup\views.py:56
+msgid "Error! Please check your details or try again later!"
+msgstr "Ошибка! Пожалуйста, проверьте свои данные или попробуйте позже!"
+
+#: .\social_network_platform\settings.py:149
+msgid "English"
+msgstr "English"
+
+#: .\social_network_platform\settings.py:150
+msgid "Русский"
+msgstr "Русский"
+
+#: .\social_network_platform\settings.py:151
+msgid "Український"
+msgstr "Український"
+
+#: .\templates\400.html:6
+msgid "Page 400"
+msgstr "Страница 400"
+
+#: .\templates\400.html:13
+msgid "Error 400 - Invalid request!"
+msgstr "Ошибка 400 - Неверный запрос!"
+
+#: .\templates\403.html:6
+msgid "Page 403"
+msgstr "Страница 403"
+
+#: .\templates\403.html:13
+msgid "Error 403 - access denied!"
+msgstr "Ошибка 403 - доступ запрещен!"
+
+#: .\templates\404.html:6
+msgid "Page 404"
+msgstr "Страница 404"
+
+#: .\templates\404.html:13
+msgid "Error 404 - Page not found!"
+msgstr "Ошибка 404 - Страница не найдена!"
+
+#: .\templates\500.html:6
+msgid "Page 500"
+msgstr "Страница 500"
+
+#: .\templates\500.html:13
+msgid "Error 500 - Server error!"
+msgstr "Ошибка 500 - Ошибка сервера!"
+
+#: .\templates\base.html:10 .\templates\news_page.html:6
+#: .\templates\user_page.html:6
+msgid "Social Network"
+msgstr "Social Network"
+
+#: .\templates\base.html:61
+msgid "Create new post"
+msgstr "Создать новый пост"
+
+#: .\templates\base.html:77
+msgid "What you  mean?"
+msgstr "Что ты думаеш?"
+
+#: .\templates\base.html:83 .\templates\user_page.html:132
+msgid "Choose file"
+msgstr "Выберите файл"
+
+#: .\templates\base.html:101
+msgid "Create"
+msgstr "Создать"
+
+#: .\templates\base.html:104 .\templates\user_page.html:146
+msgid "Close"
+msgstr "Закрить"
+
+#: .\templates\bookmarks.html:6 .\templates\components\menu.html:75
+msgid "Bookmarks"
+msgstr "Сохраненные"
+
+#: .\templates\bookmarks.html:14
+msgid "Your saved posts"
+msgstr "Ваши сохраненные пости"
+
+#: .\templates\components\block_stories.html:11
+#: .\templates\components\block_stories.html:17
+#: .\templates\components\block_stories.html:23
+#: .\templates\components\block_stories.html:29
+#: .\templates\components\block_stories.html:35
+#: .\templates\components\block_stories.html:41
+#: .\templates\components\block_stories.html:47
+#: .\templates\components\block_stories.html:53
+#: .\templates\components\block_stories.html:59
+#: .\templates\components\block_stories.html:65
+#: .\templates\components\block_stories.html:71
+#: .\templates\components\block_stories.html:77
+#: .\templates\components\block_stories.html:83
+#: .\templates\components\block_stories.html:89
+msgid "usernam.."
+msgstr "имя пользователя..."
+
+#: .\templates\components\menu.html:36
+msgid "News"
+msgstr "Новости"
+
+#: .\templates\components\menu.html:47
+msgid "Messenger"
+msgstr "Messenger"
+
+#: .\templates\components\menu.html:102
+msgid "Log Out"
+msgstr "Выход"
+
+#: .\templates\components\navbar.html:24 .\templates\sign_in.html:6
+#: .\templates\sign_in.html:12 .\templates\sign_in.html:47
+msgid "Sign In"
+msgstr "Вход"
+
+#: .\templates\components\news_posts.html:44
+#: .\templates\post_detail_page.html:29
+msgid "Previous"
+msgstr "Предыдущая"
+
+#: .\templates\components\news_posts.html:69
+msgid "read more..."
+msgstr "читать больше..."
+
+#: .\templates\components\news_posts.html:85
+#: .\templates\post_detail_page.html:80
+msgid "likes"
+msgstr "нравится"
+
+#: .\templates\components\news_posts.html:97
+msgid "View all comments..."
+msgstr "Посмотреть все комментарии..."
+
+#: .\templates\components\news_posts.html:105
+#: .\templates\post_detail_page.html:93
+msgid "Add a comment..."
+msgstr "Добавить комментарий..."
+
+#: .\templates\components\news_posts.html:116
+msgid "Your don't have news"
+msgstr "У вас нет новостей"
+
+#: .\templates\sign_in.html:26
+msgid "Enter your username"
+msgstr "Введите имя пользователя"
+
+#: .\templates\sign_in.html:37
+msgid "Enter your password"
+msgstr "Введите ваш пароль"
+
+#: .\templates\sign_in.html:50
+msgid "I don't have an account"
+msgstr "У меня нет аккаунта"
+
+#: .\templates\sign_up.html:6 .\templates\sign_up.html:12
+#: .\templates\sign_up.html:80
+msgid "Sign Up"
+msgstr "Зарегистрироваться"
+
+#: .\templates\sign_up.html:26
+msgid "Your username"
+msgstr "Ваш логин"
+
+#: .\templates\sign_up.html:37
+msgid "Your first_name"
+msgstr "Ваше имя"
+
+#: .\templates\sign_up.html:48 .\templates\sign_up.html:59
+msgid "Your last_name"
+msgstr "Ваша фамилия"
+
+#: .\templates\sign_up.html:68
+msgid "Password:"
+msgstr "Пароль:"
+
+#: .\templates\sign_up.html:70
+msgid "Your password"
+msgstr "Ваш пароль"
+
+#: .\templates\sign_up.html:83
+msgid "I can log in"
+msgstr "Я могу войти"
+
+#: .\templates\user_page.html:24
+msgid "Edit Profile"
+msgstr "Редактировать профиль"
+
+#: .\templates\user_page.html:30
+msgid "followers"
+msgstr "подписчики"
+
+#: .\templates\user_page.html:33
+msgid "following"
+msgstr "подписки"
+
+#: .\templates\user_page.html:117
+msgid "Upload new photo"
+msgstr "Загрузить новое фото"
+
+#: .\templates\user_page.html:143
+msgid "Upload"
+msgstr "Загрузить"
