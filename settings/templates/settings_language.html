@@ -30,9 +30,9 @@
                 <div class="form-group">
                     <label for="choice_language">{% trans "Choice your language" %}</label>
                     <select class="form-control" name="language" id="choice_language">
-                        <option>English</option>
-                        <option>Русский</option>
-                        <option>Український</option>
+                        <option {% if language_code == 'en' %}selected {% endif %}>English</option>
+                        <option {% if language_code == 'ru' %}selected {% endif %}>Русский</option>
+                        <option {% if language_code == 'ua' %}selected {% endif %}>Український</option>
                     </select>
                 </div>
 

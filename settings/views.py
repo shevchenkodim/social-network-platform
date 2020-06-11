@@ -7,6 +7,7 @@ from django.http import JsonResponse
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
 from django.utils.translation import activate
+from django.utils.translation import get_language
 from django.core.exceptions import PermissionDenied
 
 # Create your views here.
@@ -50,6 +51,7 @@ class SettingsLanguageView(TemplateView):
         context = super().get_context_data(**kwargs)
         if not self.request.user.is_authenticated:
             raise PermissionDenied
+        context['language_code'] = get_language()
         context['menu_action'] = 'settings'
         return context
 
