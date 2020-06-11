@@ -87,6 +87,17 @@
                         {% endif %}
                     </div>
 
+                    <div class="form-label-group mb-3">
+                        {{user_form.password.label_tag}}
+                        <input id="{{user_form.password.id_for_label}}" name="{{user_form.password.name}}" value=""
+                            type="password" class="form-control" minlength="6" placeholder="{% trans 'Password' %}">
+                        {% if user_form.password.errors %}
+                        <div class="alert-danger" role="alert">
+                            {{user_form.password.errors }}
+                        </div>
+                        {% endif %}
+                    </div>
+
                     <button class="btn btn-primary" type="submit" name="button">
                         {% trans 'Save changes' %}
                     </button>

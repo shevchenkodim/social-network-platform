@@ -105,7 +105,14 @@ class SettingsSecurityView(TemplateView):
                 logout(request)
                 login(request, instance,
                       backend='django.contrib.auth.backends.ModelBackend')
+                
+                password = form.cleaned_data.get('password')
+                if password != '':
+                    instance.set_password(password)
+                    instance.save()
 
+                messages.success(request, _(
+                    'Your informations successfully updated!'))
                 return redirect(reverse('settings:settings_security_view'))
             else:
                 messages.error(request, form.errors)

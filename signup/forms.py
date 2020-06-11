@@ -22,12 +22,8 @@ class UserLoginForm(AuthenticationForm):
 
 
 class UserForm(ModelForm):
+    password = forms.CharField(required=False, min_length=6)
+
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'email')
-
-
-""" class UserPasswordForm(forms.Form):
-    class Meta:
-        model = User
-        fields = ('username', 'first_name', 'last_name', 'email') """
