@@ -251,7 +251,7 @@ msgstr "Сохранить информацию"
 
 #: .\settings\templates\settings_language.html:31
 msgid "Choice your language"
-msgstr "ВыВыбери свой языкбер"
+msgstr "Выбери свой язык"
 
 #: .\settings\templates\settings_language.html:40
 msgid "Save changes"

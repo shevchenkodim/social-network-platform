@@ -6,6 +6,7 @@ from signup.models import UserProfile
 from django.http import JsonResponse
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
+from django.utils.translation import activate
 from django.core.exceptions import PermissionDenied
 
 # Create your views here.
@@ -55,7 +56,15 @@ class SettingsLanguageView(TemplateView):
     def post(self, request, *args, **kwargs):
         if request.method == 'POST':
             language = request.POST.get('language')
-            print(language)
+            if language == 'English':
+                activate('en')
+            elif language == 'Русский':
+                activate('ru')
+            elif language == 'Український':
+                activate('ua')
+            else:
+                activate('en')
+
             messages.success(request, _(
                 'Your language successfully updated!'))
             return redirect(reverse('settings:settings_language_view'))
