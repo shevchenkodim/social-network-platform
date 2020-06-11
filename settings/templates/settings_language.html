@@ -29,21 +29,25 @@
             </ul>
         </div>
         <div class="card-body">
-            <form action="{% url 'settings:settings_language_view' %}" method="POST">
-                {% csrf_token %}
-                <div class="form-group">
-                    <label for="choice_language">{% trans "Choice your language" %}</label>
-                    <select class="form-control" name="language" id="choice_language">
-                        <option {% if language_code == 'en' %}selected {% endif %}>English</option>
-                        <option {% if language_code == 'ru' %}selected {% endif %}>Русский</option>
-                        <option {% if language_code == 'ua' %}selected {% endif %}>Український</option>
-                    </select>
-                </div>
+            <div class="row">
+                <div class="col-7">
+                    <form action="{% url 'settings:settings_language_view' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="choice_language">{% trans "Choice your language" %}</label>
+                            <select class="form-control" name="language" id="choice_language">
+                                <option {% if language_code == 'en' %}selected {% endif %}>English</option>
+                                <option {% if language_code == 'ru' %}selected {% endif %}>Русский</option>
+                                <option {% if language_code == 'ua' %}selected {% endif %}>Український</option>
+                            </select>
+                        </div>
 
-                <button class="btn btn-primary" type="submit" name="button" style="width: 30%;">
-                    {% trans "Save changes" %}
-                </button>
-            </form>
+                        <button class="btn btn-primary" type="submit" name="button">
+                            {% trans "Save changes" %}
+                        </button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>
