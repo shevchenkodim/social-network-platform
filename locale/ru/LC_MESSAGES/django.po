@@ -39,11 +39,11 @@ msgstr "Количество коментариев"
 #: .\main\models.py:39 .\templates\components\news_posts.html:108
 #: .\templates\post_detail_page.html:96
 msgid "Post"
-msgstr "Пост"
+msgstr "Отправить"
 
 #: .\main\models.py:40
 msgid "Posts"
-msgstr "Посты"
+msgstr "Отправить"
 
 #: .\main\models.py:47 .\main\models.py:58
 msgid "File"

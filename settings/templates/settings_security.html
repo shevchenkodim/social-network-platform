@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+{% trans "Settings" %}
+{% endblock title %}
+
+{% block middle %}
+<div class="row pl-3 pr-3 mb-4">
+    <div class="card" style="width:100%;">
+        <div class="card-header">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="{% url 'settings:settings_general_view' %}">
+                        {% trans "General" %}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark active border" href="{% url 'settings:settings_security_view' %}">
+                        {% trans "Security" %}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="{% url 'settings:settings_language_view' %}">
+                        {% trans "Language of the region" %}
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <table>
+                <form action="{% url 'settings:settings_security_view' %}" method="POST">
+                    {% if user_form.non_field_errors  %}
+                    <p class="text-danger">
+                        {{ user_form.non_field_errors }}
+                    </p>
+                    {% endif %}
+
+                    {% csrf_token %}
+
+                    <div class="form-label-group mb-3">
+                        {{user_form.username.label_tag}}
+                        <input required id="{{user_form.username.id_for_label}}" name="{{user_form.username.name}}"
+                            value="{{user_form.username.value}}" type="text" class="form-control"
+                            placeholder="{% trans 'Username' %}">
+                        {% if user_form.username.errors %}
+                        <div class="alert-danger" role="alert">
+                            {{user_form.username.errors }}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-label-group mb-3">
+                        {{user_form.first_name.label_tag}}
+                        <input required id="{{user_form.first_name.id_for_label}}" name="{{user_form.first_name.name}}"
+                            value="{{user_form.first_name.value}}" type="text" class="form-control"
+                            placeholder="{% trans 'First name' %}">
+                        {% if user_form.first_name.errors %}
+                        <div class="alert-danger" role="alert">
+                            {{user_form.first_name.errors }}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-label-group mb-3">
+                        {{user_form.last_name.label_tag}}
+                        <input required id="{{user_form.last_name.id_for_label}}" name="{{user_form.last_name.name}}"
+                            value="{{user_form.last_name.value}}" type="text" class="form-control"
+                            placeholder="{% trans 'Middle name' %}">
+                        {% if user_form.last_name.errors %}
+                        <div class="alert-danger" role="alert">
+                            {{user_form.last_name.errors }}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-label-group mb-3">
+                        {{user_form.email.label_tag}}
+                        <input required id="{{user_form.email.id_for_label}}" name="{{user_form.email.name}}"
+                            value="{{user_form.email.value}}" type="email" class="form-control"
+                            placeholder="{% trans 'Email' %}">
+                        {% if user_form.email.errors %}
+                        <div class="alert-danger" role="alert">
+                            {{user_form.email.errors }}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <button class="btn btn-primary" type="submit" name="button">
+                        {% trans 'Save changes' %}
+                    </button>
+                </form>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock middle %}
+
+{% block js %}
+{% endblock js %}

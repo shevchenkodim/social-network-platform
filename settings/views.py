@@ -1,7 +1,10 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.views.generic import TemplateView
 from django.http import JsonResponse
 from .forms import UserProfileForm
+from django.contrib.auth import login, authenticate
+from django.contrib.auth import logout
+from signup.forms import UserForm
 from signup.models import UserProfile
 from django.http import JsonResponse
 from django.contrib import messages
@@ -9,6 +12,8 @@ from django.utils.translation import gettext_lazy as _
 from django.utils.translation import activate
 from django.utils.translation import get_language
 from django.core.exceptions import PermissionDenied
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
 # Create your views here.
 
@@ -73,3 +78,38 @@ class SettingsLanguageView(TemplateView):
         else:
             messages.error(request, _('Error! Please try again later!'))
             return redirect(reverse('settings:settings_language_view'))
+
+
+class SettingsSecurityView(TemplateView):
+    """Settings security"""
+    template_name = "settings_security.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if not self.request.user.is_authenticated:
+            raise PermissionDenied
+        context['user_form'] = UserForm(instance=self.request.user)
+        return context
+
+    def post(self, request, *args, **kwargs):
+        instance = get_object_or_404(User, id=request.user.id)
+        if request.method == 'POST':
+            form = UserForm(request.POST or None, instance=instance)
+            if form.is_valid():
+                instance.username = form.cleaned_data.get('username')
+                instance.first_name = form.cleaned_data.get('first_name')
+                instance.last_name = form.cleaned_data.get('last_name')
+                instance.email = form.cleaned_data.get('email')
+                instance.save()
+
+                logout(request)
+                login(request, instance,
+                      backend='django.contrib.auth.backends.ModelBackend')
+
+                return redirect(reverse('settings:settings_security_view'))
+            else:
+                messages.error(request, form.errors)
+                return redirect(reverse('settings:settings_security_view'))
+        else:
+            form = UserForm(request.POST or None, instance=instance)
+        return render(request, 'settings_security.html', {'user_form': form})

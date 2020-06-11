@@ -12,15 +12,19 @@
         <div class="card-header">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link text-dark active border"
-                        href="{% url 'settings:settings_general_view' %}">{% trans "General" %}</a>
+                    <a class="nav-link text-dark active border" href="{% url 'settings:settings_general_view' %}">
+                        {% trans "General" %}
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="#">{% trans "Security" %}</a>
+                    <a class="nav-link text-dark" href="{% url 'settings:settings_security_view' %}">
+                        {% trans "Security" %}
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark"
-                        href="{% url 'settings:settings_language_view' %}">{% trans "Language of the region" %}</a>
+                    <a class="nav-link text-dark" href="{% url 'settings:settings_language_view' %}">
+                        {% trans "Language of the region" %}
+                    </a>
                 </li>
             </ul>
         </div>
